@@ -53,7 +53,7 @@
   width: 280px;
   height: 230px;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .description {
@@ -85,5 +85,10 @@
   font-size: 22px;
 }
 .d1 {
-  font-size: 30px;
+  font-size: 35px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+.d2 {
+  margin-top: 0px;
 }

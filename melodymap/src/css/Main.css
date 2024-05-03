@@ -98,3 +98,10 @@
   font-size: 50px;
   font-weight: 900;
 }
+
+.f,
+.s,
+.d {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
