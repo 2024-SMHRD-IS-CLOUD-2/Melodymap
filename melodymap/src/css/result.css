@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "WavvePADO-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "WavvePADO-Regular";
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-image: url("/public/image/Main2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #05e3eb;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  width: 360px;
+  height: 760px;
+}
+
+.content,
+.reco,
+.d1,
+.d2,
+.d3 {
+  text-align: center;
+}
+
+.reco {
+  color: steelblue;
+  font-size: 35px;
+  margin-left: 10px;
+}
+
+.image {
+  width: 280px;
+  height: 230px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 가운데 정렬 */
+  margin-bottom: 10px;
+}
+
+.description h3 {
+  margin-right: 10px; /* 텍스트 우측 여백 조정 */
+}
+
+.findroad,
+.gomusic {
+  background-color: white;
+  color: black;
+  font-size: 17px;
+  font-weight: 800;
+  border-radius: 10px;
+  border: 2px solid #05e3eb;
+  padding: 10px 10px;
+  cursor: pointer;
+  width: 150px;
+}
+
+.explain,
+.singer {
+  font-size: 22px;
+}
+.d1 {
+  font-size: 30px;
+}

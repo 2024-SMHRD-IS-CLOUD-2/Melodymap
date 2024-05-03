@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "WavvePADO-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "WavvePADO-Regular";
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-image: url("/public/image/Main2.png");
+  background-size: contain; /* 이미지가 짤리지 않고 컨테이너에 맞게 조절 */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid rgb(146, 227, 230); /* 테두리 색상 및 두께 설정 */
+  padding: 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  width: 360px;
+  height: 600px;
+}
+
+.content {
+  display: flex;
+  background-color: whitesmoke;
+  color: black;
+  font-size: 31px;
+  font-weight: bold;
+  font-family: "WavvePADO-Regular";
+  border-radius: 20px;
+  padding: 0px 10px;
+  cursor: pointer;
+  width: 380px;
+  height: 100px;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  text-align: center;
+  margin-bottom: 30px;
+}
+.que1 {
+  background-color: rgb(212, 241, 253);
+  color: black;
+  font-size: large;
+  font-weight: 800;
+  font-family: "WavvePADO-Regular";
+  border-radius: 20px;
+  border: 3px solid black; /* 버튼 테두리 색상 및 두께 설정 */
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 300px;
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.que2 {
+  background-color: rgb(212, 241, 253);
+  color: black;
+  font-size: large;
+  font-weight: 800;
+  font-family: "WavvePADO-Regular";
+  border-radius: 20px;
+  border: 3px solid black; /* 버튼 테두리 색상 및 두께 설정 */
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 300px;
+  height: 100px;
+  margin-top: 1px;
+}
+.question {
+  color: gold;
+  -webkit-text-stroke: 1px black;
+  font-size: 60px;
+  margin-bottom: 50px;
+}
