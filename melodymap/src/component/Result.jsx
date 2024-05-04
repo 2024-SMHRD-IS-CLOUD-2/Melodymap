@@ -70,7 +70,10 @@ const Result = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="./image/smhrd.png" />
+                  <img
+                    src="./image/smhrd.png"
+                    style={{ width: "400px", height: "300px" }}
+                  />
                 </a>
               </div>
             </div>

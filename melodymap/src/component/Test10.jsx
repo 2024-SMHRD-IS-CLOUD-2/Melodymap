@@ -18,7 +18,7 @@ const Testpage = () => {
           </h1>
           <button
             onClick={() => {
-              navigate("/coupang");
+              navigate("/Result");
             }}
             className="que1"
           >
@@ -26,7 +26,7 @@ const Testpage = () => {
           </button>
           <button
             onClick={() => {
-              navigate("/coupang");
+              navigate("/Result");
             }}
             className="que2"
           >
