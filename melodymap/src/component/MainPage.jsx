@@ -26,7 +26,6 @@ const MainPage = () => {
           <button
             onClick={() => {
               navigate("/Test1");
-              localStorage.clear();
             }}
             className="start1"
           >
