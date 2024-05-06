@@ -22,7 +22,7 @@ const Test1 = () => {
               }}
               className="que1"
             >
-              이런 날씨에는 무조건 밖에 나가서 친구들이랑 놀아야지!
+              이런 날씨에는 무조건 밖에 나가서 친구들이랑 놀아야지
             </button>
             <button
               onClick={() => {
