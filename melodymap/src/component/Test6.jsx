@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useTest } from "../context/TestContext";
 import "../css/Test.css";
 
 const Testpage = () => {
   const navigate = useNavigate();
+  const { addSelection } = useTest();
   return (
     <div className="container">
       <div className="wrapper">
@@ -16,6 +18,7 @@ const Testpage = () => {
           <button
             onClick={() => {
               navigate("/test7");
+              addSelection("N");
             }}
             className="que1"
           >
@@ -24,6 +27,7 @@ const Testpage = () => {
           <button
             onClick={() => {
               navigate("/test7");
+              addSelection("F");
             }}
             className="que2"
           >
