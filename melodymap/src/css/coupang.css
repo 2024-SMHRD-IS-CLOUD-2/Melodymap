@@ -27,7 +27,7 @@
   flex-direction: column;
   justify-content: center; /* 수직 중앙 정렬 */
   align-items: center; /* 수평 중앙 정렬 */
-  border: 5px solid #05e3eb;
+  border: 5px solid whitesmoke;
   padding: 20px;
   border-radius: 20px;
   background-color: whitesmoke;
