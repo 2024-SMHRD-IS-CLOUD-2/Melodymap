@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useTest } from "../context/TestContext";
 import "../css/Test.css";
 
 const Test1 = () => {
   const navigate = useNavigate();
+  const { selections, addSelection } = useTest();
+  useEffect(() => {
+    localStorage.removeItem("visited");
+  }, []);
 
   return (
     <div className="container">
@@ -19,14 +25,17 @@ const Test1 = () => {
             <button
               onClick={() => {
                 navigate("/test2");
+                addSelection("E");
+                console.log(selections);
               }}
               className="que1"
             >
-              이런 날씨에는 무조건 밖에 나가서 친구들이랑 놀아야지!
+              이런 날씨에는 무조건 밖에 나가서 친구들이랑 놀아야지
             </button>
             <button
               onClick={() => {
                 navigate("/test2");
+                addSelection("I");
               }}
               className="que2"
             >

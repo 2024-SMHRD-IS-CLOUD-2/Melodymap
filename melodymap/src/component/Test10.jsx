@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTest } from "../context/TestContext";
+import axios from "axios";
 import "../css/Test.css";
 
 const Testpage = () => {
   const navigate = useNavigate();
+  const { selections, addSelection } = useTest();
+
+  const sendDataToServer = async (selections) => {
+    axios.get(`http://localhost:8081/api/submit?choice=${selections}`);
+  };
+  useEffect(() => {
+    // 마지막 페이지에서만 서버로 데이터 전송
+    if (selections.length === 10) {
+      console.log(selections);
+      sendDataToServer(selections);
+      navigate("/Result");
+    }
+  }, [selections, navigate]);
   return (
     <div className="container">
       <div className="wrapper">
@@ -18,7 +33,7 @@ const Testpage = () => {
           </h1>
           <button
             onClick={() => {
-              navigate("/Result");
+              addSelection("M");
             }}
             className="que1"
           >
@@ -26,7 +41,7 @@ const Testpage = () => {
           </button>
           <button
             onClick={() => {
-              navigate("/Result");
+              addSelection("H");
             }}
             className="que2"
           >
