@@ -10,7 +10,9 @@ const Testpage = () => {
         <div>
           <h1 className="question">Q 08.</h1>
           <h1 className="content">
-            여행 장소를 고를 때, 가장 중요하게 고려하는 요소는?
+            여행 장소를 고를 때, 가장
+            <br></br>
+            중요하게 고려하는 요소는?
             <br />
           </h1>
           <button

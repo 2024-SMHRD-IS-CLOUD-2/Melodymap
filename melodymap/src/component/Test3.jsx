@@ -10,7 +10,9 @@ const Testpage = () => {
         <div>
           <h1 className="question">Q 03.</h1>
           <h1 className="content">
-            여행 중 동전이 들어가면 사랑에 성공한다는 분수대에 도착했다.
+            동전이 들어가면 사랑에
+            <br></br>
+            성공한다는 분수대에 도착했다.
             <br />
             이때 당신의 생각은?
           </h1>

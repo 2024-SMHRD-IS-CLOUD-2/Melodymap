@@ -12,7 +12,9 @@ const Testpage = () => {
           <h1 className="content">
             기다리고 기다리던 여행날!
             <br />
-            벌써 잠들 시간이다. 당신의 선택은?
+            벌써 잠들 시간이다.
+            <br></br>
+            당신의 선택은?
           </h1>
           <button
             onClick={() => {

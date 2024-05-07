@@ -10,7 +10,9 @@ const Testpage = () => {
         <div>
           <h1 className="question">Q 09.</h1>
           <h1 className="content">
-            친구들과 여행을 가기로 하고 계획을 세우려고 한다.
+            친구들과 여행을 가기로 하고
+            <br></br>
+            계획을 세우려고 한다.
             <br />
             선호하는 일정은?
           </h1>
