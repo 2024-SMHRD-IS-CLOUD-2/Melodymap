@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/result.css";
+import { useTest } from "../context/TestContext";
 
 const Result = () => {
   const navigate = useNavigate();
+  const { selections } = useTest();
   const [visited, setVisited] = useState(() => {
     const saved = localStorage.getItem("visited");
     return saved === "true";
@@ -13,15 +15,29 @@ const Result = () => {
     localStorage.setItem("visited", visited);
   }, [visited]);
 
+  const renderTitle = () => {
+    if (selections.includes("INTP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">영리한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("INTJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">지적인 여행가</span>
+        </h1>
+      );
+    }
+  };
+
   return (
     <>
       {visited ? (
         <div className="container">
           <div className="wrapper">
             <div className="content">
-              <h1 className="d1">
-                당신은<span className="reco">고독한 여행가</span>
-              </h1>
+              {renderTitle()}
               <div className="image-wrapper">
                 <img
                   src={`${process.env.PUBLIC_URL}/image/Main.jpg`}
