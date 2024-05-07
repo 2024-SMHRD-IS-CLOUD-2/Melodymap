@@ -28,6 +28,90 @@ const Result = () => {
           당신은<span className="reco">지적인 여행가</span>
         </h1>
       );
+    } else if (selections.includes("INFP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">나른한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("INFJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">따뜻한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ENTP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">창의적인 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ENTJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">호탕한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ENFP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">친절한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ENFJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">온화한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ISTP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">피곤한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ISTJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">분석적인 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ISFP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">예술적인 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ISFJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">수호적인 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ESTP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">시원한 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ESTJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">지도적인 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ESFP")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">사교적인 여행가</span>
+        </h1>
+      );
+    } else if (selections.includes("ESFJ")) {
+      return (
+        <h1 className="d1">
+          당신은<span className="reco">모범적인 여행가</span>
+        </h1>
+      );
     }
   };
 
