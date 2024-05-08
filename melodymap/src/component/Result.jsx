@@ -123,7 +123,6 @@ const Result = () => {
           <div className="wrapper">
             <div className="content">
               {renderTitle()}
-              <h4>추천 여행지</h4>
               <div className="image-wrapper">
                 <div className="center1">
                   <img
