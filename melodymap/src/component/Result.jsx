@@ -21,7 +21,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "3f3f3f" }}>
+          <span className="reco" style={{ color: "#3f3f3f" }}>
             영리한 여행가
           </span>
         </h1>
@@ -30,7 +30,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "e63e4f" }}>
+          <span className="reco" style={{ color: "#e63e4f" }}>
             지적인 여행가
           </span>
         </h1>
@@ -39,7 +39,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "ec96ef" }}>
+          <span className="reco" style={{ color: "#ec96ef" }}>
             나른한 여행가
           </span>
         </h1>
@@ -48,7 +48,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "ccb1de" }}>
+          <span className="reco" style={{ color: "#ccb1de" }}>
             따뜻한 여행가
           </span>
         </h1>
@@ -57,7 +57,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "d6c7b9" }}>
+          <span className="reco" style={{ color: "#d6c7b9" }}>
             창의적인 여행가
           </span>
         </h1>
@@ -66,7 +66,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "b3eaa6" }}>
+          <span className="reco" style={{ color: "#b3eaa6" }}>
             호탕한 여행가
           </span>
         </h1>
@@ -75,7 +75,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "d4f29c" }}>
+          <span className="reco" style={{ color: "#d4f29c" }}>
             친절한 여행가
           </span>
         </h1>
@@ -84,7 +84,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "f99fae" }}>
+          <span className="reco" style={{ color: "#f99fae" }}>
             온화한 여행가
           </span>
         </h1>
@@ -93,7 +93,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "48518f" }}>
+          <span className="reco" style={{ color: "#48518f" }}>
             피곤한 여행가
           </span>
         </h1>
@@ -102,7 +102,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "9d9c97" }}>
+          <span className="reco" style={{ color: "#9d9c97" }}>
             분석적인 여행가
           </span>
         </h1>
@@ -111,7 +111,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "fff06d" }}>
+          <span className="reco" style={{ color: "#fff06d" }}>
             예술적인 여행가
           </span>
         </h1>
@@ -120,7 +120,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "81b2ff" }}>
+          <span className="reco" style={{ color: "#81b2ff" }}>
             수호적인 여행가
           </span>
         </h1>
@@ -129,7 +129,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "a9ebd6" }}>
+          <span className="reco" style={{ color: "#a9ebd6" }}>
             시원한 여행가
           </span>
         </h1>
@@ -138,7 +138,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "ffbf96" }}>
+          <span className="reco" style={{ color: "#ffbf96" }}>
             지도적인 여행가
           </span>
         </h1>
@@ -147,7 +147,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "9fd8f9" }}>
+          <span className="reco" style={{ color: "#9fd8f9" }}>
             사교적인 여행가
           </span>
         </h1>
@@ -156,7 +156,7 @@ const Result = () => {
       return (
         <h1 className="d1">
           당신은
-          <span className="reco" style={{ color: "faee9d" }}>
+          <span className="reco" style={{ color: "#faee9d" }}>
             모범적인 여행가
           </span>
         </h1>
