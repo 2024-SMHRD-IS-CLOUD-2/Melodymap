@@ -1,3 +1,5 @@
+/* result.css */
+
 @font-face {
   font-family: "WavvePADO-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2")
@@ -16,7 +18,6 @@
   align-items: center;
   height: 100vh;
   text-align: center;
-  background-image: url("/public/image/Main2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,7 +33,7 @@
   border-radius: 20px;
   background-color: whitesmoke;
   width: 360px;
-  height: 760px;
+  height: 760px; /* 수정: .wrapper 높이 조정 */
 }
 
 .content,
@@ -43,52 +44,121 @@
   text-align: center;
 }
 
-.reco {
-  color: steelblue;
-  font-size: 35px;
-  margin-left: 10px;
+.image-wrapper,
+.image-wrapper2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid #05e3eb;
+  width: 300px;
+  height: 250px;
+  position: relative;
 }
 
-.image {
-  width: 280px;
-  height: 230px;
+.center1,
+.center2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.center1 .image,
+.center2 .image {
+  width: 220px;
+  height: 130px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
-.description {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* 가운데 정렬 */
-  margin-bottom: 10px;
+.center1 .explain0,
+.center2 .explain3 {
+  text-align: center;
+  margin-top: 10px; /* 이미지와 p태그 간격 조정 */
 }
 
-.description h3 {
-  margin-right: 10px; /* 텍스트 우측 여백 조정 */
+.image-wrapper .explain,
+.image-wrapper2 .explain {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(190px - 20px); /* 이미지 너비 - 이미지 오른쪽 마진 */
+  text-align: center;
+  left: calc(100% + 10px); /* 이미지 오른쪽 여백 + 마진 */
 }
 
-.findroad,
-.gomusic {
+.reco2 {
   background-color: white;
   color: black;
   font-size: 17px;
   font-weight: 800;
   border-radius: 10px;
   border: 2px solid #05e3eb;
-  padding: 10px 10px;
+  padding: 10px;
   cursor: pointer;
-  width: 150px;
+  width: 220px;
+  margin-top: 50px;
+  height: 50px;
 }
 
-.explain,
-.singer {
-  font-size: 22px;
+.explain1,
+.explain4 {
+  font-size: 21px;
+  margin-bottom: 3px; /* explain1과 explain4 사이의 간격 조정 */
 }
+
+.explain2,
+.explain5 {
+  color: steelblue;
+  font-size: 25px;
+  margin-top: 3px; /* explain2와 explain5 사이의 간격 조정 */
+}
+
+.login1,
+.Join1 {
+  color: white;
+  background-color: black;
+  width: 100px;
+  margin-top: 100px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.login1 {
+  margin-right: 10px;
+}
+
+.Join1 {
+  margin-left: 10px;
+}
+
+.kakaotalk,
+.facebook,
+.band,
+.navertalk {
+  width: 30px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* 추가된 스타일 */
+
 .d1 {
   font-size: 35px;
   margin-top: 60px;
   margin-bottom: 30px;
 }
-.d2 {
-  margin-top: 0px;
+
+.reco {
+  font-size: 35px;
+  margin-left: 10px;
+}
+.image-wrapper2 {
+  margin-top: 20px;
 }

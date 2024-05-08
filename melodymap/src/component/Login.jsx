@@ -28,7 +28,7 @@ const Login = () => {
             >
               <img
                 className="naver5"
-                src={`${process.env.PUBLIC_URL}/image/naver.png`}
+                src={`${process.env.PUBLIC_URL}/image/naver2.png`}
                 alt="네이버 간편인증"
               />
             </a>
@@ -38,7 +38,7 @@ const Login = () => {
             >
               <img
                 className="kakao5"
-                src={`${process.env.PUBLIC_URL}/image/kakao.png`}
+                src={`${process.env.PUBLIC_URL}/image/kakao2.png`}
                 alt="카카오 간편인증"
               />
             </a>
