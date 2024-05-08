@@ -10,6 +10,7 @@ const Result = () => {
     const saved = localStorage.getItem("visited");
     return saved === "true";
   });
+  const [showRecommendation, setShowRecommendation] = useState(false); // 추가: 추천 영역 표시 여부 상태
 
   useEffect(() => {
     localStorage.setItem("visited", visited);
@@ -122,40 +123,84 @@ const Result = () => {
           <div className="wrapper">
             <div className="content">
               {renderTitle()}
+              <h4>추천 여행지</h4>
               <div className="image-wrapper">
-                <img
-                  src={`${process.env.PUBLIC_URL}/image/Main.jpg`}
-                  alt="Main Image"
-                  className="image"
-                />
-              </div>
-              <div className="d2">
-                <h4>추천 여행지</h4>
-                <div className="button-container">
-                  <h3 className="explain">설명 : 아주 멋진 여행지</h3>
-                  <button
-                    onClick={() => {
-                      navigate("/Login");
-                    }}
-                    className="findroad"
-                  >
-                    길찾기
-                  </button>
+                <div className="center1">
+                  <img
+                    src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
+                    alt="Main Image"
+                    className="image"
+                  />
+                  <div className="explain0">
+                    <p className="explain1">멋진 풍경을 담은</p>
+                    <p className="explain2">담양 메타프로방스</p>
+                  </div>
                 </div>
               </div>
-              <div className="d3">
-                <h4>추천 음악</h4>
-                <div className="button-container">
-                  <h3 className="singer">가수 : 제목</h3>
-                  <button
-                    onClick={() => {
-                      navigate("/Join");
-                    }}
-                    className="gomusic"
-                  >
-                    플레이리스트
-                  </button>
+              {showRecommendation && ( // showRecommendation이 true일 때만 화면에 보임
+                <div className="image-wrapper2">
+                  <div className="center2">
+                    <img
+                      src={`${process.env.PUBLIC_URL}/image/JNW.png`}
+                      alt="Main Image"
+                      className="image"
+                    />
+                    <div className="explain3">
+                      <p className="explain4">자연 경관을 담은</p>
+                      <p className="explain5">담양 죽녹원</p>
+                    </div>
+                  </div>
                 </div>
+              )}
+              <button
+                className="reco2"
+                onClick={() => setShowRecommendation(!showRecommendation)} // 버튼 클릭 시 showRecommendation 토글
+              >
+                + 추천
+              </button>
+              <div className="pbutton">
+                <button
+                  onClick={() => {
+                    navigate("/Login");
+                  }}
+                  className="login1"
+                >
+                  로그인
+                </button>
+                <button
+                  onClick={() => {
+                    navigate("/Join");
+                  }}
+                  className="Join1"
+                >
+                  회원가입
+                </button>
+              </div>
+              <div>
+                <a>
+                  <img
+                    className="kakaotalk"
+                    src={`${process.env.PUBLIC_URL}/image/kakaotalk.png`}
+                  />
+                </a>
+                <a>
+                  <img
+                    className="facebook"
+                    src={`${process.env.PUBLIC_URL}/image/facebook.png`}
+                  />
+                </a>
+                <a>
+                  <img
+                    className="band"
+                    src={`${process.env.PUBLIC_URL}/image/band.png`}
+                  />
+                </a>
+                <a>
+                  <img
+                    className="navertalk"
+                    src={`${process.env.PUBLIC_URL}/image/navertalk.png`}
+                  />
+                </a>
               </div>
             </div>
           </div>
