@@ -9,7 +9,14 @@ const Testpage = () => {
   const { selections, addSelection } = useTest();
 
   const sendDataToServer = async (selections) => {
-    axios.get(`http://localhost:8081/api/submit?choice=${selections}`);
+    axios
+      .get(`http://localhost:8081/api/submit?choice=${selections}`)
+      .then((res) => {
+        console.log("서버로부터의 응답:", res.data);
+      })
+      .catch((error) => {
+        console.error("데이터 요청 중 오류 발생:", error);
+      });
   };
   useEffect(() => {
     // 마지막 페이지에서만 서버로 데이터 전송
