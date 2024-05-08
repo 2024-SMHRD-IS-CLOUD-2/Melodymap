@@ -99,8 +99,8 @@
   border: 2px solid #05e3eb;
   padding: 10px;
   cursor: pointer;
-  width: 100px;
-  margin-top: 20px;
+  width: 220px;
+  margin-top: 50px;
   height: 50px;
 }
 
@@ -156,7 +156,6 @@
 }
 
 .reco {
-  color: steelblue;
   font-size: 35px;
   margin-left: 10px;
 }

@@ -12,7 +12,7 @@ const Testpage = () => {
         <div>
           <h1 className="question">Q 04.</h1>
           <h1 className="content">
-            여행 중 점심시간이 되어 차고
+            여행 중 점심시간이 되어 차를
             <br></br>
             타고 맛집에 갈 예정이다
             <br />

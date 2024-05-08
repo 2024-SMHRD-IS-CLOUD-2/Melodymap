@@ -20,97 +20,145 @@ const Result = () => {
     if (selections.includes("INTP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">영리한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "3f3f3f" }}>
+            영리한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("INTJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">지적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "e63e4f" }}>
+            지적인 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("INFP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">나른한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "ec96ef" }}>
+            나른한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("INFJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">따뜻한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "ccb1de" }}>
+            따뜻한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ENTP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">창의적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "d6c7b9" }}>
+            창의적인 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ENTJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">호탕한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "b3eaa6" }}>
+            호탕한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ENFP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">친절한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "d4f29c" }}>
+            친절한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ENFJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">온화한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "f99fae" }}>
+            온화한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ISTP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">피곤한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "48518f" }}>
+            피곤한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ISTJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">분석적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "9d9c97" }}>
+            분석적인 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ISFP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">예술적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "fff06d" }}>
+            예술적인 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ISFJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">수호적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "81b2ff" }}>
+            수호적인 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ESTP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">시원한 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "a9ebd6" }}>
+            시원한 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ESTJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">지도적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "ffbf96" }}>
+            지도적인 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ESFP")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">사교적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "9fd8f9" }}>
+            사교적인 여행가
+          </span>
         </h1>
       );
     } else if (selections.includes("ESFJ")) {
       return (
         <h1 className="d1">
-          당신은<span className="reco">모범적인 여행가</span>
+          당신은
+          <span className="reco" style={{ color: "faee9d" }}>
+            모범적인 여행가
+          </span>
         </h1>
       );
     }
