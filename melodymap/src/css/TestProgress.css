@@ -3,10 +3,9 @@
 .progress-bar {
   width: 280px;
   height: 28px;
-  background-color: rgb(248, 227, 195);
+  background-color: rgb(252, 239, 220);
   border-radius: 5px;
   margin-bottom: 20px;
-  animation-delay: 0.5s;
 }
 
 .progress {

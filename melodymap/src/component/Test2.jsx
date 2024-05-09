@@ -11,6 +11,11 @@ const Testpage = () => {
   const currentStep = 2; // 현재 페이지 번호
   const totalSteps = 10; // 총 페이지 수
 
+  const handleButtonClick = (selection) => {
+    addSelection(selection);
+    navigate(`/test${currentStep + 1}`);
+  };
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -26,8 +31,9 @@ const Testpage = () => {
           </h1>
           <button
             onClick={() => {
-              navigate("/test3");
-              addSelection("N");
+              /*  navigate("/test3");
+              addSelection("N"); */
+              handleButtonClick("N");
             }}
             className="que1"
           >
@@ -35,8 +41,9 @@ const Testpage = () => {
           </button>
           <button
             onClick={() => {
-              navigate("/test3");
-              addSelection("S");
+              /* navigate("/test3");
+              addSelection("S"); */
+              handleButtonClick("S");
             }}
             className="que2"
           >
