@@ -21,7 +21,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/public/image/Main2.png");
+  /*  background-image: url("/public/image/Main2.png"); */
 }
 
 .wrapperR {
@@ -34,7 +34,7 @@
   border-radius: 20px;
   background-color: whitesmoke;
   width: 360px;
-  height: 760px; /* 수정: .wrapper 높이 조정 */
+  height: 3000px; /* 수정: .wrapper 높이 조정 */
 }
 
 .contentR,
@@ -122,7 +122,7 @@
 .Join1R {
   color: white;
   background-color: black;
-  width: 100px;
+  width: 120px;
   margin-top: 100px;
   height: 40px;
   font-size: 20px;
@@ -159,6 +159,7 @@
 .recoR {
   font-size: 35px;
   margin-left: 10px;
+  margin-top: 10px;
 }
 .image-wrapper2R {
   margin-top: 20px;
