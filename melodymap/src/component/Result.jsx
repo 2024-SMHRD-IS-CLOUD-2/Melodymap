@@ -22,6 +22,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#3f3f3f" }}>
             영리한 여행가
           </span>
@@ -31,6 +32,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#e63e4f" }}>
             지적인 여행가
           </span>
@@ -40,6 +42,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#ec96ef" }}>
             나른한 여행가
           </span>
@@ -49,6 +52,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#ccb1de" }}>
             따뜻한 여행가
           </span>
@@ -58,6 +62,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#d6c7b9" }}>
             창의적인 여행가
           </span>
@@ -67,6 +72,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#b3eaa6" }}>
             호탕한 여행가
           </span>
@@ -76,6 +82,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#d4f29c" }}>
             친절한 여행가
           </span>
@@ -85,6 +92,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#f99fae" }}>
             온화한 여행가
           </span>
@@ -94,6 +102,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#48518f" }}>
             피곤한 여행가
           </span>
@@ -103,6 +112,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#9d9c97" }}>
             분석적인 여행가
           </span>
@@ -112,6 +122,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#fff06d" }}>
             예술적인 여행가
           </span>
@@ -121,6 +132,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#81b2ff" }}>
             수호적인 여행가
           </span>
@@ -130,6 +142,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#a9ebd6" }}>
             시원한 여행가
           </span>
@@ -139,6 +152,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#ffbf96" }}>
             지도적인 여행가
           </span>
@@ -148,6 +162,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#9fd8f9" }}>
             사교적인 여행가
           </span>
@@ -157,6 +172,7 @@ const Result = () => {
       return (
         <h1 className="d1R">
           당신은
+          <br />
           <span className="recoR" style={{ color: "#faee9d" }}>
             모범적인 여행가
           </span>

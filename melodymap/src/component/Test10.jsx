@@ -16,6 +16,8 @@ const Testpage = () => {
       .get(`http://localhost:8081/api/submit?choice=${selections}`)
       .then((res) => {
         console.log("서버로부터의 응답:", res.data);
+        console.log(res.data.musicDetails);
+        console.log(res.data.placeDetails);
       })
       .catch((error) => {
         console.error("데이터 요청 중 오류 발생:", error);
