@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTest } from "../context/TestContext";
+import TestProgress from "./TestProgress";
 import axios from "axios";
 import "../css/Test.css";
 
 const Testpage = () => {
   const navigate = useNavigate();
   const { selections, addSelection } = useTest();
+  const currentStep = 10; // 현재 페이지 번호
+  const totalSteps = 10; // 총 페이지 수
 
   const sendDataToServer = async (selections) => {
     axios
@@ -30,6 +33,7 @@ const Testpage = () => {
   return (
     <div className="container">
       <div className="wrapper">
+        <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <div>
           <h1 className="question">Q 10.</h1>
           <h1 className="content">

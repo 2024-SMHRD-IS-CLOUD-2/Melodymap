@@ -12,7 +12,7 @@
   font-family: "WavvePADO-Regular";
 }
 
-.container {
+.containerR {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,9 +21,10 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  background-image: url("/public/image/Main2.png");
 }
 
-.wrapper {
+.wrapperR {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,16 +37,16 @@
   height: 760px; /* 수정: .wrapper 높이 조정 */
 }
 
-.content,
-.reco,
-.d1,
-.d2,
-.d3 {
+.contentR,
+.recoR,
+.d1R,
+.d2R,
+.d3R {
   text-align: center;
 }
 
-.image-wrapper,
-.image-wrapper2 {
+.image-wrapperR,
+.image-wrapper2R {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,34 +55,34 @@
   border-radius: 20px;
   border: 2px solid #05e3eb;
   width: 300px;
-  height: 250px;
+  height: 270px;
   position: relative;
 }
 
-.center1,
-.center2 {
+.center1R,
+.center2R {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
 }
 
-.center1 .image,
-.center2 .image {
+.center1R .imageR,
+.center2R .imageR {
   width: 220px;
   height: 130px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
-.center1 .explain0,
-.center2 .explain3 {
+.center1R .explain0R,
+.center2R .explain3R {
   text-align: center;
-  margin-top: 10px; /* 이미지와 p태그 간격 조정 */
+  margin-top: 0px; /* 이미지와 p태그 간격 조정 */
 }
 
-.image-wrapper .explain,
-.image-wrapper2 .explain {
+.image-wrapperR .explainR,
+.image-wrapper2R .explainR {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -90,7 +91,7 @@
   left: calc(100% + 10px); /* 이미지 오른쪽 여백 + 마진 */
 }
 
-.reco2 {
+.reco2R {
   background-color: white;
   color: black;
   font-size: 17px;
@@ -104,21 +105,21 @@
   height: 50px;
 }
 
-.explain1,
-.explain4 {
+.explain1R,
+.explain4R {
   font-size: 21px;
   margin-bottom: 3px; /* explain1과 explain4 사이의 간격 조정 */
 }
 
-.explain2,
-.explain5 {
+.explain2R,
+.explain5R {
   color: steelblue;
   font-size: 25px;
   margin-top: 3px; /* explain2와 explain5 사이의 간격 조정 */
 }
 
-.login1,
-.Join1 {
+.login1R,
+.Join1R {
   color: white;
   background-color: black;
   width: 100px;
@@ -128,18 +129,18 @@
   border-radius: 10px;
 }
 
-.login1 {
+.login1R {
   margin-right: 10px;
 }
 
-.Join1 {
+.Join1R {
   margin-left: 10px;
 }
 
-.kakaotalk,
-.facebook,
-.band,
-.navertalk {
+.kakaotalkR,
+.facebookR,
+.bandR,
+.navertalkR {
   width: 30px;
   height: 30px;
   margin-top: 20px;
@@ -149,16 +150,16 @@
 
 /* 추가된 스타일 */
 
-.d1 {
-  font-size: 35px;
+.d1R {
+  font-size: 30px;
   margin-top: 60px;
   margin-bottom: 30px;
 }
 
-.reco {
+.recoR {
   font-size: 35px;
   margin-left: 10px;
 }
-.image-wrapper2 {
+.image-wrapper2R {
   margin-top: 20px;
 }
