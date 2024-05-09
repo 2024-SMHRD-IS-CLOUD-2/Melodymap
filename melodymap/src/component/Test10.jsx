@@ -26,6 +26,7 @@ const Testpage = () => {
       navigate("/Result");
     }
   }, [selections, navigate]);
+
   return (
     <div className="container">
       <div className="wrapper">
