@@ -21,9 +21,9 @@ public class MelodyMap {
 
 
     @DynamoDBAttribute(attributeName = "recommand_music")
-    private Set<String> recommandMusic;
+    private List<String> recommandMusic;
 
     @DynamoDBAttribute(attributeName = "recommand_place")
-    private String recommandPlace;
+    private List<String> recommandPlace;
 
 }
