@@ -1,18 +1,24 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTest } from "../context/TestContext";
+import TestProgress from "./TestProgress";
 import "../css/Test.css";
 
 const Testpage = () => {
   const navigate = useNavigate();
   const { addSelection } = useTest();
+
+  const currentStep = 2; // 현재 페이지 번호
+  const totalSteps = 10; // 총 페이지 수
+
   return (
     <div className="container">
       <div className="wrapper">
+        <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <div>
           <h1 className="question">Q 02.</h1>
           <h1 className="content">
-            기다리고 기다리던 여행날!
+            기다리던 여행날!
             <br />
             벌써 잠들 시간이다.
             <br></br>

@@ -27,4 +27,25 @@ public class DynamoDBFindService {
             return Optional.empty();
         }
     }
+
+    public <T> T save(T entity) {
+        try {
+            dynamoDBMapper.save(entity);
+            return entity;
+        } catch (AmazonDynamoDBException e) {
+            log.error(e.getErrorMessage());
+            return null;
+        }
+    }
+
+    // 특정 키에 해당하는 항목 삭제
+    public <T> void deleteByKey(Class<T> clazz, Object hashKey) {
+        // 항목 조회
+        T item = dynamoDBMapper.load(clazz, hashKey);
+
+        // 항목이 존재하면 삭제
+        if (item != null) {
+            dynamoDBMapper.delete(item);
+        }
+    }
 }

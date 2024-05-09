@@ -9,7 +9,7 @@
 * {
   font-family: "WavvePADO-Regular";
 }
-.container {
+.containerM {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,7 @@
   background-repeat: no-repeat;
 }
 
-.wrapper {
+.wrapperM {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,20 +34,20 @@
   height: 740px;
 }
 
-.content {
+.contentM {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.image {
-  width: 350px; /* 이미지 좌우 크기 설정 */
-  height: 280px;
+.imageM {
+  width: 330px; /* 이미지 좌우 크기 설정 */
+  height: 260px;
   margin-bottom: 20px;
   border-radius: 30px;
 }
 
-.info {
+.infoM {
   text-align: center;
   font-size: 20px;
   font-style: normal;
@@ -59,15 +59,15 @@
   margin-top: 2px;
   margin-bottom: 2px;
 } */
-.d {
+.dM {
   height: 120px;
 }
-.info {
+.infoM {
   margin-top: 2px;
   margin-bottom: 2px;
 }
 
-.start1 {
+.start1M {
   background-color: white;
   color: black;
   font-size: xx-large;
@@ -79,29 +79,29 @@
   width: 300px;
   text-decoration: none;
 }
-.reco1 {
+.reco1M {
   color: steelblue;
   margin-left: 15px;
 }
 
-.f {
+.fM {
   font-size: 45px;
 }
-.d {
+.dM {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 50px;
 }
 
-.s {
+.sM {
   font-size: 50px;
   font-weight: 900;
 }
 
-.f,
-.s,
-.d {
+.fM,
+.sM,
+.dM {
   margin-top: 5px;
   margin-bottom: 5px;
 }
