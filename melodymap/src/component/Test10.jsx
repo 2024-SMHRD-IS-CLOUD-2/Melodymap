@@ -16,8 +16,13 @@ const Testpage = () => {
       .get(`http://localhost:8081/api/submit?choice=${selections}`)
       .then((res) => {
         console.log("서버로부터의 응답:", res.data);
-        console.log(res.data.musicDetails);
-        console.log(res.data.placeDetails);
+        navigate("/Result", {
+          state: {
+            musicDetails: res.data.musicDetails,
+            placeDetails: res.data.placeDetails,
+          },
+          // navigate 함수를 사용해 Result 페이지로 이동하면서 음악 및 장소 상세 정보를 state로 전달
+        });
       })
       .catch((error) => {
         console.error("데이터 요청 중 오류 발생:", error);
@@ -28,7 +33,6 @@ const Testpage = () => {
     if (selections.length === 10) {
       console.log(selections);
       sendDataToServer(selections);
-      navigate("/Result");
     }
   }, [selections, navigate]);
 

@@ -15,6 +15,7 @@ import Coupang from "./component/Coupang";
 import Result from "./component/Result";
 import Login from "./component/Login";
 import Join from "./component/Join";
+import Detail from "./component/Detail";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/Result" element={<Result />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Join" element={<Join />} />
+          <Route path="/detail" element={<Detail />} />
         </Routes>
       </div>
     </BrowserRouter>

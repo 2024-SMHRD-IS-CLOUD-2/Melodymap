@@ -3,8 +3,17 @@ import { useNavigate } from "react-router-dom";
 import "../css/result.css";
 import { useTest } from "../context/TestContext";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Result = () => {
+  // useLocation을 사용하여 navigate로 전달된 state에 접근
+  const location = useLocation();
+  const { musicDetails, placeDetails } = location.state || {};
+
+  // useLocation 훅을 사용하여 라우터의 위치 객체 접근
+  // 네비게이션 시 전달된 state를 구조분해 할당하여 사용
+
+  console.log(placeDetails);
   const navigate = useNavigate();
   const { selections } = useTest();
   const [visited, setVisited] = useState(() => {
@@ -12,6 +21,9 @@ const Result = () => {
     return saved === "true";
   });
   const [showRecommendation, setShowRecommendation] = useState(false); // 추가: 추천 영역 표시 여부 상태
+  const musicDataSend = () => {
+    navigate("/detail", { state: { musicDetails } });
+  };
 
   useEffect(() => {
     localStorage.setItem("visited", visited);
@@ -188,19 +200,29 @@ const Result = () => {
           <div className="wrapperR">
             <div className="contentR">
               {renderTitle()}
-              <div className="image-wrapperR">
-                <div className="center1R">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
-                    alt="Main Image"
-                    className="imageR"
-                  />
-                  <div className="explain0R">
-                    <p className="explain1R">멋진 풍경을 담은</p>
-                    <p className="explain2R">담양 메타프로방스</p>
+              {placeDetails.map((place) => (
+                <div className="image-wrapperR">
+                  <div className="center1R">
+                    <button
+                      onClick={() => {
+                        musicDataSend();
+                      }}
+                      className="musicR"
+                    >
+                      <img
+                        src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
+                        alt="Main Image"
+                        className="imageR"
+                      />
+                    </button>
+
+                    <div className="explain0R">
+                      <p className="explain1R">{place.poiInfo}</p>
+                      <p className="explain2R">{place.poiName}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
               {showRecommendation && ( // showRecommendation이 true일 때만 화면에 보임
                 <div className="image-wrapper2R">
                   <div className="center2R">

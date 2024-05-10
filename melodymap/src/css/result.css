@@ -54,8 +54,8 @@
   background-color: white;
   border-radius: 20px;
   border: 2px solid #05e3eb;
-  width: 300px;
-  height: 270px;
+  width: 330px;
+  height: 290px;
   position: relative;
 }
 
@@ -163,4 +163,9 @@
 }
 .image-wrapper2R {
   margin-top: 20px;
+}
+.musicR {
+  border: none;
+  cursor: pointer;
+  background-color: white;
 }
