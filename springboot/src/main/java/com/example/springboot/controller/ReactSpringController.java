@@ -34,13 +34,13 @@ public class ReactSpringController {
     }
 
     @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody Users newEntiry){
-        Users saveUser = dynamoDBFindService.save(newEntiry);
-        if(saveUser != null){
-            return ResponseEntity.ok("join successful");
-        }
-        else {
-            return ResponseEntity.internalServerError().body("join failed");
+    public ResponseEntity<String> join(@RequestBody Users newUser) {
+        System.out.println("Received user data: " + newUser);
+        Users savedUser = dynamoDBFindService.save(newUser);
+        if (savedUser != null) {
+            return ResponseEntity.ok("Join successful");
+        } else {
+            return ResponseEntity.internalServerError().body("Join failed");
         }
     }
 
@@ -69,31 +69,6 @@ public class ReactSpringController {
             return ResponseEntity.badRequest().body("Failed to increment count for " + resultChoice);
         }
     }
-
-//    @PutMapping("/update/{userID}")
-//    public ResponseEntity<String> updateUser(@PathVariable String userID, @RequestBody Users userData) {
-//        // 기존 데이터 불러오기
-//        Optional<Users> existingUser = dynamoDBFindService.find(Users.class, userID);
-//        if (existingUser.isPresent()) {
-//            Users userToUpdate = existingUser.get();
-//            // 필요한 필드만 업데이트
-//            userToUpdate.setUserPW(userData.getUserPW() != null ? userData.getUserPW() : userToUpdate.getUserPW());
-//            userToUpdate.setName(userData.getName() != null ? userData.getName() : userToUpdate.getName());
-//            userToUpdate.setGender(userData.getGender() != null ? userData.getGender() : userToUpdate.getGender());
-//            userToUpdate.setBirthday(userData.getBirthday() != null ? userData.getBirthday() : userToUpdate.getBirthday());
-//
-//            Users result = dynamoDBFindService.save(userToUpdate);
-//            if (result != null) {
-//                return ResponseEntity.ok("User updated successfully.");
-//            } else {
-//                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update user.");
-//            }
-//        } else {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
-//        }
-//    }
-
-
 }
 
 
