@@ -34,10 +34,19 @@ public class ReactSpringController {
     }
 
     @PostMapping("/join")
+<<<<<<< HEAD
     public ResponseEntity<String> join(@RequestBody Users newUser) {
         System.out.println("Received user data: " + newUser);
         Users savedUser = dynamoDBFindService.save(newUser);
         if (savedUser != null) {
+=======
+    public ResponseEntity<String> join(@RequestBody Users newEntity) {
+        if (newEntity.getUserID() == null || newEntity.getUserID().isEmpty()) {
+            return ResponseEntity.badRequest().body("UserID is required");
+        }
+        Users saveUser = dynamoDBFindService.save(newEntity);
+        if (saveUser != null) {
+>>>>>>> 63d7c242ab5bd54b91b67d15b76818f30edd1993
             return ResponseEntity.ok("Join successful");
         } else {
             return ResponseEntity.internalServerError().body("Join failed");

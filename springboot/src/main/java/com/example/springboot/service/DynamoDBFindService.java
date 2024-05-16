@@ -33,7 +33,7 @@ public class DynamoDBFindService {
             dynamoDBMapper.save(entity);
             return entity;
         } catch (AmazonDynamoDBException e) {
-            log.error(e.getErrorMessage());
+            log.error("Error saving entity: {}", e.getErrorMessage());
             return null;
         }
     }

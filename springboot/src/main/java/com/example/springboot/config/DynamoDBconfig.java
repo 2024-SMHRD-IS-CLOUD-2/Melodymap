@@ -22,6 +22,7 @@ public class DynamoDBconfig {
     @Value("${aws.dynamodb.region}")
     private String region;
 
+
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()

@@ -11,12 +11,6 @@ java {
 	sourceCompatibility = '17'
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
 repositories {
 	mavenCentral()
 }
@@ -25,11 +19,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.cloud:spring-cloud-function-web:3.2.8'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-//	// 스프링 시큐리티 추가
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
-//	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	// Spring Cloud Function 의존성 추가
+	implementation 'org.springframework.cloud:spring-cloud-function-context'
+	implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws'
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -40,9 +34,13 @@ dependencies {
 	// DynamoDB, S3
 	implementation platform('com.amazonaws:aws-java-sdk-bom:1.12.529')
 	implementation 'com.amazonaws:aws-java-sdk-s3'
-	implementation group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.12.715'
+	implementation 'com.amazonaws:aws-java-sdk-dynamodb'
+}
 
-
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:2021.0.3"
+	}
 }
 
 tasks.named('bootBuildImage') {
