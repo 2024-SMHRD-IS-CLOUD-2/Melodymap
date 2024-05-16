@@ -13,7 +13,7 @@
   line-height: 30px;
   text-align: center;
   color: black;
-  background-color: #29ebf1; /* 진행 바 색상 (파란색) */
+  background-color: #cbe0ff; /* 진행 바 색상 (파란색) */
   border-radius: 5px;
   transition: width 0.5s ease-in-out;
 }

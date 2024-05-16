@@ -16,7 +16,7 @@ import Result from "./component/Result";
 import Login from "./component/Login";
 import Join from "./component/Join";
 import Detail from "./component/Detail";
-
+import Statistics from "./component/Statistics";
 const App = () => {
   return (
     <BrowserRouter>
@@ -38,6 +38,7 @@ const App = () => {
           <Route path="/Login" element={<Login />} />
           <Route path="/Join" element={<Join />} />
           <Route path="/detail" element={<Detail />} />
+          <Route path="/statistics" element={<Statistics />} />
         </Routes>
       </div>
     </BrowserRouter>

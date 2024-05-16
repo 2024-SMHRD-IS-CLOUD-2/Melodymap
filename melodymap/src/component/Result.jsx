@@ -22,7 +22,7 @@ const Result = () => {
   });
   const [showRecommendation, setShowRecommendation] = useState(false); // 추가: 추천 영역 표시 여부 상태
   const musicDataSend = () => {
-    navigate("/detail", { state: { musicDetails } });
+    navigate("/detail", { state: { musicDetails, placeDetails } });
   };
 
   useEffect(() => {
@@ -200,51 +200,42 @@ const Result = () => {
           <div className="wrapperR">
             <div className="contentR">
               {renderTitle()}
-              {placeDetails.map((place) => (
-                <div className="image-wrapperR">
-                  <div className="center1R">
-                    <button
-                      onClick={() => {
-                        musicDataSend();
-                      }}
-                      className="musicR"
-                    >
-                      <img
-                        src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
-                        alt="Main Image"
-                        className="imageR"
-                      />
-                    </button>
 
-                    <div className="explain0R">
-                      <p className="explain1R">{place.poiInfo}</p>
-                      <p className="explain2R">{place.poiName}</p>
+              {placeDetails
+                .slice(0, showRecommendation ? placeDetails.length : 1)
+                .map((place, index) => (
+                  <div key={index} className="image-wrapperR">
+                    <div className="center1R">
+                      <button
+                        onClick={() => musicDataSend()}
+                        className="musicR"
+                      >
+                        <img
+                          src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
+                          alt="Main Image"
+                          className="imageR"
+                        />
+                      </button>
+                      <div className="explain0R">
+                        <p className="explain1R">{place.poiInfo}</p>
+                        <p className="explain2R">{place.poiName}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-              {showRecommendation && ( // showRecommendation이 true일 때만 화면에 보임
+                ))}
+              {showRecommendation && (
                 <div className="image-wrapper2R">
-                  <div className="center2R">
-                    <img
-                      src={`${process.env.PUBLIC_URL}/image/JNW.png`}
-                      alt="Main Image"
-                      className="imageR"
-                    />
-                    <div className="explain3R">
-                      <p className="explain4R">자연 경관을 담은</p>
-                      <p className="explain5R">담양 죽녹원</p>
-                    </div>
-                  </div>
+                  <div className="center2R">{/* 내용 추가 */}</div>
                 </div>
               )}
               <button
                 className="reco2R"
-                onClick={() => setShowRecommendation(!showRecommendation)} // 버튼 클릭 시 showRecommendation 토글
+                onClick={() => setShowRecommendation(!showRecommendation)}
               >
-                + 추천
+                {showRecommendation ? "숨기기" : "+ 추천"}
               </button>
-              <div className="pbuttonR">
+
+              {/*  <div className="pbuttonR">
                 <button
                   onClick={() => {
                     navigate("/Login");
@@ -261,7 +252,18 @@ const Result = () => {
                 >
                   회원가입
                 </button>
+              </div> */}
+              <div>
+                <p className="otherR">다른 유형의 여행지</p>
               </div>
+              <button
+                onClick={() => {
+                  navigate("/statistics");
+                }}
+                className="otherResult"
+              >
+                보러가기
+              </button>
               <div>
                 <a>
                   <img
