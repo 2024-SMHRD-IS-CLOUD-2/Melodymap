@@ -72,8 +72,8 @@
   color: black;
   font-size: xx-large;
   font-weight: 800;
-  border-radius: 20px;
-  border: 3px solid rgb(212, 241, 253); /* 버튼 테두리 색상 및 두께 설정 */
+  border-radius: 10px;
+  border: 3px solid #05e3eb; /* 버튼 테두리 색상 및 두께 설정 */
   padding: 10px 20px;
   cursor: pointer;
   width: 300px;
@@ -107,11 +107,11 @@
 }
 
 .LoginM {
-  background-color: #bef6f8;
+  background-color: rgb(212, 241, 253);
   width: 300px;
   margin-top: 30px;
   height: 60px;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 30px;
 }
 

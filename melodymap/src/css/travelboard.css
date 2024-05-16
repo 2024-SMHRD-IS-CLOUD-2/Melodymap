@@ -49,11 +49,11 @@
 }
 
 .write9 {
-  background-color: #bef6f8;
+  background-color: rgb(212, 241, 253);
   width: 200px;
   margin-top: 30px;
   height: 50px;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 25px;
 }
 

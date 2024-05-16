@@ -1,21 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import "../css/travelboard.css";
 
-const TravelBoard = () => {
+const TravelBoard = ({ travelEntries }) => {
   const navigate = useNavigate();
-  const [travelEntries, setTravelEntries] = useState([]);
 
-  const handleAddEntry = () => {
-    const newEntry = {
-      id: travelEntries.length + 1,
-      title: "여행 후기",
-      author: "작성자",
-      date: new Date().toLocaleDateString(),
-    };
-    setTravelEntries([...travelEntries, newEntry]);
+  const getShortTitle = (title) => {
+    return title.length > 8 ? title.slice(0, 8) + "..." : title;
   };
+
+  const handleRowClick = (entryId) => {
+    navigate(`/reviewdetail/${entryId}`);
+  };
+
   return (
     <div className="container9">
       <div className="wrapper9">
@@ -34,25 +31,27 @@ const TravelBoard = () => {
                 </tr>
               </thead>
               <tbody>
-                {travelEntries.map((entry) => (
-                  <tr key={entry.id}>
-                    <td>{entry.id}</td>
-                    <td>{entry.title}</td>
+                {travelEntries.map((entry, index) => (
+                  <tr
+                    key={entry.id}
+                    onClick={() => handleRowClick(entry.id)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <td>{index + 1}</td>
+                    <td>{getShortTitle(entry.title)}</td>
                     <td>{entry.author}</td>
                     <td>{entry.date}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <button onClick={handleAddEntry} className="write9">
-              글쓰기
-            </button>
             <button
               onClick={() => {
                 navigate("/travelwrite");
               }}
+              className="write9"
             >
-              넘어가기
+              글쓰기
             </button>
           </div>
         </div>
