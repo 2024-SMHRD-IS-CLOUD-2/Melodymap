@@ -1,29 +1,32 @@
 package com.example.springboot.entity;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.*;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Set;
-
+import java.util.Map;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@DynamoDBTable(tableName="MelodyMap_Recommand")
+@DynamoDBTable(tableName = "MelodyMap_result")
 public class MelodyMap {
-    // constructor, getter, setter
+    @DynamoDBHashKey(attributeName = "result_choice")
+    private String result_choice;
 
-    @DynamoDBHashKey(attributeName = "recommand_choice")
-    private String recommandChoice;
+    @DynamoDBAttribute(attributeName = "count")
+    private int count;
 
 
-    @DynamoDBAttribute(attributeName = "recommand_music")
-    private List<String> recommandMusic;
+    @DynamoDBAttribute(attributeName = "music")
+    private List<Map<String,String>> music;
 
-    @DynamoDBAttribute(attributeName = "recommand_place")
-    private List<String> recommandPlace;
+
+    @DynamoDBAttribute(attributeName = "places")
+    private List<Map<String,String>> places;
 
 }
