@@ -2,18 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/result.css";
 import { useTest } from "../context/TestContext";
-import axios from "axios";
 import { useLocation } from "react-router-dom";
+import {
+  shareKakao,
+  shareNaver,
+  shareFacebook,
+  shareTwitter,
+  shareTelegram,
+} from "../ShareKakao";
+const { Kakao } = window;
 
 const Result = () => {
   // useLocation을 사용하여 navigate로 전달된 state에 접근
   const location = useLocation();
-  const { musicDetails, placeDetails } = location.state || {};
+  const { music, place } = location.state || {};
 
   // useLocation 훅을 사용하여 라우터의 위치 객체 접근
   // 네비게이션 시 전달된 state를 구조분해 할당하여 사용
 
-  console.log(placeDetails);
+  console.log(place);
   const navigate = useNavigate();
   const { selections } = useTest();
   const [visited, setVisited] = useState(() => {
@@ -22,12 +29,18 @@ const Result = () => {
   });
   const [showRecommendation, setShowRecommendation] = useState(false); // 추가: 추천 영역 표시 여부 상태
   const musicDataSend = () => {
-    navigate("/detail", { state: { musicDetails, placeDetails } });
+    navigate("/detail", { state: { music } });
   };
 
   useEffect(() => {
     localStorage.setItem("visited", visited);
   }, [visited]);
+
+  useEffect(() => {
+    Kakao.cleanup();
+    Kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
+    console.log(Kakao.isInitialized());
+  }, []);
 
   const renderTitle = () => {
     if (selections.includes("INTP")) {
@@ -200,42 +213,51 @@ const Result = () => {
           <div className="wrapperR">
             <div className="contentR">
               {renderTitle()}
+              {place.map((place) => (
+                <div className="image-wrapperR">
+                  <div className="center1R">
+                    <button
+                      onClick={() => {
+                        musicDataSend();
+                      }}
+                      className="musicR"
+                    >
+                      <img
+                        src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
+                        alt="Main Image"
+                        className="imageR"
+                      />
+                    </button>
 
-              {placeDetails
-                .slice(0, showRecommendation ? placeDetails.length : 1)
-                .map((place, index) => (
-                  <div key={index} className="image-wrapperR">
-                    <div className="center1R">
-                      <button
-                        onClick={() => musicDataSend()}
-                        className="musicR"
-                      >
-                        <img
-                          src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
-                          alt="Main Image"
-                          className="imageR"
-                        />
-                      </button>
-                      <div className="explain0R">
-                        <p className="explain1R">{place.poiInfo}</p>
-                        <p className="explain2R">{place.poiName}</p>
-                      </div>
+                    <div className="explain0R">
+                      <p className="explain1R">{place.poi_info}</p>
+                      <p className="explain2R">{place.poi_name}</p>
                     </div>
                   </div>
-                ))}
-              {showRecommendation && (
+                </div>
+              ))}
+              {showRecommendation && ( // showRecommendation이 true일 때만 화면에 보임
                 <div className="image-wrapper2R">
-                  <div className="center2R">{/* 내용 추가 */}</div>
+                  <div className="center2R">
+                    <img
+                      src={`${process.env.PUBLIC_URL}/image/JNW.png`}
+                      alt="Main Image"
+                      className="imageR"
+                    />
+                    <div className="explain3R">
+                      <p className="explain4R">자연 경관을 담은</p>
+                      <p className="explain5R">담양 죽녹원</p>
+                    </div>
+                  </div>
                 </div>
               )}
               <button
                 className="reco2R"
-                onClick={() => setShowRecommendation(!showRecommendation)}
+                onClick={() => setShowRecommendation(!showRecommendation)} // 버튼 클릭 시 showRecommendation 토글
               >
-                {showRecommendation ? "숨기기" : "+ 추천"}
+                + 추천
               </button>
-
-              {/*  <div className="pbuttonR">
+              <div className="pbuttonR">
                 <button
                   onClick={() => {
                     navigate("/Login");
@@ -252,51 +274,97 @@ const Result = () => {
                 >
                   회원가입
                 </button>
-              </div> */}
-              <div>
-                <p className="otherR">다른 여행가 통계</p>
               </div>
-              <button
-                onClick={() => {
-                  navigate("/statistics");
-                }}
-                className="otherResult"
-              >
-                보러가기
-              </button>
-              <button
-                onClick={() => {
-                  navigate("/mypage");
-                }}
-                className="saveR"
-              >
-                결과 저장하기
-              </button>
               <div>
-                <a>
+                {/* 카카오톡 공유하기 */}
+                <p>공유하기</p>
+                <button
+                  id="kakaotalk-sharing-btn"
+                  style={{
+                    border: "none",
+                  }}
+                  onClick={() => {
+                    shareKakao();
+                  }}
+                >
                   <img
-                    className="kakaotalkR"
-                    src={`${process.env.PUBLIC_URL}/image/kakaotalk.png`}
+                    src="https://developers.kakao.com/tool/resource/static/img/button/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+                    alt="카카오톡"
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      marginRight: "5px",
+                    }}
                   />
-                </a>
-                <a>
+                </button>
+                {/* 페이스북 */}
+                <button
+                  style={{
+                    border: "none",
+                  }}
+                  onClick={() => shareFacebook()}
+                >
                   <img
-                    className="facebookR"
-                    src={`${process.env.PUBLIC_URL}/image/facebook.png`}
+                    src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
+                    alt="페이스북"
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      marginRight: "5px",
+                    }}
                   />
-                </a>
-                <a>
+                </button>
+                {/* 네이버 */}
+                <button
+                  style={{
+                    border: "none",
+                  }}
+                  onClick={() => shareNaver()}
+                >
                   <img
-                    className="bandR"
-                    src={`${process.env.PUBLIC_URL}/image/band.png`}
+                    src="https://i.namu.wiki/i/p_1IEyQ8rYenO9YgAFp_LHIAW46kn6DXT0VKmZ_jKNijvYth9DieYZuJX_E_H_4GkCER_sVKhMqSyQYoW94JKA.svg"
+                    alt="네이버"
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      marginRight: "5px",
+                    }}
                   />
-                </a>
-                <a>
+                </button>
+                {/* 트위터 */}
+                <button
+                  style={{
+                    border: "none",
+                  }}
+                  onClick={() => shareTwitter()}
+                >
                   <img
-                    className="navertalkR"
-                    src={`${process.env.PUBLIC_URL}/image/navertalk.png`}
+                    src="https://s.widget-club.com/web/no2/7e6c8b4f8f0044949a80e97475955286.png"
+                    alt="트위터"
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      marginRight: "5px",
+                    }}
                   />
-                </a>
+                </button>
+                {/* 텔레그램 */}
+                <button
+                  style={{
+                    border: "none",
+                  }}
+                  onClick={() => shareTelegram()}
+                >
+                  <img
+                    src="https://i.namu.wiki/i/71T_FtmH0B35AKStPtm3TvRJQyRrsm59YyGWH-Imyu5C3kfbUHD_bvFceM6LaNhkcrwDS84luPWef7jYVNWFNQ.svg"
+                    alt="텔레그램"
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      marginRight: "5px",
+                    }}
+                  />
+                </button>
               </div>
             </div>
           </div>
