@@ -20,8 +20,15 @@ import Statistics from "./component/Statistics";
 import Mypage from "./component/Mypage";
 import TravelBoard from "./component/TravelBoard";
 import Travelwrite from "./component/Travelwrite";
+import Reviewdetail from "./component/Reviewdetail";
 
 const App = () => {
+  const [travelEntries, setTravelEntries] = useState([]);
+
+  const addTravelEntry = (entry) => {
+    setTravelEntries([...travelEntries, entry]);
+  };
+
   return (
     <BrowserRouter>
       <div>
@@ -44,8 +51,15 @@ const App = () => {
           <Route path="/detail" element={<Detail />} />
           <Route path="/statistics" element={<Statistics />} />
           <Route path="/mypage" element={<Mypage />} />
-          <Route path="/travelboard" element={<TravelBoard />} />
-          <Route path="/travelwrite" element={<Travelwrite />} />
+          <Route path="/reviewdetail" element={<Reviewdetail />} />
+          <Route
+            path="/travelboard"
+            element={<TravelBoard travelEntries={travelEntries} />}
+          />
+          <Route
+            path="/travelwrite"
+            element={<Travelwrite addTravelEntry={addTravelEntry} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
