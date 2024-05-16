@@ -2,12 +2,23 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/travelwrite.css";
 
-const Travelwrite = () => {
+const Travelwrite = ({ addTravelEntry }) => {
   const [title, setTitle] = useState("");
-  const [recommendation, setRecommendation] = useState("");
+  const [author, setAuthor] = useState(""); // 작성자 추가
   const [reviewContent, setReviewContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const navigate = useNavigate();
+
+  const handleSave = () => {
+    const newEntry = {
+      id: Date.now(),
+      title: title,
+      author: author,
+      date: new Date().toLocaleDateString(),
+    };
+    addTravelEntry(newEntry);
+    navigate("/travelboard");
+  };
 
   return (
     <div className="containerT">
@@ -28,11 +39,11 @@ const Travelwrite = () => {
               />
             </div>
             <div className="resultT">
-              <p className="resultp">추천 결과</p>
+              <p className="resultp">작성자</p>
               <input
                 type="text"
-                value={recommendation}
-                onChange={(e) => setRecommendation(e.target.value)}
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)} // 작성자 입력 필드 수정
               />
             </div>
             <div className="imageT">
@@ -50,12 +61,7 @@ const Travelwrite = () => {
                 style={{ width: "330px", height: "330px" }}
               />
             </div>
-            <button
-              onClick={() => {
-                navigate("/reviewdetail");
-              }}
-              className="saveT"
-            >
+            <button onClick={handleSave} className="saveT">
               저장
             </button>
           </div>
