@@ -30,6 +30,8 @@ public class MM_Place {
     @DynamoDBAttribute(attributeName = "poi_tag")
     private List<String> poiTag;
 
+    @DynamoDBAttribute(attributeName = "count")
+    private  int count;
 
 
 }
