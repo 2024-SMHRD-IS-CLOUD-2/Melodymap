@@ -13,14 +13,14 @@ const Testpage = () => {
 
   const sendDataToServer = async (selections) => {
     axios
-      .get(`http://localhost:8081/api/submit?choice=${selections}`)
-
+      .get(`http://localhost:8081/api/choice?choice=${selections}`)
       .then((res) => {
         console.log("서버로부터의 응답:", res.data);
+        console.log(res.data.music, res.data.places);
         navigate("/Result", {
           state: {
-            musicDetails: res.data.musicDetails,
-            placeDetails: res.data.placeDetails,
+            music: res.data.music,
+            place: res.data.places,
           },
           // navigate 함수를 사용해 Result 페이지로 이동하면서 음악 및 장소 상세 정보를 state로 전달
         });
