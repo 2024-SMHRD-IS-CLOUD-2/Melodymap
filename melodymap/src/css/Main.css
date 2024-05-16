@@ -30,8 +30,8 @@
   padding: 30px;
   border-radius: 40px;
   background-color: whitesmoke;
-  width: 360px;
-  height: 1000px;
+  width: 400px;
+  height: 1200px;
 }
 
 .contentM {
@@ -73,7 +73,7 @@
   font-size: xx-large;
   font-weight: 800;
   border-radius: 20px;
-  border: 3px solid #05e3eb; /* 버튼 테두리 색상 및 두께 설정 */
+  border: 3px solid rgb(212, 241, 253); /* 버튼 테두리 색상 및 두께 설정 */
   padding: 10px 20px;
   cursor: pointer;
   width: 300px;
@@ -106,15 +106,13 @@
   margin-bottom: 5px;
 }
 
-.login1R,
-.Join1R {
-  color: white;
-  background-color: black;
-  width: 120px;
-  margin-top: 100px;
-  height: 40px;
-  font-size: 20px;
-  border-radius: 10px;
+.LoginM {
+  background-color: #bef6f8;
+  width: 300px;
+  margin-top: 30px;
+  height: 60px;
+  border-radius: 20px;
+  font-size: 30px;
 }
 
 .login1R {

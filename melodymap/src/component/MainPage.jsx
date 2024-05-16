@@ -31,24 +31,24 @@ const MainPage = () => {
           >
             시작하기
           </button>
-          {/* <div className="pbuttonR">
+          <div className="pbuttonR">
             <button
               onClick={() => {
                 navigate("/Login");
               }}
-              className="login1R"
+              className="LoginM"
             >
-              로그인
+              여행후기 쓰기
             </button>
-            <button
+            {/*  <button
               onClick={() => {
                 navigate("/Join");
               }}
               className="Join1R"
             >
               회원가입
-            </button>
-          </div> */}
+            </button> */}
+          </div>
         </div>
       </div>
     </div>

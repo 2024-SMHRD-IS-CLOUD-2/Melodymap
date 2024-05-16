@@ -17,6 +17,10 @@ import Login from "./component/Login";
 import Join from "./component/Join";
 import Detail from "./component/Detail";
 import Statistics from "./component/Statistics";
+import Mypage from "./component/Mypage";
+import TravelBoard from "./component/TravelBoard";
+import Travelwrite from "./component/Travelwrite";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -39,6 +43,9 @@ const App = () => {
           <Route path="/Join" element={<Join />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/statistics" element={<Statistics />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/travelboard" element={<TravelBoard />} />
+          <Route path="/travelwrite" element={<Travelwrite />} />
         </Routes>
       </div>
     </BrowserRouter>

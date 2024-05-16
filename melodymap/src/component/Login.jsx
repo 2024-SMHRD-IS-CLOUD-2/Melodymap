@@ -44,7 +44,14 @@ const Login = () => {
             </a>
           </div>
           <div>
-            <button className="button15">회원가입</button>
+            <button
+              onClick={() => {
+                navigate("/Join");
+              }}
+              className="button15"
+            >
+              회원가입
+            </button>
             <button className="button25">로그인</button>
           </div>
         </div>

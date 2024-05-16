@@ -254,7 +254,7 @@ const Result = () => {
                 </button>
               </div> */}
               <div>
-                <p className="otherR">다른 유형의 여행지</p>
+                <p className="otherR">다른 여행가 통계</p>
               </div>
               <button
                 onClick={() => {
@@ -263,6 +263,14 @@ const Result = () => {
                 className="otherResult"
               >
                 보러가기
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/mypage");
+                }}
+                className="saveR"
+              >
+                결과 저장하기
               </button>
               <div>
                 <a>

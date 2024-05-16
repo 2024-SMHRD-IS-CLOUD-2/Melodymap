@@ -10,7 +10,7 @@
   font-family: "WavvePADO-Regular";
 }
 
-.container6 {
+.container8 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@
   background-repeat: no-repeat;
 }
 
-.wrapper6 {
+.wrapper8 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,36 +35,33 @@
   height: 760px;
 }
 
-.inputContainer6 {
+.mypageM p {
+  font-size: 30px;
+  border: 2px solid #05e3eb; /* 테두리 설정 */
+  background-color: transparent; /* 배경색 투명 설정 */
+  padding: 10px 20px; /* 내부 여백 설정 */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 설정 */
+  width: 330px;
+  border-radius: 8px;
+  margin-bottom: 50px;
+}
+
+.content8 {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-.labelText6 {
-  margin-right: 10px;
-  width: 80px; /* 텍스트 영역의 너비를 조절하여 텍스트를 일정한 간격으로 정렬합니다. */
-}
-
-.input16 {
-  height: 30px;
-  width: 250px;
-  border-radius: 10px;
-}
-
-.button16,
-.button26 {
-  color: white;
-  background-color: black;
-  width: 120px;
-  height: 30px;
-  border-radius: 10px;
-  margin-top: 50px;
-}
-.button26 {
-  margin-left: 10px;
-}
-
-.member6 {
+.content8 p {
+  font-size: 25px;
   margin-bottom: 40px;
+}
+
+.writeM {
+  background-color: #bef6f8;
+  width: 200px;
+  margin-top: 30px;
+  height: 50px;
+  border-radius: 20px;
+  font-size: 25px;
 }

@@ -33,7 +33,7 @@
   padding: 30px;
   border-radius: 20px;
   background-color: whitesmoke;
-  width: 360px;
+  width: 400px;
   height: 3000px; /* 수정: .wrapper 높이 조정 */
 }
 
@@ -94,8 +94,8 @@
 .reco2R {
   background-color: white;
   color: black;
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 25px;
+  font-weight: 500;
   border-radius: 10px;
   border: 2px solid #05e3eb;
   padding: 10px;
@@ -170,8 +170,7 @@
   background-color: white;
 }
 .otherResult {
-  color: white;
-  background-color: black;
+  background-color: rgb(212, 241, 253);
   width: 220px;
   height: 50px;
   font-size: 24px;
@@ -180,6 +179,19 @@
   justify-content: center;
   align-items: center;
   margin-top: 70px;
+  margin-left: auto; /* 왼쪽 여백을 auto로 설정하여 가운데 정렬 */
+  margin-right: auto;
+}
+.saveR {
+  background-color: rgb(212, 241, 253);
+  width: 220px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
   margin-left: auto; /* 왼쪽 여백을 auto로 설정하여 가운데 정렬 */
   margin-right: auto;
 }
