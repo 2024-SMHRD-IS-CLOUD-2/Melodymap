@@ -1,6 +1,8 @@
 package com.example.springboot.controller;
 import com.example.springboot.entity.MelodyMap;
+import com.example.springboot.entity.MelodyMap_result;
 import com.example.springboot.entity.Users;
+import com.example.springboot.service.CountUpdateService;
 import com.example.springboot.service.DynamoDBFindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ public class ReactSpringController {
 
     @Autowired
     private DynamoDBFindService dynamoDBFindService;
+
+    @Autowired
+    private CountUpdateService countUpdateService;
 
     @GetMapping("/choice")
     public ResponseEntity<?> getChoice(@RequestParam String choice) {
@@ -54,7 +59,43 @@ public class ReactSpringController {
         dynamoDBFindService.deleteByKey(Users.class, UserID);
         return ResponseEntity.ok("deleted successful");
         }
+
+    @PostMapping("/result/{resultChoice}")
+    public ResponseEntity<String> incrementCount(@PathVariable String resultChoice) {
+        boolean updateStatus = countUpdateService.incrementCount(resultChoice);
+        if (updateStatus) {
+            return ResponseEntity.ok("Count incremented successfully for " + resultChoice);
+        } else {
+            return ResponseEntity.badRequest().body("Failed to increment count for " + resultChoice);
+        }
     }
+
+//    @PutMapping("/update/{userID}")
+//    public ResponseEntity<String> updateUser(@PathVariable String userID, @RequestBody Users userData) {
+//        // 기존 데이터 불러오기
+//        Optional<Users> existingUser = dynamoDBFindService.find(Users.class, userID);
+//        if (existingUser.isPresent()) {
+//            Users userToUpdate = existingUser.get();
+//            // 필요한 필드만 업데이트
+//            userToUpdate.setUserPW(userData.getUserPW() != null ? userData.getUserPW() : userToUpdate.getUserPW());
+//            userToUpdate.setName(userData.getName() != null ? userData.getName() : userToUpdate.getName());
+//            userToUpdate.setGender(userData.getGender() != null ? userData.getGender() : userToUpdate.getGender());
+//            userToUpdate.setBirthday(userData.getBirthday() != null ? userData.getBirthday() : userToUpdate.getBirthday());
+//
+//            Users result = dynamoDBFindService.save(userToUpdate);
+//            if (result != null) {
+//                return ResponseEntity.ok("User updated successfully.");
+//            } else {
+//                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update user.");
+//            }
+//        } else {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+//        }
+//    }
+
+
+}
+
 
 
 

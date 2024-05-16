@@ -19,6 +19,12 @@ public class Users {
     @DynamoDBAttribute(attributeName = "Name")
     private String name;
 
+    @DynamoDBAttribute(attributeName = "Gender")
+    private String gender;
+
+    @DynamoDBAttribute(attributeName = "Birthday")
+    private String birthday;
+
 //    @DynamoDBRangeKey(attributeName = "Time")
 //    private Long time;
 }
