@@ -1,5 +1,3 @@
-/* Test.css */
-
 /* 웹폰트 추가 */
 @font-face {
   font-family: "WavvePADO-Regular";
@@ -25,6 +23,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  overflow-x: hidden; /* 좌우 스크롤바가 생기지 않도록 설정 */
 }
 
 /* 래퍼 스타일 */
@@ -37,11 +36,12 @@
   padding: 30px;
   border-radius: 20px;
   background-color: whitesmoke;
-  width: 400px; /* 수정: 너비 300px로 변경 */
+  width: 360px; /* 수정: 너비 400px로 변경 */
   max-width: 100%;
   height: 2000px;
   overflow: auto;
   margin-top: 700px;
+  overflow-x: hidden;
 }
 
 /* 내용 스타일 */
@@ -58,6 +58,7 @@
   text-align: center;
   margin-bottom: 20px;
 }
+
 /* 설명 스타일 */
 .explainD {
   font-size: 20px;
@@ -72,8 +73,9 @@
 /* 선 스타일 */
 .lineD {
   border-top: 1px solid black;
-  width: 360px; /* 가로 너비 꽉 차도록 변경 */
+  width: 100%; /* 부모 요소의 너비에 맞춤 */
   margin-bottom: 20px;
+  text-align: center; /* 가운데 정렬 */
 }
 
 /* 추가 설명 스타일 */
@@ -91,6 +93,7 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
 .explain3D {
   font-size: 20px;
 }
@@ -102,7 +105,7 @@
 
 /* 음악 테이블 스타일 */
 .musicTD {
-  width: 360px; /* 음악 테이블 너비 300px로 변경 */
+  width: 360px; /* 음악 테이블 너비 360px로 변경 */
   border-collapse: collapse;
 }
 
@@ -114,42 +117,32 @@
 
 /* 음악 행 스타일 */
 .musicRow {
-  height: auto;
-  line-height: 3; /* 각 행의 높이를 현재 높이의 1.5배로 설정 */
+  height: 60px; /* 각 행의 높이를 60px로 설정 (기존 높이의 1.5배) */
+  line-height: 1.5; /* 텍스트의 줄 간격을 1.5배로 설정 */
 }
 
 /* 곡 정보 셀 스타일 */
 .musicTitleCell {
   max-width: 150px;
-  white-space: normal;
-  white-space: nowrap; /* 개행 없이 한 줄에 표시하도록 설정 */
+  white-space: normal; /* 개행 허용 */
   overflow: hidden; /* 넘치는 부분 숨기기 */
   text-overflow: ellipsis; /* 넘치는 부분을 ...으로 표시 */
   display: flex;
   align-items: center; /* 요소를 수직 중앙 정렬 */
   position: relative; /* 부모 요소로부터 상대적 위치 지정 */
   cursor: pointer;
+  line-height: 1.2; /* 줄 간격 설정 */
+}
 
-  /* 마우스 호버 시 텍스트 풀 사이즈 표시 */
-}
-.travelD {
-  font-size: 30px;
-  text-decoration: underline;
-  text-decoration-color: #bcf8fa;
-  text-decoration-style: solid;
-  text-decoration-thickness: 7px;
-}
-.sing1D {
-  width: 40px;
-  height: 40px;
+/* 곡 정보 셀 안의 이미지 스타일 */
+.musicTitleCell img {
+  width: 60px; /* 이미지 너비 60px로 설정 */
+  height: 60px; /* 이미지 높이 60px로 설정 */
   float: left; /* 이미지를 왼쪽으로 부유시킴 */
   margin-right: 20px; /* 이미지와 텍스트 사이의 간격 설정 */
 }
-.musicTitleCell img {
-  margin-right: 20px; /* 이미지 오른쪽 여백 설정 */
-}
 
-/* 풀 사이즈 텍스트 컨테이너 */
+/* 마우스 호버 시 텍스트 풀 사이즈 표시 */
 .musicTitleCell:hover::before {
   content: attr(data-text); /* 풀 사이즈 텍스트 표시 */
   position: absolute; /* 절대 위치 지정 */
@@ -160,4 +153,23 @@
   border: 1px solid #ccc;
   white-space: normal; /* 텍스트 줄 바꿈 허용 */
   z-index: 1; /* 다른 요소 위에 표시 */
+}
+
+.travelD {
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: #bcf8fa;
+  text-decoration-style: solid;
+  text-decoration-thickness: 7px;
+}
+
+.sing1D {
+  width: 60px; /* 이미지 너비 60px로 설정 */
+  height: 60px; /* 이미지 높이 60px로 설정 */
+  float: left; /* 이미지를 왼쪽으로 부유시킴 */
+  margin-right: 20px; /* 이미지와 텍스트 사이의 간격 설정 */
+}
+
+.allD {
+  margin-top: 200px;
 }

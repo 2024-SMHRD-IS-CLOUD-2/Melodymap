@@ -44,10 +44,13 @@ const Mypage = () => {
           </div>
           <div className="mypageinfo">
             <p>{currentTravelInfo.description}</p>
-            <p>추천 여행지 : {currentTravelInfo.recommendation}</p>
+            <p>추천 여행지</p>
+            <p>{currentTravelInfo.recommendation}</p>
             <p>추천 음악</p>
             {currentTravelInfo.music.map((song, index) => (
-              <p key={index}>{song}</p>
+              <p key={index} className="songmy">
+                {song}
+              </p>
             ))}
           </div>
           <div className="paginationmy">
