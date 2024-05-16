@@ -1,0 +1,163 @@
+/* Test.css */
+
+/* 웹폰트 추가 */
+@font-face {
+  font-family: "WavvePADO-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 모든 요소에 웹폰트 및 box-sizing 적용 */
+* {
+  font-family: "WavvePADO-Regular";
+  box-sizing: border-box;
+}
+
+/* 컨테이너 스타일 */
+.containerD {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 래퍼 스타일 */
+.wrapperD {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid whitesmoke;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  width: 360px; /* 수정: 너비 300px로 변경 */
+  max-width: 100%;
+  height: 2000px;
+  overflow: auto;
+  margin-top: 700px;
+}
+
+/* 내용 스타일 */
+.contentD {
+  background-color: whitesmoke;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 20px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px; /* 수정: 최대 너비 300px로 변경 */
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* 설명 스타일 */
+.explainD {
+  font-size: 20px;
+}
+
+/* 이미지 스타일 */
+.imageD {
+  width: 300px;
+  height: 250px;
+}
+
+/* 선 스타일 */
+.lineD {
+  border-top: 1px solid black;
+  width: 360px; /* 가로 너비 꽉 차도록 변경 */
+  margin-bottom: 20px;
+}
+
+/* 추가 설명 스타일 */
+.explain3D {
+  width: 330px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* 추천 및 추가 설명 스타일 */
+.recoD,
+.explain2D,
+.mapD {
+  font-size: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.explain3D {
+  font-size: 20px;
+}
+
+/* 음악 테이블 컨테이너 스타일 */
+.musicTableContainer {
+  padding: 10px;
+}
+
+/* 음악 테이블 스타일 */
+.musicTD {
+  width: 360px; /* 음악 테이블 너비 300px로 변경 */
+  border-collapse: collapse;
+}
+
+/* 음악 테이블 헤더 스타일 */
+.musicTD th {
+  text-align: center;
+  padding: 8px;
+}
+
+/* 음악 행 스타일 */
+.musicRow {
+  height: auto;
+  line-height: 3; /* 각 행의 높이를 현재 높이의 1.5배로 설정 */
+}
+
+/* 곡 정보 셀 스타일 */
+.musicTitleCell {
+  max-width: 150px;
+  white-space: normal;
+  white-space: nowrap; /* 개행 없이 한 줄에 표시하도록 설정 */
+  overflow: hidden; /* 넘치는 부분 숨기기 */
+  text-overflow: ellipsis; /* 넘치는 부분을 ...으로 표시 */
+  display: flex;
+  align-items: center; /* 요소를 수직 중앙 정렬 */
+  position: relative; /* 부모 요소로부터 상대적 위치 지정 */
+  cursor: pointer;
+
+  /* 마우스 호버 시 텍스트 풀 사이즈 표시 */
+}
+.travelD {
+  font-size: 30px;
+  text-decoration: underline;
+  text-decoration-color: #bcf8fa;
+  text-decoration-style: solid;
+  text-decoration-thickness: 7px;
+}
+.sing1D {
+  width: 40px;
+  height: 40px;
+  float: left; /* 이미지를 왼쪽으로 부유시킴 */
+  margin-right: 20px; /* 이미지와 텍스트 사이의 간격 설정 */
+}
+.musicTitleCell img {
+  margin-right: 20px; /* 이미지 오른쪽 여백 설정 */
+}
+
+/* 풀 사이즈 텍스트 컨테이너 */
+.musicTitleCell:hover::before {
+  content: attr(data-text); /* 풀 사이즈 텍스트 표시 */
+  position: absolute; /* 절대 위치 지정 */
+  top: 100%; /* 부모 요소 하단 정렬 */
+  left: 0;
+  background-color: whitesmoke;
+  padding: 10px;
+  border: 1px solid #ccc;
+  white-space: normal; /* 텍스트 줄 바꿈 허용 */
+  z-index: 1; /* 다른 요소 위에 표시 */
+}

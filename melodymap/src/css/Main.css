@@ -31,7 +31,7 @@
   border-radius: 40px;
   background-color: whitesmoke;
   width: 360px;
-  height: 740px;
+  height: 1000px;
 }
 
 .contentM {
@@ -104,4 +104,23 @@
 .dM {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.login1R,
+.Join1R {
+  color: white;
+  background-color: black;
+  width: 120px;
+  margin-top: 100px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.login1R {
+  margin-right: 10px;
+}
+
+.Join1R {
+  margin-left: 10px;
 }

@@ -14,6 +14,7 @@ const Testpage = () => {
   const sendDataToServer = async (selections) => {
     axios
       .get(`http://localhost:8081/api/submit?choice=${selections}`)
+
       .then((res) => {
         console.log("서버로부터의 응답:", res.data);
         navigate("/Result", {
