@@ -15,7 +15,7 @@ const Detail = () => {
   return (
     <div className="containerD">
       <div className="wrapperD">
-        <div>
+        <div className="allD">
           <p className="travelD">보성 골망태다원</p>
           <p className="explainD">"동화 속 요정의 마을 골망태 다원"</p>
           <img
