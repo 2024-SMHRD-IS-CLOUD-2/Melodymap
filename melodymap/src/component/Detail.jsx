@@ -7,10 +7,10 @@ import "../css/detail.css";
 const Detail = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { musicDetails, placeDetails } = location.state || {};
+  const { music, place } = location.state || {};
 
   // const { musicDetails, placeDetails } = location.state || {};
-  console.log(musicDetails);
+  console.log(music);
 
   return (
     <div className="containerD">
@@ -45,7 +45,7 @@ const Detail = () => {
                 </tr>
               </thead>
               <tbody>
-                {musicDetails.map((music, index) => (
+                {music.map((music, index) => (
                   <tr key={index} className="musicRow">
                     <td>{index + 1}</td>
                     <td className="musicTitleCell">

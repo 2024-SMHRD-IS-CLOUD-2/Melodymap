@@ -25,6 +25,8 @@ public class Users {
     @DynamoDBAttribute(attributeName = "Birthday")
     private String birthday;
 
+
+
 //    @DynamoDBRangeKey(attributeName = "Time")
 //    private Long time;
 }
