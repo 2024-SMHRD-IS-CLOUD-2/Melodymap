@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/join.css";
+import SideBar from "./SideBar";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const Join = () => {
     <div className="container6">
       <div className="wrapper6">
         <div className="content6">
+          <SideBar />
           <h1 className="member6">회원가입</h1>
 
           <div className="inputContainer6">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/travelwrite.css";
+import SideBar from "./SideBar";
 
 const Travelwrite = ({ addTravelEntry }) => {
   const [title, setTitle] = useState("");
@@ -24,6 +25,7 @@ const Travelwrite = ({ addTravelEntry }) => {
     <div className="containerT">
       <div className="wrapperT">
         <div className="contentT">
+          <SideBar />
           <div style={{ width: "330px" }} className="marginT">
             <p className="boardT" style={{ width: "330px" }}>
               여행 후기 작성

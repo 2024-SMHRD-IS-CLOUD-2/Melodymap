@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/login.css";
+import SideBar from "./SideBar";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ const Login = () => {
     <div className="container5">
       <div className="wrapper5">
         <div className="content5">
+          <SideBar />
           <h1 className="login5">LOGIN</h1>
           <input
             className="input15"

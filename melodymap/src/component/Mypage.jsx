@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/mypage.css";
+import SideBar from "./SideBar";
 
 const Mypage = () => {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const Mypage = () => {
   return (
     <div className="containermy">
       <div className="wrappermy">
+        <SideBar />
         <div className="contentmy">
           <div className="mypageM">
             <p className="mypageTitle">나의 여행지</p>

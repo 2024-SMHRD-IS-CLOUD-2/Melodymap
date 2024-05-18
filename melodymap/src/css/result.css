@@ -15,8 +15,6 @@
 .containerR {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
   text-align: center;
   background-size: contain;
   background-position: center;
@@ -27,14 +25,12 @@
 .wrapperR {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border: 5px solid whitesmoke;
   padding: 30px;
   border-radius: 20px;
   background-color: whitesmoke;
   width: 400px;
-  height: 3000px; /* 수정: .wrapper 높이 조정 */
+  height: 1400px; /* 수정: .wrapper 높이 조정 */
 }
 
 .contentR,
@@ -45,8 +41,10 @@
   text-align: center;
 }
 
-.image-wrapperR,
-.image-wrapper2R {
+.d1R {
+}
+
+.image-wrapperR {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,6 +55,7 @@
   width: 330px;
   height: 290px;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .center1R,
@@ -194,6 +193,7 @@
   margin-top: 40px;
   margin-left: auto; /* 왼쪽 여백을 auto로 설정하여 가운데 정렬 */
   margin-right: auto;
+  margin-bottom: 40px;
 }
 
 .otherR {
@@ -215,4 +215,7 @@
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 15px solid steelblue;
+}
+.aaa {
+  margin-top: 300px;
 }
