@@ -29,7 +29,6 @@ const Testpage = () => {
         console.error("데이터 요청 중 오류 발생:", error);
       });
   }; */
-
   const sendDataToServer = async (selections) => {
     try {
       const response = await axios.post(
@@ -41,7 +40,11 @@ const Testpage = () => {
           headers: {
             "Content-Type": "application/json",
             "spring.cloud.function.definition": "getChoice",
-            "Access-Control-Allow-Origin": "origin",
+            "Access-Control-Allow-Origin": "https://smhrd-melodymap.com", // 필요한 도메인으로 변경
+            "Access-Control-Allow-Methods": "OPTIONS,POST",
+            "Access-Control-Allow-Headers":
+              "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+            "Access-Control-Allow-Credentials": "true",
           },
         }
       );
