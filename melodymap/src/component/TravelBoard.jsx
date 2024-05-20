@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/travelboard.css";
+import SideBar from "./SideBar";
 
 const TravelBoard = ({ travelEntries }) => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const TravelBoard = ({ travelEntries }) => {
   return (
     <div className="container9">
       <div className="wrapper9">
+        <SideBar />
         <div className="content9">
           <div>
             <p className="board9">여행 후기 게시판</p>

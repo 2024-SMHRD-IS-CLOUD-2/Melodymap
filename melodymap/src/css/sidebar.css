@@ -1,0 +1,31 @@
+/* sidebar.css */
+.sidebar {
+  display: flex;
+  flex-direction: row; /* 가로 방향으로 변경 */
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.sidebar a {
+  color: black;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.sidebar a:hover {
+  background-color: white;
+  color: black;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: column; /* 작은 화면에서는 세로 방향으로 변경 */
+    align-items: flex-start;
+    padding: 20px;
+  }
+}

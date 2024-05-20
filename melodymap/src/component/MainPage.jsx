@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Main.css";
+import SideBar from "./SideBar";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const MainPage = () => {
     <div className="containerM">
       <div className="wrapperM">
         <div className="contentM">
+          <SideBar />
           <div className="mainimgM">
             <img
               src={`${process.env.PUBLIC_URL}/image/Main.jpg`}

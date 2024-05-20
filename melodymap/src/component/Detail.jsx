@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTest } from "../context/TestContext";
 import { useLocation } from "react-router-dom";
 import "../css/detail.css";
+import SideBar from "./SideBar";
 
 const Detail = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const Detail = () => {
     <div className="containerD">
       <div className="wrapperD">
         <div className="allD">
+          <SideBar />
           <p className="travelD">보성 골망태다원</p>
           <p className="explainD">"동화 속 요정의 마을 골망태 다원"</p>
           <img
@@ -53,10 +55,10 @@ const Detail = () => {
                         src={`${process.env.PUBLIC_URL}/image/Goodday.jpg`}
                         className="sing1D"
                       />
-                      {music.musicTitle}
+                      {music.music_title}
                     </td>
-                    <td>{music.musicSinger}</td>
-                    <td>{music.musicGenre}</td>
+                    <td>{music.music_singer}</td>
+                    <td>{music.music_genre}</td>
                   </tr>
                 ))}
               </tbody>

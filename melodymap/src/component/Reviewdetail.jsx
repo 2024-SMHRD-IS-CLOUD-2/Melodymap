@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/reviewdetail.css";
+import SideBar from "./SideBar";
 
 const Reviewdetail = () => {
   const navigate = useNavigate();
@@ -8,6 +9,7 @@ const Reviewdetail = () => {
   return (
     <div className="containerRD">
       <div className="wrapperRD">
+        <SideBar />
         <div className="contentRD">
           <div className="headerRD">
             <p className="titleRD">즐거운 보성 여행!</p>

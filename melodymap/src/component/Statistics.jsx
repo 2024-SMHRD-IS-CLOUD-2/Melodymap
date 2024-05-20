@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/statistics.css";
 import Barchart from "./Barchart";
+import SideBar from "./SideBar";
 
 const Statistics = () => {
   const mbtiData1 = [
@@ -43,6 +44,7 @@ const Statistics = () => {
     <div className="containerS">
       <div className="wrapperS">
         <div className="contentS">
+          <SideBar />
           {/* 테이블 제목 */}
           <div className="rankS">
             <p style={{ fontFamily: "WavvePADO-Regular", fontSize: "30px" }}>
