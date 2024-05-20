@@ -41,5 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8081"
+  "proxy": "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com"
 }

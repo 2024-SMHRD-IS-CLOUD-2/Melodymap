@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "../css/TestProgress.css";
 
 const TestProgress = ({ currentStep, totalSteps }) => {
-  const progressWidth = (currentStep / totalSteps) * 100 + "%";
+  const progressRef = useRef(null);
 
   useEffect(() => {
     // 페이지 전환 시 progress bar 애니메이션 효과
-    const progressBar = document.querySelector(".progress");
-    progressBar.style.transition = "width 0.5s ease-in-out";
-    progressBar.style.width = progressWidth;
+    if (progressRef.current) {
+      progressRef.current.style.width = (currentStep / totalSteps) * 100 + "%";
+    }
   }, [currentStep, totalSteps]);
 
   return (
     <div className="progress-bar">
-      <div className="progress">{`${currentStep}/${totalSteps}`}</div>
+      <div
+        className="progress"
+        ref={progressRef}
+      >{`${currentStep}/${totalSteps}`}</div>
     </div>
   );
 };
