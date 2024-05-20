@@ -7,7 +7,7 @@ import "../css/Test.css";
 
 const Testpage = () => {
   const navigate = useNavigate();
-  const { selections, addSelection } = useTest();
+  const { choice, addSelection } = useTest();
   const currentStep = 10; // 현재 페이지 번호
   const totalSteps = 10; // 총 페이지 수
 
@@ -29,22 +29,17 @@ const Testpage = () => {
         console.error("데이터 요청 중 오류 발생:", error);
       });
   }; */
-  const sendDataToServer = async (selections) => {
+  const sendDataToServer = async (choice) => {
     try {
       const response = await axios.post(
-        "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
+        "",
         {
-          selections,
+          choice: choice,
         },
         {
           headers: {
             "Content-Type": "application/json",
             "spring.cloud.function.definition": "getChoice",
-            "Access-Control-Allow-Origin": "https://smhrd-melodymap.com", // 필요한 도메인으로 변경
-            "Access-Control-Allow-Methods": "OPTIONS,POST",
-            "Access-Control-Allow-Headers":
-              "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
-            "Access-Control-Allow-Credentials": "true",
           },
         }
       );
@@ -64,11 +59,11 @@ const Testpage = () => {
   };
   useEffect(() => {
     // 마지막 페이지에서만 서버로 데이터 전송
-    if (selections.length === 10) {
-      console.log(selections);
-      sendDataToServer(selections);
+    if (choice.length === 10) {
+      console.log(choice);
+      sendDataToServer(choice);
     }
-  }, [selections, navigate]);
+  }, [choice, navigate]);
 
   return (
     <div className="container">

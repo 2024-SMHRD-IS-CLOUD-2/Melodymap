@@ -5,14 +5,14 @@ const TestContext = createContext();
 export const useTest = () => useContext(TestContext);
 
 export const TestProvider = ({ children }) => {
-  const [selections, setSelections] = useState("");
+  const [choice, setChoice] = useState("");
 
   const addSelection = (selection) => {
-    setSelections((prev) => prev + selection);
+    setChoice((prev) => prev + selection);
   };
 
   return (
-    <TestContext.Provider value={{ selections, addSelection }}>
+    <TestContext.Provider value={{ choice, addSelection }}>
       {children}
     </TestContext.Provider>
   );
