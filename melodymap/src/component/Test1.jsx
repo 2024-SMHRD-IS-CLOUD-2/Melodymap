@@ -6,7 +6,7 @@ import "../css/Test.css";
 
 const Test1 = () => {
   const navigate = useNavigate();
-  const { choice, addSelection } = useTest();
+  const { addSelection } = useTest();
   const [currentStep, setCurrentStep] = useState(1); // 현재 페이지 번호 상태 추가
 
   const totalSteps = 10; // 총 페이지 수

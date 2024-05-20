@@ -23,7 +23,7 @@ const Result = () => {
 
   console.log(place);
   const navigate = useNavigate();
-  const { selections } = useTest();
+  const { choice } = useTest();
   const [visited, setVisited] = useState(() => {
     const saved = localStorage.getItem("visited");
     return saved === "true";
@@ -44,7 +44,7 @@ const Result = () => {
   }, []);
 
   const renderTitle = () => {
-    if (selections.includes("INTP")) {
+    if (choice.includes("INTP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -54,7 +54,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("INTJ")) {
+    } else if (choice.includes("INTJ")) {
       return (
         <h1 className="d1R">
           당신은
@@ -64,7 +64,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("INFP")) {
+    } else if (choice.includes("INFP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -74,7 +74,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("INFJ")) {
+    } else if (choice.includes("INFJ")) {
       return (
         <h1 className="d1R">
           당신은
@@ -84,7 +84,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ENTP")) {
+    } else if (choice.includes("ENTP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -94,7 +94,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ENTJ")) {
+    } else if (choice.includes("ENTJ")) {
       return (
         <h1 className="d1R">
           당신은
@@ -104,7 +104,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ENFP")) {
+    } else if (choice.includes("ENFP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -114,7 +114,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ENFJ")) {
+    } else if (choice.includes("ENFJ")) {
       return (
         <h1 className="d1R">
           당신은
@@ -124,7 +124,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ISTP")) {
+    } else if (choice.includes("ISTP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -134,7 +134,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ISTJ")) {
+    } else if (choice.includes("ISTJ")) {
       return (
         <h1 className="d1R">
           당신은
@@ -144,7 +144,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ISFP")) {
+    } else if (choice.includes("ISFP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -154,7 +154,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ISFJ")) {
+    } else if (choice.includes("ISFJ")) {
       return (
         <h1 className="d1R">
           당신은
@@ -164,7 +164,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ESTP")) {
+    } else if (choice.includes("ESTP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -174,7 +174,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ESTJ")) {
+    } else if (choice.includes("ESTJ")) {
       return (
         <h1 className="d1R">
           당신은
@@ -184,7 +184,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ESFP")) {
+    } else if (choice.includes("ESFP")) {
       return (
         <h1 className="d1R">
           당신은
@@ -194,7 +194,7 @@ const Result = () => {
           </span>
         </h1>
       );
-    } else if (selections.includes("ESFJ")) {
+    } else if (choice.includes("ESFJ")) {
       return (
         <h1 className="d1R">
           당신은
