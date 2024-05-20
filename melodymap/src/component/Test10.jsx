@@ -32,7 +32,7 @@ const Testpage = () => {
   const sendDataToServer = async (choice) => {
     try {
       const response = await axios.post(
-        "",
+        "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
         {
           choice: choice,
         },

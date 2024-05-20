@@ -12,10 +12,10 @@ import java.util.function.Function;
 @SpringBootApplication
 public class SpringbootApplication {
 
-	@Bean
-	public Function<Map<String,Object>, List<String>> lambdaApiGatewayFunctionBean(){
-		return new LambdaApiGatewayFunction();
-	}
+//	@Bean
+//	public Function<Map<String,Object>, List<String>> lambdaApiGatewayFunctionBean(){
+//		return new LambdaApiGatewayFunction();
+//	}
 	public static void main(String[] args){
 		SpringApplication.run(SpringbootApplication.class, args);
 	}
