@@ -11,7 +11,7 @@ const Testpage = () => {
   const currentStep = 10; // 현재 페이지 번호
   const totalSteps = 10; // 총 페이지 수
 
-  const sendDataToServer = async (selections) => {
+  /*   const sendDataToServer = async (selections) => {
     axios
       .get(`http://localhost:8081/api/choice?choice=${selections}`)
       .then((res) => {
@@ -28,6 +28,36 @@ const Testpage = () => {
       .catch((error) => {
         console.error("데이터 요청 중 오류 발생:", error);
       });
+  }; */
+
+  const sendDataToServer = async (selections) => {
+    try {
+      const response = await axios.post(
+        "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
+        {
+          selections,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "spring.cloud.function.definition": "getChoice",
+            "Access-Control-Allow-Origin": "origin",
+          },
+        }
+      );
+
+      console.log("서버로부터의 응답:", response.data);
+      console.log(response.data.music, response.data.places);
+
+      navigate("/Result", {
+        state: {
+          music: response.data.music,
+          place: response.data.places,
+        },
+      });
+    } catch (error) {
+      console.error("데이터 요청 중 오류 발생:", error);
+    }
   };
   useEffect(() => {
     // 마지막 페이지에서만 서버로 데이터 전송

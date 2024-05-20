@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/join.css";
 import SideBar from "./SideBar";
+import Join_Btn from "./Join_Btn";
 
 const Join = () => {
   const navigate = useNavigate();
@@ -11,36 +12,6 @@ const Join = () => {
   const [name, setName] = useState("");
   const [birthday, setBirth] = useState("");
   const [gender, setGender] = useState("");
-
-  const handleJoin = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8081/api/join",
-        {
-          userID, // 변경된 필드 이름
-          userPW,
-          name,
-          birthday,
-          gender,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (response.data === "Join successful") {
-        // 회원가입 성공 시 수행할 동작
-        navigate("/"); // 예시로 메인 페이지로 이동
-      } else {
-        // 회원가입 실패 시 수행할 동작
-        alert("회원가입 실패: " + response.data);
-      }
-    } catch (error) {
-      console.error("회원가입 중 오류 발생:", error);
-      alert("회원가입 중 오류가 발생했습니다.");
-    }
-  };
 
   return (
     <div className="container6">
@@ -143,9 +114,13 @@ const Join = () => {
           </div>
 
           <div>
-            <button className="button16" onClick={handleJoin}>
-              회원가입
-            </button>
+            <Join_Btn
+              userID={userID}
+              userPW={userPW}
+              name={name}
+              birthday={birthday}
+              gender={gender}
+            />
             <button className="button26" onClick={() => navigate(-1)}>
               취소
             </button>
