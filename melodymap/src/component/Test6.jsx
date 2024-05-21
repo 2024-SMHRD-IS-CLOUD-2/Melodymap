@@ -27,7 +27,7 @@ const Testpage = () => {
           <button
             onClick={() => {
               navigate("/test7");
-              addSelection("N");
+              addSelection("O");
             }}
             className="que1"
           >
@@ -36,7 +36,7 @@ const Testpage = () => {
           <button
             onClick={() => {
               navigate("/test7");
-              addSelection("F");
+              addSelection("D");
             }}
             className="que2"
           >

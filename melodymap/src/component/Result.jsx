@@ -387,7 +387,7 @@ const Result = () => {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="./image/smhrd.png"
+                    src="public\image\Melodymap.webp"
                     style={{ width: "300px", height: "250px" }}
                   />
                 </a>

@@ -1,3 +1,4 @@
+/* 웹폰트 추가 */
 @font-face {
   font-family: "WavvePADO-Regular";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2")
@@ -8,18 +9,19 @@
 
 * {
   font-family: "WavvePADO-Regular";
+  box-sizing: border-box;
 }
 
 .container9 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*   height: 100vh; */
+  height: 100vh; /* 화면 전체 높이 사용 */
   text-align: center;
-  /* background-image: url("/public/image/Main2.png"); */
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  flex-direction: column; /* 사이드바와 콘텐츠가 세로로 정렬되도록 설정 */
 }
 
 .wrapper9 {
@@ -33,20 +35,28 @@
   background-color: whitesmoke;
   width: 380px;
   height: 720px;
-  margin: 0 auto; /* 수평 가운데 정렬을 위해 추가 */
+  margin: 0 auto; /* 수평 가운데 정렬 */
+}
+
+.content9 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 요소들을 가운데 정렬 */
+  justify-content: center;
+  width: 100%;
 }
 
 .board9 {
   font-size: 30px;
-  border: 2px solid #05e3eb; /* 테두리 설정 */
-  background-color: transparent; /* 배경색 투명 설정 */
-  padding: 10px 20px; /* 내부 여백 설정 */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 그림자 효과 설정 */
+  border: 2px solid #05e3eb;
+  background-color: transparent;
+  padding: 10px 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   width: 330px;
   border-radius: 8px;
   margin-bottom: 50px;
-  margin: 0 auto; /* 좌우 가운데 정렬을 위해 추가 */
   margin-top: 30px;
+  text-align: center; /* 텍스트 가운데 정렬 */
 }
 
 .write9 {
@@ -58,20 +68,18 @@
   font-size: 25px;
 }
 
-/* TravelBoard.css */
-
 .table9 {
-  margin-top: 50px;
+  margin-top: 10px;
   width: 360px;
   border-collapse: collapse;
-  border: none; /* 테이블 테두리 제거 */
+  border: none;
 }
 
 .table9 th,
 .table9 td {
   height: 50px;
   text-align: center;
-  border: none; /* 개별 셀의 테두리 제거 */
+  border: none;
 }
 
 .table9 th:nth-child(1),
@@ -95,9 +103,9 @@
 }
 
 .table9 tr {
-  border-bottom: 1px solid #ddd; /* 각 행의 아래에만 테두리 추가 */
+  border-bottom: 1px solid #ddd;
 }
 
 .table9 tr:last-child {
-  border-bottom: none; /* 마지막 행의 아래 테두리 제거 */
+  border-bottom: none;
 }

@@ -27,7 +27,7 @@ const Testpage = () => {
           <button
             onClick={() => {
               navigate("/test8");
-              addSelection("T");
+              addSelection("A");
             }}
             className="que1"
           >

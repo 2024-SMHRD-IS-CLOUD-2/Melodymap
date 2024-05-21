@@ -80,7 +80,7 @@ const Testpage = () => {
           </h1>
           <button
             onClick={() => {
-              addSelection("M");
+              addSelection("R");
             }}
             className="que1"
           >
@@ -88,7 +88,7 @@ const Testpage = () => {
           </button>
           <button
             onClick={() => {
-              addSelection("H");
+              addSelection("G");
             }}
             className="que2"
           >
