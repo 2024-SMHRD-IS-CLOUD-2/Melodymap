@@ -31,8 +31,15 @@
   padding: 30px;
   border-radius: 40px;
   background-color: whitesmoke;
-  width: 400px;
+  width: 380px;
   height: 760px;
+}
+
+.content6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 모든 요소들을 가운데 정렬 */
+  text-align: center; /* 텍스트 가운데 정렬 */
 }
 
 .inputContainer6 {
@@ -44,11 +51,12 @@
 .labelText6 {
   margin-right: 10px;
   width: 80px; /* 텍스트 영역의 너비를 조절하여 텍스트를 일정한 간격으로 정렬합니다. */
+  text-align: left; /* label 텍스트를 왼쪽 정렬 */
 }
 
 .input16 {
   height: 30px;
-  width: 250px;
+  width: 200px;
   border-radius: 10px;
 }
 
