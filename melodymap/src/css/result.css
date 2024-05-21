@@ -29,7 +29,7 @@
   border-radius: 20px;
   background-color: whitesmoke;
   width: 380px;
-  height: 1100px; /* 수정: .wrapper 높이 조정 */
+  height: 2500px; /* 수정: .wrapper 높이 조정 */
   margin: 0 auto; /* 수평 가운데 정렬을 위해 추가 */
 }
 

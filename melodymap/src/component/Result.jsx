@@ -284,6 +284,7 @@ const Result = () => {
                   id="kakaotalk-sharing-btn"
                   style={{
                     border: "none",
+                    backgroundColor: "whitesmoke",
                   }}
                   onClick={() => {
                     shareKakao();
@@ -303,6 +304,7 @@ const Result = () => {
                 <button
                   style={{
                     border: "none",
+                    backgroundColor: "whitesmoke",
                   }}
                   onClick={() => shareFacebook()}
                 >
@@ -320,6 +322,7 @@ const Result = () => {
                 <button
                   style={{
                     border: "none",
+                    backgroundColor: "whitesmoke",
                   }}
                   onClick={() => shareNaver()}
                 >
@@ -337,6 +340,7 @@ const Result = () => {
                 <button
                   style={{
                     border: "none",
+                    backgroundColor: "whitesmoke",
                   }}
                   onClick={() => shareTwitter()}
                 >
@@ -354,6 +358,7 @@ const Result = () => {
                 <button
                   style={{
                     border: "none",
+                    backgroundColor: "whitesmoke",
                   }}
                   onClick={() => shareTelegram()}
                 >
