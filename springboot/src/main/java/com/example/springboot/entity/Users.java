@@ -28,3 +28,4 @@ public class Users {
 //    @DynamoDBRangeKey(attributeName = "Time")
 //    private Long time;
 }
+

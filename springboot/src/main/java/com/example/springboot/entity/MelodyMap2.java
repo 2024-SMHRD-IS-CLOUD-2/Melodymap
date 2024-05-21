@@ -9,12 +9,11 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.Map;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @DynamoDBTable(tableName = "MelodyMap_result")
-public class MelodyMap {
+public class MelodyMap2 {
     @DynamoDBHashKey(attributeName = "result_choice")
     private String result_choice;
 
