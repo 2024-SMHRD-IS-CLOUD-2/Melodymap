@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /*   height: 100vh; */
   text-align: center;
   /* background-image: url("/public/image/Main2.png"); */
   background-size: contain;
@@ -32,7 +32,7 @@
   border-radius: 40px;
   background-color: whitesmoke;
   width: 380px;
-  height: 760px;
+  height: 720px;
   margin: 0 auto; /* 수평 가운데 정렬을 위해 추가 */
 }
 
