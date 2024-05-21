@@ -9,20 +9,20 @@ const Join_Btn = ({ userID, userPW, name, birthday, gender }) => {
       const response = await axios.post(
         "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
         {
-          userID, // 변경된 필드 이름
-          userPW,
-          name,
-          birthday,
-          gender,
+          UserID: userID, // 변경된 필드 이름
+          UserPW: userPW,
+          Name: name,
+          Birthday: birthday,
+          Gender: gender,
         },
         {
           headers: {
             "Content-Type": "application/json",
-            "spring.cloud.function.definition": "Join",
+            "spring.cloud.function.definition": "join",
           },
         }
       );
-      if (response.data === "Join successful") {
+      if (response.data === "User joined successfully") {
         // 회원가입 성공 시 수행할 동작
         navigate("/"); // 예시로 메인 페이지로 이동
       } else {
