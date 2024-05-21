@@ -38,7 +38,7 @@
   background-color: whitesmoke;
   width: 380px;
   max-width: 100%;
-  height: 3000px;
+  height: 2500px;
   overflow: auto;
   margin-top: 700px;
   overflow-y: hidden;
@@ -62,7 +62,7 @@
 
 /* 설명 스타일 */
 .explainD {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 /* 이미지 스타일 */
@@ -84,6 +84,7 @@
   width: 330px;
   text-align: center;
   margin: 0 auto;
+  font-size: 15px;
 }
 
 /* 추천 및 추가 설명 스타일 */
@@ -96,7 +97,7 @@
 }
 
 .explain3D {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 /* 음악 테이블 컨테이너 스타일 */

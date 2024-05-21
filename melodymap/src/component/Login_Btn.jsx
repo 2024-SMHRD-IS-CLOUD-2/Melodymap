@@ -7,10 +7,10 @@ const Login_Btn = ({ userID, userPW }) => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://aur49aei9d.execute-api.ap-northeast-2.amazonaws.com",
+        "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
         {
-          userID,
-          userPW,
+          UserID: userID,
+          UserPW: userPW,
         },
         {
           headers: {

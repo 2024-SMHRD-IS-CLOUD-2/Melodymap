@@ -7,7 +7,7 @@ const Join_Btn = ({ userID, userPW, name, birthday, gender }) => {
   const handleJoin = async () => {
     try {
       const response = await axios.post(
-        "https://aur49aei9d.execute-api.ap-northeast-2.amazonaws.com",
+        "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
         {
           userID, // 변경된 필드 이름
           userPW,
