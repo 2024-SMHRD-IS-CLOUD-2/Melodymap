@@ -73,7 +73,7 @@
 /* 선 스타일 */
 .lineD {
   border-top: 1px solid black;
-  width: 100%; /* 부모 요소의 너비에 맞춤 */
+  width: 380px; /* 부모 요소의 너비에 맞춤 */
   margin-bottom: 20px;
   text-align: center; /* 가운데 정렬 */
 }

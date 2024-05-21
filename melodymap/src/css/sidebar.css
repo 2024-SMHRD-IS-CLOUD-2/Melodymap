@@ -23,7 +23,7 @@
 /* 반응형 디자인을 위한 미디어 쿼리 */
 @media (max-width: 360px) {
   .sidebar {
-    flex-direction: column; /* 작은 화면에서는 세로 방향으로 변경 */
+    /* flex-direction: column; 작은 화면에서는 세로 방향으로 변경 */
     align-items: flex-start;
     padding: 20px;
   }
