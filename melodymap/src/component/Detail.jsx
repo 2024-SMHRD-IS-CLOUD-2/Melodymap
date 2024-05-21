@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTest } from "../context/TestContext";
 import { useLocation } from "react-router-dom";
 import "../css/detail.css";
 import SideBar from "./SideBar";
@@ -10,29 +9,42 @@ const Detail = () => {
   const navigate = useNavigate();
   const { music, place } = location.state || {};
 
-  // const { musicDetails, placeDetails } = location.state || {};
-  console.log(music);
+  // place.poi_tag 값을 배열로 변환
+  const renderPoiTags = (tags) => {
+    if (typeof tags === "string") {
+      // 문자열을 배열로 변환
+      try {
+        tags = JSON.parse(tags.replace(/'/g, '"'));
+      } catch (error) {
+        console.error("Error parsing tags:", error);
+        tags = [];
+      }
+    }
+
+    if (!Array.isArray(tags)) return "";
+
+    const displayedTags = tags.slice(0, 10);
+    const additionalTags = tags.length > 10 ? "..." : "";
+
+    return displayedTags.join(", ") + additionalTags;
+  };
 
   return (
     <div className="containerD">
       <div className="wrapperD">
         <div className="allD">
           <SideBar />
-          <p className="travelD">보성 골망태다원</p>
-          <p className="explainD">"동화 속 요정의 마을 골망태 다원"</p>
-          <img
-            src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
-            alt="Main Image"
-            className="imageD"
-          />
-          <p className="explain2D">상세설명</p>
-          <div className="lineD"></div>
 
-          <p className="explain3D">
-            보성 골망태다원은 보성 차밭 인근에 있으며 차밭뿐 아니라 펜션과 수국,
-            수선화 정원 등을 방문할 수 있는 재미있는 관광지이다. 동심원의 녹차
-            미로공원을 조성하였으며 버섯 모양 지붕을 한 펜션이 옹기종기 모여있다
-          </p>
+          <div>
+            <p className="travelD">{place.poi_name}</p>
+            <p className="explainD">{renderPoiTags(place.poi_tag)}</p>
+            <img src={place.img_rname} alt="Main Image" className="imageD" />
+            <p className="explain2D">상세설명</p>
+            <div className="lineD"></div>
+
+            <p className="explain3D">{place.poi_desc}</p>
+          </div>
+
           <p className="recoD">추천음악</p>
           <div className="lineD"></div>
 
@@ -51,10 +63,7 @@ const Detail = () => {
                   <tr key={index} className="musicRow">
                     <td>{index + 1}</td>
                     <td className="musicTitleCell">
-                      <img
-                        src={`${process.env.PUBLIC_URL}/image/Goodday.jpg`}
-                        className="sing1D"
-                      />
+                      <img src={music.music_image} className="sing1D" />
                       {music.music_title}
                     </td>
                     <td>{music.music_singer}</td>
