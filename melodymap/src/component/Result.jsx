@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../css/result.css";
 import { useTest } from "../context/TestContext";
-import { useLocation } from "react-router-dom";
 import {
   shareKakao,
   shareNaver,
@@ -14,23 +13,18 @@ import SideBar from "./SideBar";
 const { Kakao } = window;
 
 const Result = () => {
-  // useLocation을 사용하여 navigate로 전달된 state에 접근
   const location = useLocation();
   const { music, place } = location.state || {};
-
-  // useLocation 훅을 사용하여 라우터의 위치 객체 접근
-  // 네비게이션 시 전달된 state를 구조분해 할당하여 사용
-
-  console.log(place);
   const navigate = useNavigate();
   const { choice } = useTest();
   const [visited, setVisited] = useState(() => {
     const saved = localStorage.getItem("visited");
     return saved === "true";
   });
-  const [showRecommendation, setShowRecommendation] = useState(false); // 추가: 추천 영역 표시 여부 상태
-  const musicDataSend = () => {
-    navigate("/detail", { state: { music } });
+  const [showRecommendation, setShowRecommendation] = useState(false);
+
+  const musicDataSend = (selectedPlace) => {
+    navigate("/detail", { state: { music, place: selectedPlace } });
   };
 
   useEffect(() => {
@@ -44,167 +38,57 @@ const Result = () => {
   }, []);
 
   const renderTitle = () => {
-    if (choice.includes("INTP")) {
+    const titles = {
+      INTP: { text: "영리한 여행가", color: "#3f3f3f" },
+      INTJ: { text: "지적인 여행가", color: "#e63e4f" },
+      INFP: { text: "나른한 여행가", color: "#ec96ef" },
+      INFJ: { text: "따뜻한 여행가", color: "#ccb1de" },
+      ENTP: { text: "창의적인 여행가", color: "#d6c7b9" },
+      ENTJ: { text: "호탕한 여행가", color: "#b3eaa6" },
+      ENFP: { text: "친절한 여행가", color: "#d4f29c" },
+      ENFJ: { text: "온화한 여행가", color: "#f99fae" },
+      ISTP: { text: "피곤한 여행가", color: "#48518f" },
+      ISTJ: { text: "분석적인 여행가", color: "#9d9c97" },
+      ISFP: { text: "예술적인 여행가", color: "#fff06d" },
+      ISFJ: { text: "수호적인 여행가", color: "#81b2ff" },
+      ESTP: { text: "시원한 여행가", color: "#a9ebd6" },
+      ESTJ: { text: "지도적인 여행가", color: "#ffbf96" },
+      ESFP: { text: "사교적인 여행가", color: "#9fd8f9" },
+      ESFJ: { text: "모범적인 여행가", color: "#faee9d" },
+    };
+
+    const key = Object.keys(titles).find((key) => choice.includes(key));
+    if (key) {
       return (
         <h1 className="d1R">
           당신은
           <br />
-          <span className="recoR" style={{ color: "#3f3f3f" }}>
-            영리한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("INTJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#e63e4f" }}>
-            지적인 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("INFP")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#ec96ef" }}>
-            나른한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("INFJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#ccb1de" }}>
-            따뜻한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ENTP")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#d6c7b9" }}>
-            창의적인 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ENTJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#b3eaa6" }}>
-            호탕한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ENFP")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#d4f29c" }}>
-            친절한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ENFJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#f99fae" }}>
-            온화한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ISTP")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#48518f" }}>
-            피곤한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ISTJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#9d9c97" }}>
-            분석적인 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ISFP")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#fff06d" }}>
-            예술적인 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ISFJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#81b2ff" }}>
-            수호적인 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ESTP")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#a9ebd6" }}>
-            시원한 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ESTJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#ffbf96" }}>
-            지도적인 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ESFP")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#9fd8f9" }}>
-            사교적인 여행가
-          </span>
-        </h1>
-      );
-    } else if (choice.includes("ESFJ")) {
-      return (
-        <h1 className="d1R">
-          당신은
-          <br />
-          <span className="recoR" style={{ color: "#faee9d" }}>
-            모범적인 여행가
+          <span className="recoR" style={{ color: titles[key].color }}>
+            {titles[key].text}
           </span>
         </h1>
       );
     }
+    return null;
+  };
+
+  const renderPoiTags = (tags) => {
+    if (typeof tags === "string") {
+      // 문자열을 배열로 변환
+      try {
+        tags = JSON.parse(tags.replace(/'/g, '"'));
+      } catch (error) {
+        console.error("Error parsing tags:", error);
+        tags = [];
+      }
+    }
+
+    if (!Array.isArray(tags)) return "";
+
+    const displayedTags = tags.slice(0, 5);
+    const additionalTags = tags.length > 5 ? "..." : "";
+
+    return displayedTags.join(", ") + additionalTags;
   };
 
   return (
@@ -215,51 +99,38 @@ const Result = () => {
             <SideBar />
             <div className="contentR">
               {renderTitle()}
-              {place
-                .slice(0, showRecommendation ? place.length : 1)
-                .map((place, index) => (
-                  <div className="image-wrapperR" key={index}>
-                    <div className="center1R">
-                      <button onClick={musicDataSend} className="musicR">
-                        <img
-                          src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
-                          alt="Main Image"
-                          className="imageR"
-                        />
-                      </button>
-                      <div className="explain0R">
-                        <p className="explain1R">{place.poi_info}</p>
-                        <p className="explain2R">{place.poi_name}</p>
+              {place &&
+                place
+                  .slice(0, showRecommendation ? place.length : 1)
+                  .map((place, index) => (
+                    <div className="image-wrapperR" key={index}>
+                      <div className="center1R">
+                        <button
+                          onClick={() => musicDataSend(place)}
+                          className="musicR"
+                        >
+                          <img
+                            src={place.img_rname}
+                            alt="Main Image"
+                            className="imageR"
+                          />
+                        </button>
+                        <div className="explain0R">
+                          <p className="explain1R">
+                            {renderPoiTags(place.poi_tag)}
+                          </p>
+                          <p className="explain2R">{place.poi_name}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               <button
                 className="reco2R"
                 onClick={() => setShowRecommendation(!showRecommendation)}
               >
                 {showRecommendation ? "숨기기" : "+ 추천"}
               </button>
-              {/* <div className="pbuttonR">
-                <button
-                  onClick={() => {
-                    navigate("/Login");
-                  }}
-                  className="login1R"
-                >
-                  로그인
-                </button>
-                <button
-                  onClick={() => {
-                    navigate("/Join");
-                  }}
-                  className="Join1R"
-                >
-                  회원가입
-                </button>
-              </div> */}
               <div>
-                {/* 카카오톡 공유하기 */}
                 <div>
                   <p className="otherR">다른 여행가 통계</p>
                 </div>
@@ -279,7 +150,6 @@ const Result = () => {
                 >
                   결과 저장하기
                 </button>
-                {/*  <p>공유하기</p> */}
                 <button
                   id="kakaotalk-sharing-btn"
                   style={{
@@ -300,7 +170,6 @@ const Result = () => {
                     }}
                   />
                 </button>
-                {/* 페이스북 */}
                 <button
                   style={{
                     border: "none",
@@ -318,7 +187,6 @@ const Result = () => {
                     }}
                   />
                 </button>
-                {/* 네이버 */}
                 <button
                   style={{
                     border: "none",
@@ -336,7 +204,6 @@ const Result = () => {
                     }}
                   />
                 </button>
-                {/* 트위터 */}
                 <button
                   style={{
                     border: "none",
@@ -354,7 +221,6 @@ const Result = () => {
                     }}
                   />
                 </button>
-                {/* 텔레그램 */}
                 <button
                   style={{
                     border: "none",
@@ -387,7 +253,7 @@ const Result = () => {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="public\image\Melodymap.webp"
+                    src="public/image/Melodymap.webp"
                     style={{ width: "300px", height: "250px" }}
                   />
                 </a>
