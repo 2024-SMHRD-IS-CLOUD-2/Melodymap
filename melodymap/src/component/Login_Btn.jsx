@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login_Btn = ({ userID, userPW }) => {
   const navigate = useNavigate();
-
+  console.log(userID);
   const handleLogin = async () => {
     try {
       const response = await axios.post(
@@ -21,8 +21,9 @@ const Login_Btn = ({ userID, userPW }) => {
       );
       if (response.data) {
         // 로그인 성공 시 수행할 동작
-        sessionStorage.setItem("userID", response.data.userID);
+        sessionStorage.setItem("userID", response.data.UserID);
         console.log(response.data);
+        console.log(sessionStorage.getItem("userID"));
         navigate("/"); // 예시로 메인 페이지로 이동
       } else {
         // 로그인 실패 시 수행할 동작

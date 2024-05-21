@@ -1,10 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "../css/reviewdetail.css";
 import SideBar from "./SideBar";
 
-const Reviewdetail = () => {
-  const navigate = useNavigate();
+const ReviewDetail = () => {
+  const location = useLocation();
+  const entry = location.state;
+
+  if (!entry) {
+    return <div>해당 후기를 찾을 수 없습니다.</div>;
+  }
 
   return (
     <div className="containerRD">
@@ -12,8 +17,8 @@ const Reviewdetail = () => {
         <SideBar />
         <div className="contentRD">
           <div className="headerRD">
-            <p className="titleRD">즐거운 보성 여행!</p>
-            <p className="nameRD">작성자 : 구희철</p>
+            <p className="titleRD">{entry.title}</p>
+            <p className="nameRD">작성자: {entry.author}</p>
           </div>
           <div className="lineRD"></div>
           <div>
@@ -24,7 +29,7 @@ const Reviewdetail = () => {
             />
           </div>
           <div className="reviewRD">
-            <p>너무 즐거운 여행이었습니다 ㅎㅎㅎㅎㅎ</p>
+            <p>{entry.content || "상세 내용이 없습니다."}</p>
           </div>
         </div>
       </div>
@@ -32,4 +37,4 @@ const Reviewdetail = () => {
   );
 };
 
-export default Reviewdetail;
+export default ReviewDetail;

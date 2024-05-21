@@ -17,9 +17,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 @SpringBootApplication
@@ -84,6 +82,7 @@ public class SpringbootApplication {
 			String content = getValueFromInput(input, "content");
 			String date = getValueFromInput(input, "date");
 
+
 			if (commentTitle == null || commentTitle.isEmpty()) {
 				log.error("Comment title is null or empty");
 				return createResponse("Comment title cannot be null or empty", 400);
@@ -94,6 +93,7 @@ public class SpringbootApplication {
 			newComment.setAuthor(author);
 			newComment.setContent(content);
 			newComment.setDate(date);
+
 
 			MelodyMap_comment savedComment = dynamoDBFindService.save(newComment);
 			return createResponse(savedComment != null ? "Comment added successfully" : "Failed to add comment", 200);
@@ -130,6 +130,23 @@ public class SpringbootApplication {
 				return createResponse(result.get(), 200);
 			} else {
 				return createResponse("해당 항목을 찾을 수 없습니다", 404);
+			}
+		};
+	}
+
+	@Bean
+	public Function<Message<Map<String, Object>>, Message<Object>> scanComment() {
+		return message -> {
+			Map<String, Object> input = message.getPayload();
+			log.info("Received input: {}", input);
+
+			// DynamoDB에서 모든 댓글을 가져옴
+			List<MelodyMap_comment> comments = dynamoDBFindService.findAll(MelodyMap_comment.class);
+
+			if (!comments.isEmpty()) {
+				return createResponse(comments, 200);
+			} else {
+				return createResponse("댓글이 없습니다", 404);
 			}
 		};
 	}
@@ -179,12 +196,20 @@ public class SpringbootApplication {
 
 			Optional<Users> userOptional = dynamoDBFindService.find(Users.class, userID);
 			if (userOptional.isPresent() && userOptional.get().getUserPW().equals(userPW)) {
-				return createResponse("Login successful", 200);
+				Users user = userOptional.get();
+				Map<String, Object> responsePayload = new HashMap<>();
+				responsePayload.put("UserID", user.getUserID());
+				responsePayload.put("Name", user.getName());
+				responsePayload.put("Gender", user.getGender());
+				responsePayload.put("Birthday", user.getBirthday());
+
+				return createResponse(responsePayload, 200);
 			} else {
 				return createResponse("Login failed", 401);
 			}
 		};
 	}
+
 
 	@Bean
 	public Function<Message<Map<String, Object>>, Message<Object>> deleteUser() {
@@ -217,6 +242,8 @@ public class SpringbootApplication {
 			return Collections.emptyMap();
 		}
 	}
+
+
 
 	private Message<Object> createResponse(Object payload, int statusCode) {
 		return MessageBuilder.withPayload(payload)

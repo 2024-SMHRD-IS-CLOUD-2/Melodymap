@@ -2,23 +2,39 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/travelwrite.css";
 import SideBar from "./SideBar";
+import axios from "axios";
 
-const Travelwrite = ({ addTravelEntry }) => {
+const Travelwrite = () => {
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState(""); // 작성자 추가
   const [reviewContent, setReviewContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const author = sessionStorage.getItem("userID");
   const navigate = useNavigate();
 
-  const handleSave = () => {
-    const newEntry = {
-      id: Date.now(),
-      title: title,
-      author: author,
-      date: new Date().toLocaleDateString(),
-    };
-    addTravelEntry(newEntry);
-    navigate("/travelboard");
+  const handleSave = async () => {
+    try {
+      const response = await axios.post(
+        "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
+        {
+          commentTitle: title,
+          author: author,
+          content: reviewContent,
+          date: new Date().toLocaleDateString(),
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "spring.cloud.function.definition": "addComment",
+          },
+        }
+      );
+      if (response.data) {
+        alert("후기 작성 완료");
+        navigate("/travelboard");
+      }
+    } catch (error) {
+      alert("후기 작성 중 오류 발생");
+    }
   };
 
   return (
@@ -33,7 +49,7 @@ const Travelwrite = ({ addTravelEntry }) => {
           </div>
           <div>
             <div className="titleT">
-              <p className="titlep">제목</p>
+              <p className="titlep">제목 :</p>
               <input
                 type="text"
                 value={title}
@@ -41,15 +57,11 @@ const Travelwrite = ({ addTravelEntry }) => {
               />
             </div>
             <div className="resultT">
-              <p className="resultp">작성자</p>
-              <input
-                type="text"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)} // 작성자 입력 필드 수정
-              />
+              <p className="resultp">작성자 :</p>
+              <p>{author}</p>
             </div>
             <div className="imageT">
-              <p className="imagep">이미지</p>
+              <p className="imagep">이미지 :</p>
               <input
                 type="file"
                 onChange={(e) => setImageFile(e.target.files[0])}

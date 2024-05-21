@@ -24,4 +24,6 @@ public class MelodyMap_comment {
 
     @DynamoDBAttribute(attributeName = "date")
     private String date;
+
+
 }

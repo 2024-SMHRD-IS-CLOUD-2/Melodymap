@@ -1,6 +1,7 @@
 package com.example.springboot.service;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
 import com.example.springboot.entity.MelodyMap2;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -76,5 +78,9 @@ public class DynamoDBFindService {
         if (item != null) {
             dynamoDBMapper.delete(item);
         }
+    }
+    // 전체 조회
+    public <T> List<T> findAll(Class<T> clazz) {
+        return dynamoDBMapper.scan(clazz, new DynamoDBScanExpression());
     }
 }
