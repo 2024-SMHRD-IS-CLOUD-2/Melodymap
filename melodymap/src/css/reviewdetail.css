@@ -18,11 +18,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   text-align: center;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  flex-direction: row;
 }
 
 /* 래퍼 스타일 */
@@ -41,6 +41,7 @@
   overflow: auto;
   margin-top: 0px;
   overflow-x: hidden; /* 좌우 스크롤바가 생기지 않도록 설정 */
+  position: relative;
 }
 
 /* 내용 스타일 */
@@ -54,6 +55,9 @@
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 헤더 스타일 */

@@ -17,7 +17,7 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /*  height: 100vh; */
   text-align: center;
   /* background-image: url("/public/image/Main2.png"); */
   background-size: contain; /* 이미지가 짤리지 않고 컨테이너에 맞게 조절 */
