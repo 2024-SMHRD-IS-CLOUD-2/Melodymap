@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,6 +26,9 @@ public class MelodyMap_comment {
 
     @DynamoDBAttribute(attributeName = "date")
     private String date;
+
+    @DynamoDBAttribute(attributeName = "imageUrls")
+    private List<String> imageUrls;
 
 
 }

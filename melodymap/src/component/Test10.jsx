@@ -5,11 +5,11 @@ import TestProgress from "./TestProgress";
 import axios from "axios";
 import "../css/Test.css";
 
-const Testpage = () => {
+const Test10 = () => {
   const navigate = useNavigate();
   const { choice, addSelection } = useTest();
-  const currentStep = 10; // 현재 페이지 번호
-  const totalSteps = 10; // 총 페이지 수
+  const currentStep = 10;
+  const totalSteps = 10;
   const [sleep, setSleep] = useState("");
 
   const sendDataToServer = async (choice) => {
@@ -28,8 +28,6 @@ const Testpage = () => {
       );
 
       console.log("서버로부터의 응답:", response.data);
-      console.log(response.data.music, response.data.places);
-
       navigate("/Result", {
         state: {
           music: response.data.music,
@@ -41,6 +39,7 @@ const Testpage = () => {
       console.error("데이터 요청 중 오류 발생:", error);
     }
   };
+
   useEffect(() => {
     // 마지막 페이지에서만 서버로 데이터 전송
     if (choice.length === 10) {
@@ -49,33 +48,28 @@ const Testpage = () => {
     }
   }, [choice, navigate]);
 
+  const handleButtonClick = (selection, sleepOption) => {
+    addSelection(selection);
+    setSleep(sleepOption);
+  };
+
   return (
     <div className="container">
       <div className="wrapper">
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
-        <div>
-          <h1 className="question">Q 10.</h1>
-          <h1 className="content">
-            여행을 가기위해 숙소를
-            <br></br>
-            예약해야 한다.
-            <br />
-            당신의 선택은?
-          </h1>
+        <h1 className="question">Q 10.</h1>
+        <div className="content">
+          여행을 가기위해 숙소를 예약해야 한다. 당신의 선택은?
+        </div>
+        <div className="info">
           <button
-            onClick={() => {
-              addSelection("R");
-              setSleep("motel");
-            }}
+            onClick={() => handleButtonClick("R", "motel")}
             className="que1"
           >
             잠만 자면 됐지.. 가성비로 가자
           </button>
           <button
-            onClick={() => {
-              addSelection("G");
-              setSleep("hotel");
-            }}
+            onClick={() => handleButtonClick("G", "hotel")}
             className="que2"
           >
             이것도 여행의 일부지 이왕이면 최고로 가자!
@@ -86,4 +80,4 @@ const Testpage = () => {
   );
 };
 
-export default Testpage;
+export default Test10;

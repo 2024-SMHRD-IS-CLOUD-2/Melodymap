@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../css/result.css";
 import { useTest } from "../context/TestContext";
@@ -15,9 +15,9 @@ const { Kakao } = window;
 
 const Result = () => {
   const location = useLocation();
+  const { choice } = useTest();
   const { music, place, sleep } = location.state || {};
   const navigate = useNavigate();
-  const { choice } = useTest();
   const [visited, setVisited] = useState(() => {
     const saved = localStorage.getItem("visited");
     return saved === "true";

@@ -1,9 +1,11 @@
 import React from "react";
 import "../css/sidebar.css";
 import { useNavigate } from "react-router-dom";
+import { useTest } from "../context/TestContext";
 
 const SideBar = () => {
   const navigate = useNavigate();
+  const { resetChoice } = useTest();
 
   const checkLogin = () => {
     if (sessionStorage.getItem("userID")) {
@@ -15,6 +17,7 @@ const SideBar = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("userID");
+    resetChoice();
     navigate("/");
   };
 
@@ -30,9 +33,23 @@ const SideBar = () => {
       ) : (
         <>
           <button onClick={() => navigate("/")}>Home</button>
-          <button onClick={() => navigate("/login")}>Login</button>
-          <button onClick={() => navigate("/join")}>Join</button>
-          <button onClick={() => navigate("/mypage")}>My</button>
+          <button
+            onClick={() => {
+              resetChoice();
+              navigate("/login");
+            }}
+          >
+            Login
+          </button>
+          <button
+            onClick={() => {
+              resetChoice();
+              navigate("/join");
+            }}
+          >
+            Join
+          </button>
+
           <button onClick={checkLogin}>Review</button>
         </>
       )}

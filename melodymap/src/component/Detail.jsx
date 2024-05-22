@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "../css/detail.css";
 import SideBar from "./SideBar";
+import KakaoMap from "./KakaoMap";
 
 const Detail = () => {
   const location = useLocation();
@@ -76,19 +77,16 @@ const Detail = () => {
           <div>
             <p className="mapD">지도</p>
             <div className="lineD"></div>
-            <img
-              src={`${process.env.PUBLIC_URL}/image/naver_map.png`}
-              className="mapD"
-              style={{ width: "300px", height: "300px" }}
-            ></img>
+            <KakaoMap keyword={place.poi_name} />
           </div>
-          <a
-            href={`https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <div className="Btn1">
             근처 숙소보기
-          </a>
+            <a
+              href={`https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            ></a>
+          </div>
         </div>
       </div>
     </div>

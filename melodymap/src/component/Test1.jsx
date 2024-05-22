@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useTest } from "../context/TestContext";
 import TestProgress from "./TestProgress";
@@ -7,32 +7,21 @@ import "../css/Test.css";
 const Test1 = () => {
   const navigate = useNavigate();
   const { addSelection } = useTest();
-  const [currentStep, setCurrentStep] = useState(1); // 현재 페이지 번호 상태 추가
-
-  const totalSteps = 10; // 총 페이지 수
+  const currentStep = 1;
+  const totalSteps = 10;
 
   const handleButtonClick = (selection) => {
     addSelection(selection);
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-      navigate(`/test${currentStep + 1}`);
-    } else {
-      // 모든 페이지를 완료했을 때
-      navigate("/complete");
-    }
+    navigate(`/test${currentStep + 1}`);
   };
 
   return (
     <div className="container">
       <div className="wrapper">
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
-        <h1 className="question">
-          Q {currentStep.toString().padStart(2, "0")}.
-        </h1>
+        <h1 className="question">Q 01.</h1>
         <div className="content">
-          산뜻한 주말 봄날 벚꽃이
-          <br />
-          활짝 폈다. 당신의 선택은?
+          산뜻한 주말 봄날 벚꽃이 활짝 폈다. 당신의 선택은?
         </div>
         <div className="info">
           <button onClick={() => handleButtonClick("E")} className="que1">

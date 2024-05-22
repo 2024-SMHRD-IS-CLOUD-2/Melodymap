@@ -7,6 +7,8 @@ import SideBar from "./SideBar";
 const TravelBoard = () => {
   const navigate = useNavigate();
   const [travelEntries, setTravelEntries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const entriesPerPage = 7; // 페이지당 항목 수
 
   useEffect(() => {
     const fetchTravelEntries = async () => {
@@ -28,7 +30,8 @@ const TravelBoard = () => {
             title: item.commentTitle,
             author: item.author,
             date: item.date,
-            content: item.content, // content도 포함하도록 수정
+            content: item.content,
+            imageUrls: item.imageUrls,
           }));
           setTravelEntries(entries);
         }
@@ -47,6 +50,25 @@ const TravelBoard = () => {
   const handleRowClick = (entry) => {
     navigate(`/reviewdetail/${entry.id}`, { state: entry });
   };
+
+  // 페이지 변경 핸들러
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // 현재 페이지에 표시할 항목 계산
+  const indexOfLastEntry = currentPage * entriesPerPage;
+  const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+  const currentEntries = travelEntries.slice(
+    indexOfFirstEntry,
+    indexOfLastEntry
+  );
+
+  // 페이지 번호 계산
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(travelEntries.length / entriesPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="container9">
@@ -67,13 +89,13 @@ const TravelBoard = () => {
                 </tr>
               </thead>
               <tbody>
-                {travelEntries.map((entry, index) => (
+                {currentEntries.map((entry, index) => (
                   <tr
                     key={index}
                     onClick={() => handleRowClick(entry)}
                     style={{ cursor: "pointer" }}
                   >
-                    <td>{index + 1}</td>
+                    <td>{indexOfFirstEntry + index + 1}</td>
                     <td>{getShortTitle(entry.title)}</td>
                     <td>{entry.author}</td>
                     <td>{entry.date}</td>
@@ -81,6 +103,17 @@ const TravelBoard = () => {
                 ))}
               </tbody>
             </table>
+            <div className="pagination">
+              {pageNumbers.map((number) => (
+                <button
+                  key={number}
+                  onClick={() => handlePageChange(number)}
+                  className={number === currentPage ? "active" : ""}
+                >
+                  {number}
+                </button>
+              ))}
+            </div>
             <button
               onClick={() => {
                 navigate("/travelwrite");
