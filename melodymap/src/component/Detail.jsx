@@ -9,6 +9,10 @@ const Detail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { music, place, sleep } = location.state || {};
+  const goSleep = () => {
+    const url = `https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
 
   // place.poi_tag 값을 배열로 변환
   const renderPoiTags = (tags) => {
@@ -79,14 +83,10 @@ const Detail = () => {
             <div className="lineD"></div>
             <KakaoMap keyword={place.poi_name} />
           </div>
-          <div className="Btn1">
+
+          <button className="Btn1" onClick={goSleep}>
             근처 숙소보기
-            <a
-              href={`https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            ></a>
-          </div>
+          </button>
         </div>
       </div>
     </div>
