@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTest } from "../context/TestContext";
 import TestProgress from "./TestProgress";
@@ -10,25 +10,8 @@ const Testpage = () => {
   const { choice, addSelection } = useTest();
   const currentStep = 10; // 현재 페이지 번호
   const totalSteps = 10; // 총 페이지 수
+  const [sleep, setSleep] = useState("");
 
-  /*   const sendDataToServer = async (selections) => {
-    axios
-      .get(`http://localhost:8081/api/choice?choice=${selections}`)
-      .then((res) => {
-        console.log("서버로부터의 응답:", res.data);
-        console.log(res.data.music, res.data.places);
-        navigate("/Result", {
-          state: {
-            music: res.data.music,
-            place: res.data.places,
-          },
-          // navigate 함수를 사용해 Result 페이지로 이동하면서 음악 및 장소 상세 정보를 state로 전달
-        });
-      })
-      .catch((error) => {
-        console.error("데이터 요청 중 오류 발생:", error);
-      });
-  }; */
   const sendDataToServer = async (choice) => {
     try {
       const response = await axios.post(
@@ -51,6 +34,7 @@ const Testpage = () => {
         state: {
           music: response.data.music,
           place: response.data.places,
+          sleep: sleep,
         },
       });
     } catch (error) {
@@ -81,6 +65,7 @@ const Testpage = () => {
           <button
             onClick={() => {
               addSelection("R");
+              setSleep("motel");
             }}
             className="que1"
           >
@@ -89,6 +74,7 @@ const Testpage = () => {
           <button
             onClick={() => {
               addSelection("G");
+              setSleep("hotel");
             }}
             className="que2"
           >

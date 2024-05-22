@@ -1,11 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/mypage.css";
 import SideBar from "./SideBar";
+import axios from "axios";
 
 const Mypage = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
+  const userid = sessionStorage.getItem("userID");
+  const scan = async () => {
+    const res = await axios.post(
+      "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
+      {
+        UserID: userid,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "spring.cloud.function.definition": "scanUsers",
+        },
+      }
+    );
+    if (res.data) {
+      console.log(res.data);
+    }
+  };
+  useEffect(() => {
+    scan();
+  }, []);
 
   const travelPages = [
     {

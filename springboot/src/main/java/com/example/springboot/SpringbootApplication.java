@@ -224,6 +224,76 @@ public class SpringbootApplication {
 		};
 	}
 
+	@Bean
+	public Function<Message<Map<String, Object>>, Message<Object>> updateUserData() {
+		return message -> {
+			Map<String, Object> input = message.getPayload();
+			log.info("Received input: {}", input);
+
+			String userID = getValueFromInput(input, "UserID");
+			log.info("Parsed userID: {}", userID);
+
+			List<List<Map<String, String>>> newUserResults = null;
+			if (input.containsKey("body")) {
+				String bodyString = (String) input.get("body");
+				Map<String, Object> body = parseJson(bodyString);
+				newUserResults = (List<List<Map<String, String>>>) body.get("userResult");
+			} else {
+				newUserResults = (List<List<Map<String, String>>>) input.get("userResult");
+			}
+			log.info("Parsed userResult: {}", newUserResults);
+
+			if (userID == null || userID.isEmpty()) {
+				log.error("UserID is null or empty");
+				return createResponse("UserID cannot be null or empty", 400);
+			}
+
+			Optional<Users> updatedUser = dynamoDBFindService.appendUserResult(userID, newUserResults);
+
+			if (updatedUser.isPresent()) {
+				return createResponse("User data updated successfully", 200);
+			} else {
+				return createResponse("User not found", 404);
+			}
+		};
+	}
+
+
+
+
+	@Bean
+	public Function<Message<Map<String, Object>>, Message<Object>> scanUsers() {
+		return message -> {
+			Map<String, Object> input = message.getPayload();
+			log.info("Received input: {}", input);
+
+			String userID = getValueFromInput(input, "UserID");
+			if (userID == null || userID.isEmpty()) {
+				log.error("UserID is null or empty");
+				return createResponse("UserID cannot be null or empty", 400);
+			}
+
+			// DynamoDB에서 사용자 정보를 가져옴
+			Optional<Users> userOptional = dynamoDBFindService.find(Users.class, userID);
+
+			if (userOptional.isPresent()) {
+				Users user = userOptional.get();
+				// 비밀번호를 제외한 사용자 정보를 반환
+				Map<String, Object> userResponse = new HashMap<>();
+				userResponse.put("UserID", user.getUserID());
+				userResponse.put("Name", user.getName());
+				userResponse.put("Gender", user.getGender());
+				userResponse.put("Birthday", user.getBirthday());
+				userResponse.put("UserResult",user.getUserResult());
+
+				return createResponse(userResponse, 200);
+			} else {
+				return createResponse("사용자를 찾을 수 없습니다", 404);
+			}
+		};
+	}
+
+
 	private String getValueFromInput(Map<String, Object> input, String key) {
 		if (input.containsKey("body")) {
 			String bodyString = (String) input.get("body");

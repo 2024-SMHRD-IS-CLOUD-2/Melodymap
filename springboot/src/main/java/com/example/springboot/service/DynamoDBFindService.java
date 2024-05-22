@@ -4,12 +4,15 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
 import com.example.springboot.entity.MelodyMap2;
+import com.example.springboot.entity.Users;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -83,4 +86,32 @@ public class DynamoDBFindService {
     public <T> List<T> findAll(Class<T> clazz) {
         return dynamoDBMapper.scan(clazz, new DynamoDBScanExpression());
     }
+
+    // Method to append user result for a specific user
+    public Optional<Users> appendUserResult(String userID, List<List<Map<String, String>>> newUserResults) {
+        Users user = dynamoDBMapper.load(Users.class, userID);
+        if (user == null) {
+            log.error("User not found for userID: {}", userID);
+            return Optional.empty();
+        }
+
+        List<List<Map<String, String>>> existingResults = user.getUserResult();
+        if (existingResults == null) {
+            existingResults = new ArrayList<>();
+        }
+        existingResults.addAll(newUserResults);
+        user.setUserResult(existingResults);
+
+        try {
+            dynamoDBMapper.save(user);
+            log.info("User data saved successfully for userID: {}", userID);
+        } catch (Exception e) {
+            log.error("Error saving user data for userID {}: {}", userID, e.getMessage(), e);
+            return Optional.empty();
+        }
+
+        return Optional.of(user);
+    }
+
+
 }

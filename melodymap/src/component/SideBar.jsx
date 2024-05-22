@@ -22,6 +22,7 @@ const SideBar = () => {
     <div className="sidebar">
       {sessionStorage.getItem("userID") ? (
         <>
+          <button onClick={() => navigate("/")}>Home</button>
           <button onClick={handleLogout}>Logout</button>
           <button onClick={() => navigate("/mypage")}>My</button>
           <button onClick={checkLogin}>Review</button>

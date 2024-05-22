@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.Map;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,9 +28,9 @@ public class Users {
     @DynamoDBAttribute(attributeName = "Birthday")
     private String birthday;
 
+    @DynamoDBAttribute(attributeName = "UserResult")
+    private List<List<Map<String,String>>> userResult;
 
 
-//    @DynamoDBRangeKey(attributeName = "Time")
-//    private Long time;
 }
 

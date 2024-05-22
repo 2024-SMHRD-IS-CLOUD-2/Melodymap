@@ -10,11 +10,12 @@ import {
   shareTelegram,
 } from "../ShareKakao";
 import SideBar from "./SideBar";
+import Resultsave from "./Resultsave";
 const { Kakao } = window;
 
 const Result = () => {
   const location = useLocation();
-  const { music, place } = location.state || {};
+  const { music, place, sleep } = location.state || {};
   const navigate = useNavigate();
   const { choice } = useTest();
   const [visited, setVisited] = useState(() => {
@@ -24,7 +25,7 @@ const Result = () => {
   const [showRecommendation, setShowRecommendation] = useState(false);
 
   const musicDataSend = (selectedPlace) => {
-    navigate("/detail", { state: { music, place: selectedPlace } });
+    navigate("/detail", { state: { music, place: selectedPlace, sleep } });
   };
 
   useEffect(() => {
@@ -142,14 +143,7 @@ const Result = () => {
                 >
                   보러가기
                 </button>
-                <button
-                  onClick={() => {
-                    navigate("/mypage");
-                  }}
-                  className="saveR"
-                >
-                  결과 저장하기
-                </button>
+                <Resultsave>결과 저장하기</Resultsave>
                 <button
                   id="kakaotalk-sharing-btn"
                   style={{

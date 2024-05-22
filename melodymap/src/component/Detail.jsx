@@ -7,7 +7,7 @@ import SideBar from "./SideBar";
 const Detail = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { music, place } = location.state || {};
+  const { music, place, sleep } = location.state || {};
 
   // place.poi_tag 값을 배열로 변환
   const renderPoiTags = (tags) => {
@@ -82,6 +82,13 @@ const Detail = () => {
               style={{ width: "300px", height: "300px" }}
             ></img>
           </div>
+          <a
+            href={`https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            근처 숙소보기
+          </a>
         </div>
       </div>
     </div>

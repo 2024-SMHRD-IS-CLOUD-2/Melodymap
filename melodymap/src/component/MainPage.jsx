@@ -34,22 +34,9 @@ const MainPage = () => {
             시작하기
           </button>
           <div className="pbuttonR">
-            <button
-              onClick={() => {
-                navigate("/Login");
-              }}
-              className="LoginM"
-            >
-              여행후기 쓰기
-            </button>
-            {/*  <button
-              onClick={() => {
-                navigate("/Join");
-              }}
-              className="Join1R"
-            >
-              회원가입
-            </button> */}
+            <br />
+            <br />
+            <footer>※후기는 로그인 후 작성가능</footer>
           </div>
         </div>
       </div>
