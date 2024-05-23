@@ -37,7 +37,7 @@
   background-color: whitesmoke;
   width: 380px; /* 수정: 너비 400px로 변경 */
   max-width: 100%;
-  height: 800px;
+  height: auto;
   overflow: auto;
   margin-top: 0px;
   overflow-x: hidden; /* 좌우 스크롤바가 생기지 않도록 설정 */

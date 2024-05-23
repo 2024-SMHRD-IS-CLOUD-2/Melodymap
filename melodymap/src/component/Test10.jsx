@@ -4,6 +4,7 @@ import { useTest } from "../context/TestContext";
 import TestProgress from "./TestProgress";
 import axios from "axios";
 import "../css/Test.css";
+import SideBar from "./SideBar";
 
 const Test10 = () => {
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ const Test10 = () => {
   return (
     <div className="container">
       <div className="wrapper">
+        <SideBar />
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 10.</h1>
         <div className="content">

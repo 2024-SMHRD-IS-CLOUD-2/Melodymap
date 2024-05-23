@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTest } from "../context/TestContext";
 import TestProgress from "./TestProgress";
 import "../css/Test.css";
+import SideBar from "./SideBar";
 
 const Test1 = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Test1 = () => {
   return (
     <div className="container">
       <div className="wrapper">
+        <SideBar />
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 01.</h1>
         <div className="content">

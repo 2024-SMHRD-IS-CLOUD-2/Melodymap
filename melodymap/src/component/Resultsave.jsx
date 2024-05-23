@@ -17,6 +17,21 @@ const ResultSave = () => {
   const placedata = combinedData.slice(5, 10);
   const userResult = [musicdata, placedata];
 
+  const saveButtonStyle = {
+    backgroundColor: "rgb(212, 241, 253)",
+    width: "220px",
+    height: "50px",
+    fontSize: "24px",
+    borderRadius: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "40px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginBottom: "40px",
+  };
+
   //   console.log("UserID:", userID);
   //   console.log("userResult:", JSON.stringify(userResult, null, 2));
 
@@ -46,7 +61,9 @@ const ResultSave = () => {
   };
 
   return userID ? (
-    <button onClick={saveResult}>결과 저장하기</button>
+    <button onClick={saveResult} style={saveButtonStyle}>
+      결과 저장하기
+    </button>
   ) : (
     <button
       className="save-button"
@@ -54,6 +71,7 @@ const ResultSave = () => {
         alert("로그인이 필요합니다");
         navigate("/login");
       }}
+      style={saveButtonStyle}
     >
       결과 저장하기
     </button>

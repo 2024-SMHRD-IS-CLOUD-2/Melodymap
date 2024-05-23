@@ -9,6 +9,13 @@ const Detail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { music, place, sleep } = location.state || {};
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   const goSleep = () => {
     const url = `https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`;
     window.open(url, "_blank", "noopener,noreferrer");
@@ -47,7 +54,12 @@ const Detail = () => {
             <p className="explain2D">상세설명</p>
             <div className="lineD"></div>
 
-            <p className="explain3D">{place.poi_desc}</p>
+            <p
+              className={`explain3D ${isExpanded ? "expanded" : ""}`}
+              onClick={toggleExpand}
+            >
+              {place.poi_desc}
+            </p>
           </div>
 
           <p className="recoD">추천음악</p>

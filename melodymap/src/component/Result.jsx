@@ -13,6 +13,21 @@ import SideBar from "./SideBar";
 import Resultsave from "./Resultsave";
 const { Kakao } = window;
 
+const saveButtonStyle = {
+  backgroundColor: "rgb(212, 241, 253)",
+  width: "220px",
+  height: "50px",
+  fontSize: "24px",
+  borderRadius: "10px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  marginTop: "40px",
+  marginLeft: "auto",
+  marginRight: "auto",
+  marginBottom: "40px",
+};
+
 const Result = () => {
   const location = useLocation();
   const { choice } = useTest();
