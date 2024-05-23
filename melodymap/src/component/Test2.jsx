@@ -4,12 +4,11 @@ import { useTest } from "../context/TestContext";
 import TestProgress from "./TestProgress";
 import "../css/Test.css";
 
-const Testpage = () => {
+const Test2 = () => {
   const navigate = useNavigate();
   const { addSelection } = useTest();
-
-  const currentStep = 2; // 현재 페이지 번호
-  const totalSteps = 10; // 총 페이지 수
+  const currentStep = 2;
+  const totalSteps = 10;
 
   const handleButtonClick = (selection) => {
     addSelection(selection);
@@ -20,33 +19,15 @@ const Testpage = () => {
     <div className="container">
       <div className="wrapper">
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
-        <div>
-          <h1 className="question">Q 02.</h1>
-          <h1 className="content">
-            기다리던 여행날!
-            <br />
-            벌써 잠들 시간이다.
-            <br></br>
-            당신의 선택은?
-          </h1>
-          <button
-            onClick={() => {
-              /*  navigate("/test3");
-              addSelection("N"); */
-              handleButtonClick("N");
-            }}
-            className="que1"
-          >
+        <h1 className="question">Q 02.</h1>
+        <div className="content">
+          기다리던 여행날! 벌써 잠들 시간이다. 당신의 선택은?
+        </div>
+        <div className="info">
+          <button onClick={() => handleButtonClick("N")} className="que1">
             흠.. 일기예보는 괜찮았는데 비가 오지는 않겠지?
           </button>
-          <button
-            onClick={() => {
-              /* navigate("/test3");
-              addSelection("S"); */
-              handleButtonClick("S");
-            }}
-            className="que2"
-          >
+          <button onClick={() => handleButtonClick("S")} className="que2">
             내일 재밌게 놀려면 바로 자야지!
           </button>
         </div>
@@ -55,4 +36,4 @@ const Testpage = () => {
   );
 };
 
-export default Testpage;
+export default Test2;

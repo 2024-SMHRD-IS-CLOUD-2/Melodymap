@@ -4,42 +4,30 @@ import { useTest } from "../context/TestContext";
 import TestProgress from "./TestProgress";
 import "../css/Test.css";
 
-const Testpage = () => {
+const Test9 = () => {
   const navigate = useNavigate();
   const { addSelection } = useTest();
+  const currentStep = 9;
+  const totalSteps = 10;
 
-  const currentStep = 9; // 현재 페이지 번호
-  const totalSteps = 10; // 총 페이지 수
+  const handleButtonClick = (selection) => {
+    addSelection(selection);
+    navigate(`/test${currentStep + 1}`);
+  };
 
   return (
     <div className="container">
       <div className="wrapper">
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
-        <div>
-          <h1 className="question">Q 09.</h1>
-          <h1 className="content">
-            친구들과 여행
-            <br></br>
-            계획을 세우려고 한다.
-            <br />
-            선호하는 일정은?
-          </h1>
-          <button
-            onClick={() => {
-              navigate("/test10");
-              addSelection("B");
-            }}
-            className="que1"
-          >
+        <h1 className="question">Q 09.</h1>
+        <div className="content">
+          친구들과 여행 계획을 세우려고 한다. 선호하는 일정은?
+        </div>
+        <div className="info">
+          <button onClick={() => handleButtonClick("B")} className="que1">
             난 집 아닌 곳에서 못자.. 당일치기로 가자
           </button>
-          <button
-            onClick={() => {
-              navigate("/test10");
-              addSelection("X");
-            }}
-            className="que2"
-          >
+          <button onClick={() => handleButtonClick("X")} className="que2">
             모든 에너지를 쏟아서 놀고 와야지 1박2일 고고!
           </button>
         </div>
@@ -48,4 +36,4 @@ const Testpage = () => {
   );
 };
 
-export default Testpage;
+export default Test9;

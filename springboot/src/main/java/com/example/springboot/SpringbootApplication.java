@@ -38,17 +38,14 @@ public class SpringbootApplication {
 	public Function<Message<Map<String, Object>>, Message<Object>> getChoice() {
 		return message -> {
 			Map<String, Object> input = message.getPayload();
-			log.info("Received input: {}", input); // 입력 데이터를 로그로 출력
+			log.info("Received input: {}", input);
 
-			// Lambda의 로컬 테스트와 API Gateway 통합 요청을 모두 처리
 			String choice = null;
 			if (input.containsKey("body")) {
-				// API Gateway에서 전달된 경우
 				String bodyString = (String) input.get("body");
 				Map<String, Object> body = parseJson(bodyString);
 				choice = (String) body.get("choice");
 			} else {
-				// 로컬 테스트의 경우
 				choice = (String) input.get("choice");
 			}
 
@@ -59,7 +56,6 @@ public class SpringbootApplication {
 
 			log.info("Received choice: {}", choice);
 
-			// DynamoDB에서 객체 조회 및 count 값 증가
 			Optional<MelodyMap2> result = dynamoDBFindService.findAndUpdateCount(MelodyMap2.class, choice);
 
 			if (result.isPresent()) {
@@ -69,7 +65,6 @@ public class SpringbootApplication {
 			}
 		};
 	}
-
 
 	@Bean
 	public Function<Message<Map<String, Object>>, Message<Object>> addComment() {
@@ -81,7 +76,7 @@ public class SpringbootApplication {
 			String author = getValueFromInput(input, "author");
 			String content = getValueFromInput(input, "content");
 			String date = getValueFromInput(input, "date");
-
+			List<String> imageUrls = getValueFromInput(input, "imageUrls");
 
 			if (commentTitle == null || commentTitle.isEmpty()) {
 				log.error("Comment title is null or empty");
@@ -93,12 +88,13 @@ public class SpringbootApplication {
 			newComment.setAuthor(author);
 			newComment.setContent(content);
 			newComment.setDate(date);
-
+			newComment.setImageUrls(imageUrls);
 
 			MelodyMap_comment savedComment = dynamoDBFindService.save(newComment);
 			return createResponse(savedComment != null ? "Comment added successfully" : "Failed to add comment", 200);
 		};
 	}
+
 
 	@Bean
 	public Function<Message<Map<String, Object>>, Message<Object>> deleteComment() {
@@ -140,7 +136,6 @@ public class SpringbootApplication {
 			Map<String, Object> input = message.getPayload();
 			log.info("Received input: {}", input);
 
-			// DynamoDB에서 모든 댓글을 가져옴
 			List<MelodyMap_comment> comments = dynamoDBFindService.findAll(MelodyMap_comment.class);
 
 			if (!comments.isEmpty()) {
@@ -210,7 +205,6 @@ public class SpringbootApplication {
 		};
 	}
 
-
 	@Bean
 	public Function<Message<Map<String, Object>>, Message<Object>> deleteUser() {
 		return message -> {
@@ -258,9 +252,6 @@ public class SpringbootApplication {
 		};
 	}
 
-
-
-
 	@Bean
 	public Function<Message<Map<String, Object>>, Message<Object>> scanUsers() {
 		return message -> {
@@ -273,18 +264,16 @@ public class SpringbootApplication {
 				return createResponse("UserID cannot be null or empty", 400);
 			}
 
-			// DynamoDB에서 사용자 정보를 가져옴
 			Optional<Users> userOptional = dynamoDBFindService.find(Users.class, userID);
 
 			if (userOptional.isPresent()) {
 				Users user = userOptional.get();
-				// 비밀번호를 제외한 사용자 정보를 반환
 				Map<String, Object> userResponse = new HashMap<>();
 				userResponse.put("UserID", user.getUserID());
 				userResponse.put("Name", user.getName());
 				userResponse.put("Gender", user.getGender());
 				userResponse.put("Birthday", user.getBirthday());
-				userResponse.put("UserResult",user.getUserResult());
+				userResponse.put("UserResult", user.getUserResult());
 
 				return createResponse(userResponse, 200);
 			} else {
@@ -293,16 +282,16 @@ public class SpringbootApplication {
 		};
 	}
 
-
-	private String getValueFromInput(Map<String, Object> input, String key) {
+	private <T> T getValueFromInput(Map<String, Object> input, String key) {
 		if (input.containsKey("body")) {
 			String bodyString = (String) input.get("body");
 			Map<String, Object> body = parseJson(bodyString);
-			return (String) body.get(key);
+			return (T) body.get(key);
 		} else {
-			return (String) input.get(key);
+			return (T) input.get(key);
 		}
 	}
+
 
 	private Map<String, Object> parseJson(String json) {
 		try {
@@ -312,8 +301,6 @@ public class SpringbootApplication {
 			return Collections.emptyMap();
 		}
 	}
-
-
 
 	private Message<Object> createResponse(Object payload, int statusCode) {
 		return MessageBuilder.withPayload(payload)

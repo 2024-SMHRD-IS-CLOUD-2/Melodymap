@@ -113,5 +113,22 @@ public class DynamoDBFindService {
         return Optional.of(user);
     }
 
+//    // MelodyMap2 테이블에서 모든 result_choice와 count 값을 가져오는 메서드
+//    public List<Map<String, Object>> getAllResultChoiceAndCount() {
+//        List<Map<String, Object>> resultList = new ArrayList<>();
+//        try {
+//            // Scan 모든 항목 가져오기
+//            List<MelodyMap2> items = dynamoDBMapper.scan(MelodyMap2.class, new DynamoDBScanExpression());
+//            for (MelodyMap2 item : items) {
+//                resultList.add(Map.of(
+//                        "result_choice", item.getResult_choice(),
+//                        "count", item.getCount()
+//                ));
+//            }
+//        } catch (AmazonDynamoDBException e) {
+//            log.error("Error occurred while scanning MelodyMap2 table: {}", e.getErrorMessage(), e);
+//        }
+//        return resultList;
+//    }
 
 }

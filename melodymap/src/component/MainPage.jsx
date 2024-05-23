@@ -2,9 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Main.css";
 import SideBar from "./SideBar";
+import { useTest } from "../context/TestContext";
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const { resetChoice } = useTest();
+
+  const startTest = () => {
+    resetChoice();
+    navigate("/test1");
+  };
 
   return (
     <div className="containerM">
@@ -19,18 +26,13 @@ const MainPage = () => {
             />
           </div>
           <div className="infoM">
-            <h1 className="fM">당신의 MBTI로</h1>
+            <h1 className="fM">당신의 취향대로</h1>
             <h1 className="sM">떠나는 특별한</h1>
             <h1 className="dM">
               여행지 <span className="reco1M">추천</span>
             </h1>
           </div>
-          <button
-            onClick={() => {
-              navigate("/Test1");
-            }}
-            className="start1M"
-          >
+          <button onClick={startTest} className="start1M">
             시작하기
           </button>
           <div className="pbuttonR">

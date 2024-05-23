@@ -4,42 +4,30 @@ import { useTest } from "../context/TestContext";
 import TestProgress from "./TestProgress";
 import "../css/Test.css";
 
-const Testpage = () => {
+const Test3 = () => {
   const navigate = useNavigate();
   const { addSelection } = useTest();
+  const currentStep = 3;
+  const totalSteps = 10;
 
-  const currentStep = 3; // 현재 페이지 번호
-  const totalSteps = 10; // 총 페이지 수
+  const handleButtonClick = (selection) => {
+    addSelection(selection);
+    navigate(`/test${currentStep + 1}`);
+  };
 
   return (
     <div className="container">
       <div className="wrapper">
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
-        <div>
-          <h1 className="question">Q 03.</h1>
-          <h1 className="content">
-            동전이 들어가면 사랑에
-            <br></br>
-            성공한다는 분수대에 도착
-            <br />
-            이때 당신의 생각은?
-          </h1>
-          <button
-            onClick={() => {
-              navigate("/test4");
-              addSelection("T");
-            }}
-            className="que1"
-          >
+        <h1 className="question">Q 03.</h1>
+        <div className="content">
+          동전이 들어가면 사랑에 성공한다는 분수대에 도착 이때 당신의 생각은?
+        </div>
+        <div className="info">
+          <button onClick={() => handleButtonClick("T")} className="que1">
             저거 동전 다 모으면 얼마지? 관리소에서 회수해 가는건가?...
           </button>
-          <button
-            onClick={() => {
-              navigate("/test4");
-              addSelection("F");
-            }}
-            className="que2"
-          >
+          <button onClick={() => handleButtonClick("F")} className="que2">
             우와.. 낭만적이다 꼭 한 번에 성공해야지!!
           </button>
         </div>
@@ -48,4 +36,4 @@ const Testpage = () => {
   );
 };
 
-export default Testpage;
+export default Test3;

@@ -3,11 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "../css/detail.css";
 import SideBar from "./SideBar";
+import KakaoMap from "./KakaoMap";
 
 const Detail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { music, place, sleep } = location.state || {};
+  const goSleep = () => {
+    const url = `https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
 
   // place.poi_tag 값을 배열로 변환
   const renderPoiTags = (tags) => {
@@ -76,19 +81,12 @@ const Detail = () => {
           <div>
             <p className="mapD">지도</p>
             <div className="lineD"></div>
-            <img
-              src={`${process.env.PUBLIC_URL}/image/naver_map.png`}
-              className="mapD"
-              style={{ width: "300px", height: "300px" }}
-            ></img>
+            <KakaoMap keyword={place.poi_name} />
           </div>
-          <a
-            href={`https://www.yanolja.com/search/${place.poi_region}/keyword-${sleep}?advert=KEYWORD&keyword=${place.poi_region}&searchKeyword=${place.poi_name}&pathDivision=keyword-${sleep}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+          <button className="Btn1" onClick={goSleep}>
             근처 숙소보기
-          </a>
+          </button>
         </div>
       </div>
     </div>

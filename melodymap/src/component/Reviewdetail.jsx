@@ -1,11 +1,12 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/reviewdetail.css";
 import SideBar from "./SideBar";
 
 const ReviewDetail = () => {
   const location = useLocation();
   const entry = location.state;
+  const navigate = useNavigate();
 
   if (!entry) {
     return <div>해당 후기를 찾을 수 없습니다.</div>;
@@ -22,14 +23,20 @@ const ReviewDetail = () => {
           </div>
           <div className="lineRD"></div>
           <div>
-            <img
-              src={`${process.env.PUBLIC_URL}/image/Meta.jpg`}
-              alt="Main Image"
-              className="imageRD"
-            />
+            {entry.imageUrls &&
+              entry.imageUrls.length > 0 &&
+              entry.imageUrls.map((url, index) => (
+                <img
+                  key={index}
+                  src={decodeURIComponent(url)}
+                  alt={`Review ${index}`}
+                  style={{ height: "200px", width: "200px", margin: "10px" }}
+                />
+              ))}
           </div>
           <div className="reviewRD">
             <p>{entry.content || "상세 내용이 없습니다."}</p>
+            <button onClick={() => navigate("/travelboard")}>목록보기</button>
           </div>
         </div>
       </div>

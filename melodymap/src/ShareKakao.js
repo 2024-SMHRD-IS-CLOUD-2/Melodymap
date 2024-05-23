@@ -37,7 +37,7 @@ function shareTwitter() {
 // Telegram
 function shareTelegram() {
   const text = "내용 입력";
-  const url = "https://sample.com/index.php";
+  const url = "http://localhost:3000/Result";
   window.open("https://telegram.me/share/url?url=" + url + "&text=" + text);
 }
 export { shareKakao, shareNaver, shareFacebook, shareTwitter, shareTelegram };
