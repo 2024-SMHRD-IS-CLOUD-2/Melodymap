@@ -144,7 +144,7 @@ const Result = () => {
                 className="reco2R"
                 onClick={() => setShowRecommendation(!showRecommendation)}
               >
-                {showRecommendation ? "숨기기" : "+ 추천"}
+                {showRecommendation ? "숨기기" : "+ 더보기"}
               </button>
               <div>
                 <div>

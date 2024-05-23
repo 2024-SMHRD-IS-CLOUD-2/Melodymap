@@ -48,7 +48,7 @@ const Statistics = () => {
           {/* 테이블 제목 */}
           <div className="rankS">
             <p style={{ fontFamily: "WavvePADO-Regular", fontSize: "30px" }}>
-              실시간 전체 유형 순위
+              이번주 전체 유형 순위
             </p>
             <div className="firstS">
               <Barchart

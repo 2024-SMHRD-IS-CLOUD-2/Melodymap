@@ -31,7 +31,7 @@ const Login = () => {
             onChange={(e) => setUserPW(e.target.value)}
           />
 
-          <div className="socialLogin5">
+          {/*  <div className="socialLogin5">
             <a
               href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"
               target="_blank"
@@ -54,7 +54,7 @@ const Login = () => {
                 alt="카카오 간편인증"
               />
             </a>
-          </div>
+          </div> */}
           <div>
             <button className="button15" onClick={() => navigate("/Join")}>
               회원가입

@@ -30,13 +30,15 @@ const ReviewDetail = () => {
                   key={index}
                   src={decodeURIComponent(url)}
                   alt={`Review ${index}`}
-                  style={{ height: "200px", width: "200px", margin: "10px" }}
+                  style={{ height: "100px", width: "100px", margin: "10px" }}
                 />
               ))}
           </div>
           <div className="reviewRD">
             <p>{entry.content || "상세 내용이 없습니다."}</p>
-            <button onClick={() => navigate("/travelboard")}>목록보기</button>
+            <button onClick={() => navigate("/travelboard")} className="saveRD">
+              목록보기
+            </button>
           </div>
         </div>
       </div>
