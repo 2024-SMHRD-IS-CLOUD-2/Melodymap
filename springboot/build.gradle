@@ -73,4 +73,3 @@ shadowJar {
 	append 'META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports' // AutoConfiguration.imports 파일 추가
 	append 'META-INF/spring/org.springframework.boot.actuate.autoconfigure.web.ManagementContextConfiguration.imports' // ManagementContextConfiguration.imports 파일 추가
 }
-

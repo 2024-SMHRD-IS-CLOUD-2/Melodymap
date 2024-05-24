@@ -31,6 +31,7 @@ public class Users {
     @DynamoDBAttribute(attributeName = "UserResult")
     private List<List<Map<String,String>>> userResult;
 
-
+//    @DynamoDBAttribute(attributeName = "Email")
+//    private String email; // email 필드 추가
 }
 

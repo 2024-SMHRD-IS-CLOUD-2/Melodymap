@@ -36,6 +36,14 @@ const MainPage = () => {
           <button onClick={startTest} className="start1M">
             시작하기
           </button>
+          <button
+            onClick={() => {
+              navigate("/courserecom");
+            }}
+            className="start1M"
+          >
+            코스 추천 받기
+          </button>
           <div className="pbuttonR">
             <br />
             <br />

@@ -21,6 +21,9 @@ import TravelBoard from "./component/TravelBoard";
 import Travelwrite from "./component/Travelwrite";
 import Reviewdetail from "./component/Reviewdetail";
 import SideBar from "./component/SideBar";
+import CourseRecom from "./component/Course_recom";
+import Coursepreview from "./component/Course_preview";
+import CourseDetail from "./component/Course_Detail";
 
 const App = () => {
   const [travelEntries, setTravelEntries] = useState([]);
@@ -47,6 +50,9 @@ const App = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/Join" element={<Join />} />
         <Route path="/detail" element={<Detail />} />
+        <Route path="/courserecom" element={<CourseRecom />} />
+        <Route path="/coursepreview" element={<Coursepreview />} />
+        <Route path="/coursedetail" element={<CourseDetail />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/reviewdetail/:entryId" element={<Reviewdetail />} />
