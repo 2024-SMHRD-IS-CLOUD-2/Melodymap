@@ -6,26 +6,26 @@ import SideBar from "./SideBar";
 
 const Statistics = () => {
   const mbtiData1 = [
-    { type: "지적인 ", count: 87 },
-    { type: "나른한", count: 152 },
-    { type: "따듯한", count: 56 },
-    { type: "피곤한", count: 70 },
-    { type: "분석적인", count: 95 },
-    { type: "예술적인", count: 120 },
-    { type: "수호적인", count: 57 },
-    { type: "영리한", count: 97 },
+    { type: "사색적", count: 87 },
+    { type: "전략적", count: 152 },
+    { type: "꿈꾸는", count: 56 },
+    { type: "따뜻한", count: 70 },
+    { type: "피곤한", count: 95 },
+    { type: "철저한", count: 120 },
+    { type: "감성적인", count: 57 },
+    { type: "따스한", count: 97 },
     // 나머지 MBTI 유형 및 각 유형의 통계 데이터를 배열에 추가
   ];
 
   const mbtiData2 = [
-    { type: "창의적인", count: 95 },
-    { type: "호탕한", count: 152 },
-    { type: "친철한", count: 142 },
-    { type: "온화한", count: 56 },
-    { type: "시원한", count: 65 },
-    { type: "지도적인", count: 121 },
-    { type: "사교적인", count: 85 },
-    { type: "모범적인", count: 60 },
+    { type: "시원한", count: 95 },
+    { type: "지도적인", count: 152 },
+    { type: "사교적인", count: 142 },
+    { type: "친화적인", count: 56 },
+    { type: "탐험적", count: 65 },
+    { type: "완벽주의", count: 121 },
+    { type: "신나는", count: 85 },
+    { type: "온화한", count: 60 },
     // 나머지 MBTI 유형 및 각 유형의 통계 데이터를 배열에 추가
   ];
 
