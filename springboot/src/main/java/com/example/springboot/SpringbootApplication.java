@@ -386,7 +386,10 @@ public class SpringbootApplication {
 //		return responseBody.get("access_token").asText();
 //	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f031ce783669c3a7db6adf5c7b86ba6537501d13
 	private <T> T getValueFromInput(Map<String, Object> input, String key) {
 		if (input.containsKey("body")) {
 			String bodyString = (String) input.get("body");
