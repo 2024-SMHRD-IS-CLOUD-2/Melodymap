@@ -87,7 +87,7 @@ public class DynamoDBFindService {
         return dynamoDBMapper.scan(clazz, new DynamoDBScanExpression());
     }
 
-    // Method to append user result for a specific user
+    // 결과저장
     public Optional<Users> appendUserResult(String userID, List<List<Map<String, String>>> newUserResults) {
         Users user = dynamoDBMapper.load(Users.class, userID);
         if (user == null) {
@@ -112,6 +112,8 @@ public class DynamoDBFindService {
 
         return Optional.of(user);
     }
+
+
 
 //    // MelodyMap2 테이블에서 모든 result_choice와 count 값을 가져오는 메서드
 //    public List<Map<String, Object>> getAllResultChoiceAndCount() {

@@ -282,6 +282,8 @@ public class SpringbootApplication {
 		};
 	}
 
+
+
 	private <T> T getValueFromInput(Map<String, Object> input, String key) {
 		if (input.containsKey("body")) {
 			String bodyString = (String) input.get("body");
