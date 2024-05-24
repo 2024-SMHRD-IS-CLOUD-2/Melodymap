@@ -44,6 +44,7 @@ body {
   max-width: 100%;
   height: auto;
   overflow: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+  overflow-x: hidden;
 }
 
 .question {

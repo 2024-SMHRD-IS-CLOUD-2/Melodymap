@@ -11,6 +11,7 @@ const MainPage = () => {
   const startTest = () => {
     resetChoice();
     navigate("/test1");
+    localStorage.removeItem("invited");
   };
 
   return (
@@ -38,7 +39,11 @@ const MainPage = () => {
           <div className="pbuttonR">
             <br />
             <br />
-            <footer>※후기는 로그인 후 작성가능</footer>
+            <footer>
+              ※후기는 로그인 후 작성가능
+              <br />
+              ※테스트 중에는 Back을 누르지 마세요
+            </footer>
           </div>
         </div>
       </div>

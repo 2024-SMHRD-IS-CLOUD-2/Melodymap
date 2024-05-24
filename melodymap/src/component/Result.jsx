@@ -39,8 +39,23 @@ const Result = () => {
   });
   const [showRecommendation, setShowRecommendation] = useState(false);
 
+  const distributeMusic = (musicArray, placeArray) => {
+    const chunkSize = 5;
+    return placeArray.map((place, index) => {
+      const start = index * chunkSize;
+      return {
+        ...place,
+        music: musicArray.slice(start, start + chunkSize),
+      };
+    });
+  };
+
+  const placesWithMusic = distributeMusic(music, place);
+
   const musicDataSend = (selectedPlace) => {
-    navigate("/detail", { state: { music, place: selectedPlace, sleep } });
+    navigate("/detail", {
+      state: { music: selectedPlace.music, place: selectedPlace, sleep },
+    });
   };
 
   useEffect(() => {
@@ -234,9 +249,9 @@ const Result = () => {
             <div className="contentR">
               {renderTitle()}
               {TagTitle()}
-              {place &&
-                place
-                  .slice(0, showRecommendation ? place.length : 1)
+              {placesWithMusic &&
+                placesWithMusic
+                  .slice(0, showRecommendation ? placesWithMusic.length : 1)
                   .map((place, index) => (
                     <div className="image-wrapperR" key={index}>
                       <div className="center1R">
