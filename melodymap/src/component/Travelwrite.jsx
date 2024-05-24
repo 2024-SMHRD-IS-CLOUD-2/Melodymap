@@ -4,12 +4,15 @@ import "../css/travelwrite.css";
 import SideBar from "./SideBar";
 import axios from "axios";
 import s3 from "../awsConfig"; // 상대 경로로 awsConfig를 임포트합니다.
+import Modal from "./Modal"; // 모달 컴포넌트를 임포트합니다.
 
 const Travelwrite = () => {
   const [title, setTitle] = useState("");
   const [reviewContent, setReviewContent] = useState("");
   const [imageFiles, setImageFiles] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
   const author = sessionStorage.getItem("userID");
   const navigate = useNavigate();
 
@@ -74,11 +77,19 @@ const Travelwrite = () => {
       );
       console.log(response.data);
       if (response.data) {
-        alert("후기 작성 완료");
-        navigate("/travelboard");
+        setModalMessage("후기 작성 완료");
+        setIsModalOpen(true);
       }
     } catch (error) {
-      alert("후기 작성 중 오류 발생");
+      setModalMessage("후기 작성 중 오류 발생");
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    if (modalMessage === "후기 작성 완료") {
+      navigate("/travelboard");
     }
   };
 
@@ -134,6 +145,11 @@ const Travelwrite = () => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        message={modalMessage}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };

@@ -11,7 +11,6 @@ import Test7 from "./component/Test7";
 import Test8 from "./component/Test8";
 import Test9 from "./component/Test9";
 import Test10 from "./component/Test10";
-import Coupang from "./component/Coupang";
 import Result from "./component/Result";
 import Login from "./component/Login";
 import Join from "./component/Join";
@@ -44,7 +43,6 @@ const App = () => {
         <Route path="/test8" element={<Test8 />} />
         <Route path="/test9" element={<Test9 />} />
         <Route path="/test10" element={<Test10 />} />
-        <Route path="/Coupang" element={<Coupang />} />
         <Route path="/Result" element={<Result />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Join" element={<Join />} />

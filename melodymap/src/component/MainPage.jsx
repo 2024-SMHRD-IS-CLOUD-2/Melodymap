@@ -11,7 +11,7 @@ const MainPage = () => {
   const startTest = () => {
     resetChoice();
     navigate("/test1");
-    localStorage.removeItem("invited");
+    localStorage.removeItem("visited");
   };
 
   return (

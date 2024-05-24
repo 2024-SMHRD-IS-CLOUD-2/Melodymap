@@ -5,6 +5,7 @@ import TestProgress from "./TestProgress";
 import axios from "axios";
 import "../css/Test.css";
 import SideBar from "./SideBar";
+import LoadingModal from "./LoadingModal"; // 로딩 모달 컴포넌트 임포트
 
 const Test10 = () => {
   const navigate = useNavigate();
@@ -12,8 +13,10 @@ const Test10 = () => {
   const currentStep = 10;
   const totalSteps = 10;
   const [sleep, setSleep] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
 
   const sendDataToServer = async (choice) => {
+    setIsLoading(true); // 서버 요청 전 로딩 상태 활성화
     try {
       const response = await axios.post(
         "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
@@ -38,6 +41,8 @@ const Test10 = () => {
       });
     } catch (error) {
       console.error("데이터 요청 중 오류 발생:", error);
+    } finally {
+      setIsLoading(false); // 서버 요청 후 로딩 상태 비활성화
     }
   };
 
@@ -78,6 +83,7 @@ const Test10 = () => {
           </button>
         </div>
       </div>
+      <LoadingModal isOpen={isLoading} /> {/* 로딩 모달 컴포넌트 추가 */}
     </div>
   );
 };
