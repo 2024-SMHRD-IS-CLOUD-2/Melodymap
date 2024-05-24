@@ -3,22 +3,35 @@ package com.example.springboot;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.example.springboot.entity.MelodyMap2;
 import com.example.springboot.entity.MelodyMap_comment;
+import com.example.springboot.entity.MelodyMap_course;
 import com.example.springboot.entity.Users;
 import com.example.springboot.service.DynamoDBFindService;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class SpringbootApplication {
@@ -31,8 +44,21 @@ public class SpringbootApplication {
 	@Autowired
 	private DynamoDBFindService dynamoDBFindService;
 
-	@Autowired
-	private ObjectMapper objectMapper;
+	private final ObjectMapper objectMapper = new ObjectMapper();
+
+//	@Autowired
+//	private RestTemplate restTemplate;
+//
+//	@Value("${kakao.client-id}")
+//	private String kakaoClientId;
+//
+//	@Value("${kakao.redirect-uri}")
+//	private String kakaoRedirectUri;
+//
+//	@Bean
+//	public RestTemplate restTemplate() {
+//		return new RestTemplate();
+//	}
 
 	@Bean
 	public Function<Message<Map<String, Object>>, Message<Object>> getChoice() {
@@ -282,6 +308,84 @@ public class SpringbootApplication {
 		};
 	}
 
+	@Bean
+	public Function<Message<String>, Message<Object>> scanCourses() {
+		return message -> {
+			String payload = message.getPayload();
+			log.info("Received input: {}", payload);
+
+			if (payload == null || payload.trim().isEmpty()) {
+				return createResponse("Invalid input", 400);
+			}
+
+			try {
+				Map<String, Object> input = objectMapper.readValue(payload, new TypeReference<>() {});
+				String courseRegion = (String) input.get("Course_region");
+
+				if (courseRegion == null || courseRegion.trim().isEmpty()) {
+					return createResponse("Course_region is required", 400);
+				}
+
+				List<MelodyMap_course> courses = dynamoDBFindService.findCoursesByRegion(courseRegion);
+
+				if (!courses.isEmpty()) {
+					return createResponse(courses, 200);
+				} else {
+					return createResponse("Courses not found", 404);
+				}
+			} catch (Exception e) {
+				log.error("Error processing request", e);
+				return createResponse("Internal Server Error", 500);
+			}
+		};
+	}
+
+//	@GetMapping("/oauth/kakao/callback")
+//	public String kakaoCallback(@RequestParam String code) throws Exception {
+//		String accessToken = getAccessToken(code);
+//		JsonNode userInfo = getUserInfo(accessToken);
+//
+//		String userId = userInfo.get("id").asText();
+//		String name = userInfo.get("properties").get("nickname").asText();
+//		String email = userInfo.get("kakao_account").get("email").asText();
+//
+//		Users user = new Users();
+//		user.setUserID(userId);
+//		user.setName(name);
+//		user.setEmail(email);
+//
+//		dynamoDBFindService.save(user);
+//
+//		return "Login Success";
+//	}
+//
+//	private JsonNode getUserInfo(String accessToken) throws Exception {
+//		String userInfoUrl = "https://kapi.kakao.com/v2/user/me";
+//
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.add("Authorization", "Bearer " + accessToken);
+//
+//		HttpEntity<String> entity = new HttpEntity<>(headers);
+//		ResponseEntity<String> response = restTemplate.exchange(userInfoUrl, HttpMethod.GET, entity, String.class);
+//
+//		return objectMapper.readTree(response.getBody());
+//	}
+//
+//	private String getAccessToken(String code) throws Exception {
+//		String tokenUrl = "https://kauth.kakao.com/oauth/token";
+//
+//		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+//		params.add("grant_type", "authorization_code");
+//		params.add("client_id", kakaoClientId);
+//		params.add("redirect_uri", kakaoRedirectUri);
+//		params.add("code", code);
+//
+//		ResponseEntity<String> response = restTemplate.postForEntity(tokenUrl, params, String.class);
+//
+//		JsonNode responseBody = objectMapper.readTree(response.getBody());
+//		return responseBody.get("access_token").asText();
+//	}
+
 	private <T> T getValueFromInput(Map<String, Object> input, String key) {
 		if (input.containsKey("body")) {
 			String bodyString = (String) input.get("body");
@@ -291,7 +395,6 @@ public class SpringbootApplication {
 			return (T) input.get(key);
 		}
 	}
-
 
 	private Map<String, Object> parseJson(String json) {
 		try {
@@ -312,3 +415,4 @@ public class SpringbootApplication {
 				.build();
 	}
 }
+

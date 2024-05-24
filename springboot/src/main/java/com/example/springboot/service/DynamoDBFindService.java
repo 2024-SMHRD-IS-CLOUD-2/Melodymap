@@ -1,15 +1,22 @@
 package com.example.springboot.service;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.example.springboot.entity.MelodyMap2;
+import com.example.springboot.entity.MelodyMap_course;
 import com.example.springboot.entity.Users;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +28,9 @@ public class DynamoDBFindService {
 
     @Autowired
     private DynamoDBMapper dynamoDBMapper;
+
+//    @Autowired
+//    private ObjectMapper objectMapper;
 
     // 객체 조회 (해시 키로 조회) 및 count 값 증가
     public <T> Optional<T> findAndUpdateCount(Class<T> clazz, Object hashKey) {
@@ -111,6 +121,23 @@ public class DynamoDBFindService {
         }
 
         return Optional.of(user);
+    }
+
+    // 전체 조회
+    public List<MelodyMap_course> findCoursesByRegion(String courseRegion) {
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
+                .withFilterConditionEntry("Course_region",
+                        new Condition().withComparisonOperator("EQ").withAttributeValueList(new AttributeValue().withS(courseRegion)));
+
+        List<MelodyMap_course> courses = dynamoDBMapper.scan(MelodyMap_course.class, scanExpression);
+        log.info("Courses from DB: {}", courses);
+
+        for (MelodyMap_course course : courses) {
+            log.info("Course Details - Region: {}, Courses: {}",
+                    course.getCourseRegion(), course.getCourses());
+        }
+
+        return courses;
     }
 
 //    // MelodyMap2 테이블에서 모든 result_choice와 count 값을 가져오는 메서드
