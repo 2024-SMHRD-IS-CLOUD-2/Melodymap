@@ -1,6 +1,8 @@
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../css/result.css";
+import Modal from "./Modal"; // 모달 컴포넌트 임포트
 
 const ResultSave = () => {
   const location = useLocation();
@@ -31,6 +33,9 @@ const ResultSave = () => {
     marginBottom: "40px",
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+
   const saveResult = async () => {
     try {
       const res = await axios.post(
@@ -56,21 +61,32 @@ const ResultSave = () => {
     }
   };
 
-  return userID ? (
-    <button onClick={saveResult} style={saveButtonStyle}>
-      결과 저장하기
-    </button>
-  ) : (
-    <button
-      className="save-button"
-      onClick={() => {
-        alert("로그인이 필요합니다");
-        navigate("/login");
-      }}
-      style={saveButtonStyle}
-    >
-      결과 저장하기
-    </button>
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    navigate("/login");
+  };
+
+  return (
+    <div>
+      <button
+        onClick={() => {
+          if (userID) {
+            saveResult();
+          } else {
+            setModalMessage("로그인이 필요합니다");
+            setIsModalOpen(true);
+          }
+        }}
+        style={saveButtonStyle}
+      >
+        결과 저장하기
+      </button>
+      <Modal
+        isOpen={isModalOpen}
+        message={modalMessage}
+        onClose={handleModalClose}
+      />
+    </div>
   );
 };
 

@@ -55,7 +55,14 @@ const SideBar = () => {
             Join
           </button>
 
-          <button onClick={checkLogin}>Review</button>
+          <button
+            onClick={() => {
+              checkLogin();
+              navigate("/login");
+            }}
+          >
+            Review
+          </button>
           <button onClick={goBack}>Back</button>
         </>
       )}
