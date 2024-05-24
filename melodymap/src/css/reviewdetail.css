@@ -37,7 +37,7 @@
   background-color: whitesmoke;
   width: 380px; /* 수정: 너비 400px로 변경 */
   max-width: 100%;
-  height: 800px;
+  height: auto;
   overflow: auto;
   margin-top: 0px;
   overflow-x: hidden; /* 좌우 스크롤바가 생기지 않도록 설정 */
@@ -88,4 +88,18 @@
 }
 .titleRD {
   font-size: 30px;
+}
+.saveRD {
+  background-color: rgb(212, 241, 253);
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: auto; /* 왼쪽 여백을 auto로 설정하여 가운데 정렬 */
+  margin-right: auto;
+  margin-bottom: 40px;
 }

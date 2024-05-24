@@ -7,56 +7,62 @@ import axios from "axios";
 const Mypage = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [userMusic, setUserMusic] = useState([]);
+  const [userPoi, setUserPoi] = useState([]);
+  const [showAllMusic, setShowAllMusic] = useState(false);
   const userid = sessionStorage.getItem("userID");
+
+  // 사용자 데이터를 가져오는 함수
   const scan = async () => {
-    const res = await axios.post(
-      "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
-      {
-        UserID: userid,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "spring.cloud.function.definition": "scanUsers",
+    try {
+      const res = await axios.post(
+        "https://jo07xi8kmg.execute-api.ap-northeast-2.amazonaws.com",
+        {
+          UserID: userid,
         },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "spring.cloud.function.definition": "scanUsers",
+          },
+        }
+      );
+      if (res.data) {
+        console.log(res.data);
+        const userMusicTemp = [];
+        const userPoiTemp = [];
+        res.data.UserResult.forEach((item, index) => {
+          if (index % 2 === 0) {
+            userMusicTemp.push(item);
+          } else {
+            userPoiTemp.push(item);
+          }
+        });
+        setUserMusic(userMusicTemp.reverse());
+        setUserPoi(userPoiTemp.reverse());
+        setTotalPages(
+          Math.ceil(Math.max(userMusicTemp.length, userPoiTemp.length))
+        );
       }
-    );
-    if (res.data) {
-      console.log(res.data);
+    } catch (error) {
+      console.error("Error fetching user data", error);
     }
   };
+
   useEffect(() => {
     scan();
   }, []);
 
-  const travelPages = [
-    {
-      page: 1,
-      description: "당신은 분석적인 여행가 입니다",
-      recommendation: "보성 골망태다원",
-      music: ["좋은 날 - 아이유", "비행기 - 거북이", "밤양갱 - 비비"],
-    },
-    {
-      page: 2,
-      description: "당신은 모험적인 여행가 입니다",
-      recommendation: "제주도 올레길",
-      music: ["해변의 여인 - 쿨", "한라산 - 하림", "그대와 함께 - 더블루"],
-    },
-    {
-      page: 3,
-      description: "당신은 휴식이 필요한 여행가 입니다",
-      recommendation: "강릉 경포대",
-      music: ["너의 의미 - 산울림", "한강 - 하림", "밤하늘의 별을 - 경서"],
-    },
-  ];
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  // 페이지 변경 핸들러
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
-  const currentTravelInfo = travelPages.find(
-    (page) => page.page === currentPage
-  );
+  // 음악 더 보기 핸들러
+  const handleShowMoreMusic = () => {
+    setShowAllMusic(true);
+  };
 
   return (
     <div className="containermy">
@@ -64,39 +70,73 @@ const Mypage = () => {
         <SideBar />
         <div className="contentmy">
           <div className="mypageM">
-            <p className="mypageTitle">나의 여행지</p>
+            <p className="mypageTitle">나의 결과</p>
           </div>
+
           <div className="mypageinfo">
-            <p>{currentTravelInfo.description}</p>
-            <p>추천 여행지</p>
-            <p>{currentTravelInfo.recommendation}</p>
-            <p>추천 음악</p>
-            {currentTravelInfo.music.map((song, index) => (
-              <p key={index} className="songmy">
-                {song}
-              </p>
-            ))}
+            <p className="recoM">추천받은 여행지</p>
+            {userPoi[currentPage - 1] &&
+              Array.isArray(userPoi[currentPage - 1]) &&
+              userPoi[currentPage - 1].map((poi, index) => (
+                <div key={index} className="poiItem">
+                  <img
+                    className="poiImage"
+                    src={poi.img_rname}
+                    alt={poi.poi_name}
+                  />
+                  <p className="poiText">
+                    {poi.poi_region} : {poi.poi_name}
+                  </p>
+                </div>
+              ))}
+            <p className="recoM">추천받은 음악</p>
+            {userMusic[currentPage - 1] &&
+              Array.isArray(userMusic[currentPage - 1]) &&
+              userMusic[currentPage - 1]
+                .slice(0, showAllMusic ? userMusic[currentPage - 1].length : 5)
+                .map((music, index) => (
+                  <div key={index} className="musicItem">
+                    <img
+                      className="musicImage"
+                      src={music.music_image}
+                      alt={music.music_genre}
+                    />
+                    <p className="musicText">
+                      {music.music_singer} : {music.music_title}
+                    </p>
+                  </div>
+                ))}
+            {!showAllMusic &&
+              userMusic[currentPage - 1] &&
+              userMusic[currentPage - 1].length > 5 && (
+                <button className="showMoreBtn" onClick={handleShowMoreMusic}>
+                  더 보기
+                </button>
+              )}
           </div>
-          <div className="paginationmy">
-            {travelPages.map((page) => (
+
+          <div className="pagination">
+            {[...Array(totalPages).keys()].map((page) => (
               <button
-                key={page.page}
-                onClick={() => handlePageChange(page.page)}
-                className="pageButtonmy"
+                key={page + 1}
+                onClick={() => handlePageChange(page + 1)}
+                disabled={currentPage === page + 1}
+                className="BtnM"
               >
-                {page.page}
+                {page + 1}
               </button>
             ))}
           </div>
-          <button
-            onClick={() => {
-              navigate("/travelwrite");
-            }}
-            className="writeM"
-          >
-            여행후기 쓰기
-          </button>
         </div>
+
+        <button
+          onClick={() => {
+            navigate("/travelwrite");
+          }}
+          className="writeM"
+        >
+          여행후기 쓰기
+        </button>
       </div>
     </div>
   );

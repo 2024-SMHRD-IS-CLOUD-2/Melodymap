@@ -11,8 +11,8 @@ const shareKakao = () => {
 };
 // NAVER
 function shareNaver() {
-  const title = "타이틀 입력";
-  const url = "https://sample.com/index.php";
+  const title = "당신의 취향대로 떠나는 특별한 여행지 추천";
+  const url = "https://smhrd-melodymap.com/";
   window.open(
     "https://share.naver.com/web/shareView?url=" + url + "&title=" + title
   );
@@ -20,8 +20,8 @@ function shareNaver() {
 
 // Facebook
 function shareFacebook() {
-  const title = "타이틀 입력";
-  const url = "https://sample.com/index.php";
+  const title = "당신의 취향대로 떠나는 특별한 여행지 추천";
+  const url = "https://smhrd-melodymap.com/";
   window.open(
     "http://www.facebook.com/sharer/sharer.php?u=" + url + "&title=" + title
   );
@@ -29,15 +29,15 @@ function shareFacebook() {
 
 // Twitter
 function shareTwitter() {
-  const text = "내용 입력";
-  const url = "https://sample.com/index.php";
+  const text = "당신의 취향대로 떠나는 특별한 여행지 추천";
+  const url = "https://smhrd-melodymap.com/";
   window.open("https://twitter.com/intent/tweet?text=" + url + text);
 }
 
 // Telegram
 function shareTelegram() {
-  const text = "내용 입력";
-  const url = "http://localhost:3000/Result";
+  const text = "당신의 취향대로 떠나는 특별한 여행지 추천";
+  const url = "https://smhrd-melodymap.com/";
   window.open("https://telegram.me/share/url?url=" + url + "&text=" + text);
 }
 export { shareKakao, shareNaver, shareFacebook, shareTwitter, shareTelegram };

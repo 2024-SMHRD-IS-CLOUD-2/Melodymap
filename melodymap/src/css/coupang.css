@@ -32,7 +32,7 @@
   border-radius: 20px;
   background-color: whitesmoke;
   width: 380px;
-  height: 740px;
+  height: auto;
 }
 
 .content {

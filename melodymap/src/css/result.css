@@ -29,7 +29,7 @@
   border-radius: 20px;
   background-color: whitesmoke;
   width: 380px;
-  height: 2500px; /* 수정: .wrapper 높이 조정 */
+  height: auto; /* 수정: .wrapper 높이 조정 */
   margin: 0 auto; /* 수평 가운데 정렬을 위해 추가 */
 }
 
@@ -106,14 +106,14 @@
 
 .explain1R,
 .explain4R {
-  font-size: 17px;
+  font-size: 15px;
   margin-bottom: 3px; /* explain1과 explain4 사이의 간격 조정 */
 }
 
 .explain2R,
 .explain5R {
   color: steelblue;
-  font-size: 25px;
+  font-size: 22px;
   margin-top: 10px; /* explain2와 explain5 사이의 간격 조정 */
 }
 

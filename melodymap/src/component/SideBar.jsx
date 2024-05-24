@@ -21,6 +21,10 @@ const SideBar = () => {
     navigate("/");
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="sidebar">
       {sessionStorage.getItem("userID") ? (
@@ -29,6 +33,7 @@ const SideBar = () => {
           <button onClick={handleLogout}>Logout</button>
           <button onClick={() => navigate("/mypage")}>My</button>
           <button onClick={checkLogin}>Review</button>
+          <button onClick={goBack}>Back</button>
         </>
       ) : (
         <>
@@ -50,7 +55,15 @@ const SideBar = () => {
             Join
           </button>
 
-          <button onClick={checkLogin}>Review</button>
+          <button
+            onClick={() => {
+              checkLogin();
+              navigate("/login");
+            }}
+          >
+            Review
+          </button>
+          <button onClick={goBack}>Back</button>
         </>
       )}
     </div>

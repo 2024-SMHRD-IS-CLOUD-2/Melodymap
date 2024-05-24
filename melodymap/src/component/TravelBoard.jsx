@@ -4,6 +4,16 @@ import axios from "axios";
 import "../css/travelboard.css";
 import SideBar from "./SideBar";
 
+const Btn9 = {
+  background: "none",
+  border: "none",
+  fontsize: "18px",
+  cursor: "pointer",
+  marginbottom: "10px",
+  fontweight: "bold",
+  marginTop: "30px",
+};
+
 const TravelBoard = () => {
   const navigate = useNavigate();
   const [travelEntries, setTravelEntries] = useState([]);
@@ -109,6 +119,7 @@ const TravelBoard = () => {
                   key={number}
                   onClick={() => handlePageChange(number)}
                   className={number === currentPage ? "active" : ""}
+                  style={Btn9}
                 >
                   {number}
                 </button>

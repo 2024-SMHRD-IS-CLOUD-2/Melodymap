@@ -1,9 +1,13 @@
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Modal from "./Modal"; // 모달 컴포넌트 가져오기
 
 const Login_Btn = ({ userID, userPW }) => {
   const navigate = useNavigate();
-  console.log(userID);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+
   const handleLogin = async () => {
     try {
       const response = await axios.post(
@@ -22,23 +26,34 @@ const Login_Btn = ({ userID, userPW }) => {
       if (response.data) {
         // 로그인 성공 시 수행할 동작
         sessionStorage.setItem("userID", response.data.UserID);
+        setModalMessage("로그인 성공");
+        setModalOpen(true);
         console.log(response.data);
         console.log(sessionStorage.getItem("userID"));
-        navigate("/"); // 예시로 메인 페이지로 이동
+        setTimeout(() => navigate("/"), 2000); // 2초 후에 메인 페이지로 이동
       } else {
         // 로그인 실패 시 수행할 동작
-        alert("로그인 실패: " + response.data);
+        setModalMessage("로그인 실패: " + response.data);
+        setModalOpen(true);
       }
     } catch (error) {
       console.error("로그인 중 오류 발생:", error);
-      alert("로그인 중 오류가 발생했습니다.");
+      setModalMessage("로그인 중 오류가 발생했습니다.");
+      setModalOpen(true);
     }
   };
 
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    <button className="button25" onClick={handleLogin}>
-      로그인
-    </button>
+    <>
+      <button className="button25" onClick={handleLogin}>
+        로그인
+      </button>
+      <Modal isOpen={modalOpen} message={modalMessage} onClose={closeModal} />
+    </>
   );
 };
 
