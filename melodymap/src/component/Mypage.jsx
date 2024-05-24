@@ -10,6 +10,7 @@ const Mypage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [userMusic, setUserMusic] = useState([]);
   const [userPoi, setUserPoi] = useState([]);
+  const [showAllMusic, setShowAllMusic] = useState(false);
   const userid = sessionStorage.getItem("userID");
 
   // 사용자 데이터를 가져오는 함수
@@ -58,6 +59,11 @@ const Mypage = () => {
     setCurrentPage(page);
   };
 
+  // 음악 더 보기 핸들러
+  const handleShowMoreMusic = () => {
+    setShowAllMusic(true);
+  };
+
   return (
     <div className="containermy">
       <div className="wrappermy">
@@ -68,36 +74,45 @@ const Mypage = () => {
           </div>
 
           <div className="mypageinfo">
-            <p>추천받은 여행지</p>
+            <p className="recoM">추천받은 여행지</p>
             {userPoi[currentPage - 1] &&
               Array.isArray(userPoi[currentPage - 1]) &&
               userPoi[currentPage - 1].map((poi, index) => (
-                <div key={index}>
-                  <p>
-                    <img
-                      style={{ height: "30px", width: "50px" }}
-                      src={poi.img_rname}
-                      alt={poi.poi_name}
-                    />
+                <div key={index} className="poiItem">
+                  <img
+                    className="poiImage"
+                    src={poi.img_rname}
+                    alt={poi.poi_name}
+                  />
+                  <p className="poiText">
                     {poi.poi_region} : {poi.poi_name}
                   </p>
                 </div>
               ))}
-            <p>추천받은 음악</p>
+            <p className="recoM">추천받은 음악</p>
             {userMusic[currentPage - 1] &&
               Array.isArray(userMusic[currentPage - 1]) &&
-              userMusic[currentPage - 1].map((music, index) => (
-                <div key={index}>
-                  <p>
+              userMusic[currentPage - 1]
+                .slice(0, showAllMusic ? userMusic[currentPage - 1].length : 5)
+                .map((music, index) => (
+                  <div key={index} className="musicItem">
                     <img
-                      style={{ height: "30px", width: "50px" }}
+                      className="musicImage"
                       src={music.music_image}
                       alt={music.music_genre}
                     />
-                    {music.music_singer} : {music.music_title}
-                  </p>
-                </div>
-              ))}
+                    <p className="musicText">
+                      {music.music_singer} : {music.music_title}
+                    </p>
+                  </div>
+                ))}
+            {!showAllMusic &&
+              userMusic[currentPage - 1] &&
+              userMusic[currentPage - 1].length > 5 && (
+                <button className="showMoreBtn" onClick={handleShowMoreMusic}>
+                  더 보기
+                </button>
+              )}
           </div>
 
           <div className="pagination">
@@ -106,6 +121,7 @@ const Mypage = () => {
                 key={page + 1}
                 onClick={() => handlePageChange(page + 1)}
                 disabled={currentPage === page + 1}
+                className="BtnM"
               >
                 {page + 1}
               </button>
