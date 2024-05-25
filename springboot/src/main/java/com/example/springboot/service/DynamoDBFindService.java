@@ -123,10 +123,6 @@ public class DynamoDBFindService {
         return Optional.of(user);
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f031ce783669c3a7db6adf5c7b86ba6537501d13
     // 전체 조회
     public List<MelodyMap_course> findCoursesByRegion(String courseRegion) {
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
