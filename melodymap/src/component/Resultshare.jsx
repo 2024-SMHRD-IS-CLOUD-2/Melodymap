@@ -27,6 +27,7 @@ const Resultshare = () => {
         }
       );
       setData(response.data); // 받은 데이터를 state에 저장
+      console.log(data);
     } catch (error) {
       setError(error);
     } finally {
