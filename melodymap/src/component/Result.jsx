@@ -69,6 +69,15 @@ const Result = () => {
     console.log(Kakao.isInitialized());
   }, []);
 
+  // path를 구성하는 함수
+  const constructPath = () => {
+    // 필요한 데이터를 기반으로 path를 구성
+    return `?place=${encodeURIComponent(
+      JSON.stringify(place)
+    )}&sleep=${sleep}&choice=${choice}`;
+  };
+  const path = constructPath();
+
   const mbtiCharacteristics = {
     INTP: {
       text: "사색적 여행가",
@@ -301,13 +310,8 @@ const Result = () => {
                 <Resultsave>결과 저장하기</Resultsave>
                 <button
                   id="kakaotalk-sharing-btn"
-                  style={{
-                    border: "none",
-                    backgroundColor: "whitesmoke",
-                  }}
-                  onClick={() => {
-                    shareKakao();
-                  }}
+                  style={{ border: "none", backgroundColor: "whitesmoke" }}
+                  onClick={() => shareKakao(path)}
                 >
                   <img
                     src="https://developers.kakao.com/tool/resource/static/img/button/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
@@ -320,11 +324,8 @@ const Result = () => {
                   />
                 </button>
                 <button
-                  style={{
-                    border: "none",
-                    backgroundColor: "whitesmoke",
-                  }}
-                  onClick={() => shareFacebook()}
+                  style={{ border: "none", backgroundColor: "whitesmoke" }}
+                  onClick={() => shareFacebook(path)}
                 >
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
@@ -337,11 +338,8 @@ const Result = () => {
                   />
                 </button>
                 <button
-                  style={{
-                    border: "none",
-                    backgroundColor: "whitesmoke",
-                  }}
-                  onClick={() => shareNaver()}
+                  style={{ border: "none", backgroundColor: "whitesmoke" }}
+                  onClick={() => shareNaver(path)}
                 >
                   <img
                     src="https://i.namu.wiki/i/p_1IEyQ8rYenO9YgAFp_LHIAW46kn6DXT0VKmZ_jKNijvYth9DieYZuJX_E_H_4GkCER_sVKhMqSyQYoW94JKA.svg"
@@ -354,11 +352,8 @@ const Result = () => {
                   />
                 </button>
                 <button
-                  style={{
-                    border: "none",
-                    backgroundColor: "whitesmoke",
-                  }}
-                  onClick={() => shareTwitter()}
+                  style={{ border: "none", backgroundColor: "whitesmoke" }}
+                  onClick={() => shareTwitter(path)}
                 >
                   <img
                     src="https://s.widget-club.com/web/no2/7e6c8b4f8f0044949a80e97475955286.png"
@@ -371,11 +366,8 @@ const Result = () => {
                   />
                 </button>
                 <button
-                  style={{
-                    border: "none",
-                    backgroundColor: "whitesmoke",
-                  }}
-                  onClick={() => shareTelegram()}
+                  style={{ border: "none", backgroundColor: "whitesmoke" }}
+                  onClick={() => shareTelegram(path)}
                 >
                   <img
                     src="https://i.namu.wiki/i/71T_FtmH0B35AKStPtm3TvRJQyRrsm59YyGWH-Imyu5C3kfbUHD_bvFceM6LaNhkcrwDS84luPWef7jYVNWFNQ.svg"
