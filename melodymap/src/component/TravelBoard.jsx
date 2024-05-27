@@ -98,7 +98,7 @@ const TravelBoard = () => {
                   <th>작성일시</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style={{ fontSize: "14px" }}>
                 {currentEntries.map((entry, index) => (
                   <tr
                     key={index}

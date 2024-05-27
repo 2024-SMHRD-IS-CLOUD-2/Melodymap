@@ -12,6 +12,12 @@ const ReviewDetail = () => {
     return <div>해당 후기를 찾을 수 없습니다.</div>;
   }
 
+  // entry.content가 null 또는 undefined인 경우 빈 문자열로 설정
+  const content = entry.content || "";
+
+  // 줄바꿈 문자를 <br> 태그로 변환
+  const formattedContent = content.replace(/\n/g, "<br>");
+
   return (
     <div className="containerRD">
       <div className="wrapperRD">
@@ -35,7 +41,15 @@ const ReviewDetail = () => {
               ))}
           </div>
           <div className="reviewRD">
-            <p>{entry.content || "상세 내용이 없습니다."}</p>
+            <div
+              style={{
+                fontSize: "12px",
+                fontWeight: 100,
+                fontFamily: "Malgun Gothic",
+                textAlign: "left",
+              }}
+              dangerouslySetInnerHTML={{ __html: formattedContent }}
+            />
             <button onClick={() => navigate("/travelboard")} className="saveRD">
               목록보기
             </button>

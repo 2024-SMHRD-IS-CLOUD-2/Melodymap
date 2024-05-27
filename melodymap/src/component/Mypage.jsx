@@ -10,7 +10,6 @@ const Mypage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [userMusic, setUserMusic] = useState([]);
   const [userPoi, setUserPoi] = useState([]);
-  const [showAllMusic, setShowAllMusic] = useState(false);
   const userid = sessionStorage.getItem("userID");
 
   // 사용자 데이터를 가져오는 함수
@@ -59,11 +58,6 @@ const Mypage = () => {
     setCurrentPage(page);
   };
 
-  // 음악 더 보기 핸들러
-  const handleShowMoreMusic = () => {
-    setShowAllMusic(true);
-  };
-
   return (
     <div className="containermy">
       <div className="wrappermy">
@@ -92,27 +86,25 @@ const Mypage = () => {
             <p className="recoM">추천받은 음악</p>
             {userMusic[currentPage - 1] &&
               Array.isArray(userMusic[currentPage - 1]) &&
-              userMusic[currentPage - 1]
-                .slice(0, showAllMusic ? userMusic[currentPage - 1].length : 5)
-                .map((music, index) => (
-                  <div key={index} className="musicItem">
-                    <img
-                      className="musicImage"
-                      src={music.music_image}
-                      alt={music.music_genre}
-                    />
-                    <p className="musicText">
-                      {music.music_singer} : {music.music_title}
-                    </p>
-                  </div>
-                ))}
-            {!showAllMusic &&
-              userMusic[currentPage - 1] &&
-              userMusic[currentPage - 1].length > 5 && (
-                <button className="showMoreBtn" onClick={handleShowMoreMusic}>
-                  더 보기
-                </button>
-              )}
+              userMusic[currentPage - 1].map((music, index) => (
+                <div key={index} className="musicItem">
+                  <img
+                    className="musicImage"
+                    src={music.music_image}
+                    alt={music.music_genre}
+                    onClick={() => {
+                      window.open(
+                        `https://www.youtube.com/results?search_query=${music.music_singer} ${music.music_title}`,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    }}
+                  />
+                  <p className="musicText">
+                    {music.music_singer} : {music.music_title}
+                  </p>
+                </div>
+              ))}
           </div>
 
           <div className="pagination">

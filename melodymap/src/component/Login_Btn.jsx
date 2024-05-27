@@ -49,7 +49,7 @@ const Login_Btn = ({ userID, userPW }) => {
 
   return (
     <>
-      <button className="button25" onClick={handleLogin}>
+      <button id="loginButton" className="button25" onClick={handleLogin}>
         로그인
       </button>
       <Modal isOpen={modalOpen} message={modalMessage} onClose={closeModal} />
