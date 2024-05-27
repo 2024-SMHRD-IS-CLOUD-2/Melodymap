@@ -3,12 +3,18 @@ import Chart from "chart.js/auto";
 
 const MBTIBarChart = ({ mbtiData }) => {
   const chartRef = useRef(null);
+  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d");
 
-      new Chart(ctx, {
+      // 차트가 다시 생성될 때 기존 차트를 파괴합니다.
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
+      }
+
+      chartInstanceRef.current = new Chart(ctx, {
         type: "bar",
         data: {
           labels: mbtiData.map((item) => item.type),
@@ -16,13 +22,15 @@ const MBTIBarChart = ({ mbtiData }) => {
             {
               label: "MBTI 유형 통계",
               data: mbtiData.map((item) => item.count),
-              backgroundColor: "rgba(212, 241, 253)", // 막대 차트 색상
+              backgroundColor: "rgba(105, 169, 248, 0.5)", // 막대 차트 색상
+              borderColor: "rgba(105, 169, 248, 1)", // 막대 테두리 색상
               borderWidth: 1,
             },
           ],
         },
         options: {
           indexAxis: "y",
+          maintainAspectRatio: false, // 차트의 비율을 유지하지 않음
           scales: {
             y: {
               beginAtZero: true,
@@ -63,8 +71,8 @@ const MBTIBarChart = ({ mbtiData }) => {
   }, [mbtiData]);
 
   return (
-    <div>
-      <canvas ref={chartRef} width="330" height="300" />
+    <div style={{ width: "100%", height: "300px" }}>
+      <canvas ref={chartRef} />
     </div>
   );
 };

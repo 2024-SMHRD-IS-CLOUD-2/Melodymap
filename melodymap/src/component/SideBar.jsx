@@ -1,28 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/sidebar.css";
 import { useNavigate } from "react-router-dom";
 import { useTest } from "../context/TestContext";
+import Modal from "./Modal";
 
 const SideBar = () => {
   const navigate = useNavigate();
   const { resetChoice } = useTest();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const checkLogin = () => {
     if (sessionStorage.getItem("userID")) {
       navigate("/travelboard");
     } else {
-      alert("로그인이 필요합니다");
+      setModalMessage("로그인이 필요합니다");
+      setIsModalOpen(true);
+      setTimeout(() => navigate("/login"), 1000); // 1초 후에 메인 페이지로 이동
     }
   };
 
   const handleLogout = () => {
     sessionStorage.removeItem("userID");
     resetChoice();
-    navigate("/");
+    setModalMessage("로그아웃 되었습니다");
+    setIsModalOpen(true);
+    setTimeout(() => navigate("/"), 1000); // 1초 후에 메인 페이지로 이동
   };
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -55,17 +66,11 @@ const SideBar = () => {
             Join
           </button>
 
-          <button
-            onClick={() => {
-              checkLogin();
-              navigate("/login");
-            }}
-          >
-            Review
-          </button>
+          <button onClick={checkLogin}>Review</button>
           <button onClick={goBack}>Back</button>
         </>
       )}
+      <Modal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
     </div>
   );
 };

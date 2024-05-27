@@ -17,7 +17,7 @@ const Coursepreview = () => {
 
   return (
     <div className="container">
-      <div className="wrapper">
+      <div style={{ width: "360px" }} className="wrapper">
         <SideBar />
         <h1>{courseRegion}</h1>
         <p>※클릭시 코스확인이 가능합니다.</p>
