@@ -22,7 +22,8 @@ const Test7 = () => {
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 07.</h1>
         <div className="content">
-          약속장소가 차, 도보 둘 다 애매한 위치에 있다. 당신의 선택은?
+          약속장소가 차, 도보 둘 다<br /> 애매한 위치에 있다.
+          <br /> 당신의 선택은?
         </div>
         <div className="info">
           <button onClick={() => handleButtonClick("A")} className="que1">

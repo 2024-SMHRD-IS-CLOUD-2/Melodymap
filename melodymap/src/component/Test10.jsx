@@ -66,7 +66,8 @@ const Test10 = () => {
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 10.</h1>
         <div className="content">
-          여행을 가기위해 숙소를 예약해야 한다. 당신의 선택은?
+          여행을 가기위해 숙소를 예약해야 한다.
+          <br /> 당신의 선택은?
         </div>
         <div className="info">
           <button

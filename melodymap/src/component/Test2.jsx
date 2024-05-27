@@ -23,7 +23,9 @@ const Test2 = () => {
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 02.</h1>
         <div className="content">
-          기다리던 여행날! 벌써 잠들 시간이다. 당신의 선택은?
+          기다리던 여행날!
+          <br /> 벌써 잠들 시간이다. <br />
+          당신의 선택은?
         </div>
         <div className="info">
           <button onClick={() => handleButtonClick("N")} className="que1">

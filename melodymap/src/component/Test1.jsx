@@ -23,7 +23,9 @@ const Test1 = () => {
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 01.</h1>
         <div className="content">
-          산뜻한 주말 봄날 벚꽃이 활짝 폈다. 당신의 선택은?
+          산뜻한 주말 봄날 벚꽃이 활짝 폈다.
+          <br />
+          당신의 선택은?
         </div>
         <div className="info">
           <button onClick={() => handleButtonClick("E")} className="que1">

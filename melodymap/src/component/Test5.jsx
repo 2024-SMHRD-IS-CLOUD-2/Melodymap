@@ -23,7 +23,8 @@ const Test5 = () => {
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 05.</h1>
         <div className="content">
-          햇빛이 뜨거운 여름 날씨, 흥미가 생기는 여행 코스는?
+          햇빛이 뜨거운 여름 날씨, 흥미가 생기는
+          <br /> 여행 코스는?
         </div>
         <div className="info">
           <button onClick={() => handleButtonClick("Z")} className="que1">
