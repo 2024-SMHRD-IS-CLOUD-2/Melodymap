@@ -62,6 +62,7 @@ const Detail = () => {
           </div>
 
           <p className="recoD">추천음악</p>
+          <p>※앨범커버를 클릭하여 Youtube로이동</p>
           <div className="lineD"></div>
 
           <div className="musicTableContainer">
@@ -79,7 +80,17 @@ const Detail = () => {
                   <tr key={index} className="musicRow">
                     <td>{index + 1}</td>
                     <td className="musicTitleCell">
-                      <img src={music.music_image} className="sing1D" />
+                      <img
+                        onClick={() => {
+                          window.open(
+                            `https://www.youtube.com/results?search_query=${music.music_singer} ${music.music_title}`,
+                            "_blank",
+                            "noopener,noreferrer"
+                          );
+                        }}
+                        src={music.music_image}
+                        className="sing1D"
+                      />
                       {music.music_title}
                     </td>
                     <td>{music.music_singer}</td>

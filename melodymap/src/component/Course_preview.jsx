@@ -20,6 +20,7 @@ const Coursepreview = () => {
       <div className="wrapper">
         <SideBar />
         <h1>{courseRegion}</h1>
+        <p>※클릭시 코스확인이 가능합니다.</p>
         {courses.map((course, index) => (
           <button
             onClick={() => GoDetail(course)}

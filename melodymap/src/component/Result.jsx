@@ -216,6 +216,12 @@ const Result = () => {
         <div className="tag-title">
           <p>{mbtiCharacteristics[key].tags}</p>
           <p>{mbtiCharacteristics[key].description}</p>
+
+          <span className="travelD">추천지역 : {place[0].poi_region}</span>
+
+          <br />
+          <br />
+
           <b>※사진을 클릭하면 세부정보와</b>
           <br />
           <b>&nbsp;&nbsp;&nbsp;음악추천을 받을 수 있어요!</b>
