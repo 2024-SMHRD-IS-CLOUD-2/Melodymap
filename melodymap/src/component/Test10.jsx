@@ -31,7 +31,6 @@ const Test10 = () => {
         }
       );
 
-      console.log("서버로부터의 응답:", response.data);
       navigate("/Result", {
         state: {
           music: response.data.music,
@@ -49,7 +48,6 @@ const Test10 = () => {
   useEffect(() => {
     // 마지막 페이지에서만 서버로 데이터 전송
     if (choice.length === 10) {
-      console.log(choice);
       sendDataToServer(choice);
     }
   }, [choice, navigate]);

@@ -28,7 +28,6 @@ const Mypage = () => {
         }
       );
       if (res.data) {
-        console.log(res.data);
         const userMusicTemp = [];
         const userPoiTemp = [];
         res.data.UserResult.forEach((item, index) => {

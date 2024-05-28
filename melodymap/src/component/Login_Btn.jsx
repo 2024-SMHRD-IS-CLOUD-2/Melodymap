@@ -28,8 +28,6 @@ const Login_Btn = ({ userID, userPW }) => {
         sessionStorage.setItem("userID", response.data.UserID);
         setModalMessage("로그인 성공");
         setModalOpen(true);
-        console.log(response.data);
-        console.log(sessionStorage.getItem("userID"));
         setTimeout(() => navigate("/"), 1000); // 1초 후에 메인 페이지로 이동
       } else {
         // 로그인 실패 시 수행할 동작

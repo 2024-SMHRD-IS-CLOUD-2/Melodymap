@@ -33,7 +33,6 @@ const TravelBoard = () => {
             },
           }
         );
-        console.log(response.data);
         if (response.data) {
           const entries = response.data.map((item, index) => ({
             id: index,

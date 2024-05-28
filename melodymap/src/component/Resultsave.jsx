@@ -9,11 +9,10 @@ const ResultSave = () => {
   const navigate = useNavigate();
   const { music, place } = location.state || {};
   const userID = sessionStorage.getItem("userID");
-  console.log(userID);
 
   // music과 place 데이터를 개별적으로 확인
-  console.log("Music Data:", music);
-  console.log("Place Data:", place);
+  // console.log("Music Data:", music);
+  // console.log("Place Data:", place);
 
   // music과 place 배열을 합쳐서 새로운 배열 생성
   const userResult = [music, place];
@@ -54,7 +53,6 @@ const ResultSave = () => {
       if (res.data) {
         navigate("/mypage");
       } else {
-        console.log("결과 저장 실패");
       }
     } catch (error) {
       console.error("저장 중 오류 발생:", error);

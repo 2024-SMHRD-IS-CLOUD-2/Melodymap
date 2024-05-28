@@ -75,7 +75,6 @@ const Travelwrite = () => {
           },
         }
       );
-      console.log(response.data);
       if (response.data) {
         setModalMessage("후기 작성 완료");
         setIsModalOpen(true);

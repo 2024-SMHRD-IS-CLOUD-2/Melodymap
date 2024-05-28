@@ -66,7 +66,6 @@ const Result = () => {
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
-    console.log(Kakao.isInitialized());
   }, []);
 
   const mbtiCharacteristics = {
@@ -188,8 +187,6 @@ const Result = () => {
     const key = Object.keys(mbtiCharacteristics).find((key) =>
       choice.includes(key)
     );
-    console.log("Choice:", choice); // choice 값 확인
-    console.log("Matched Key:", key); // 매칭된 키 확인
     if (key) {
       return (
         <h1 className="d1R">
@@ -392,7 +389,7 @@ const Result = () => {
                 >
                   <img
                     src={`${process.env.PUBLIC_URL}/image/smhrd.png`}
-                    style={{ width: "300px", height: "250px" }}
+                    style={{ width: "300px", height: "200px" }}
                   />
                 </a>
               </div>
