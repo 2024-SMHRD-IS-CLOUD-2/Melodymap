@@ -22,15 +22,16 @@ const Test7 = () => {
         <TestProgress currentStep={currentStep} totalSteps={totalSteps} />
         <h1 className="question">Q 07.</h1>
         <div className="content">
-          약속장소가 차, 도보 둘 다<br /> 애매한 위치에 있다.
-          <br /> 당신의 선택은?
+          나의 여행 스타일은? <br />
         </div>
         <div className="info">
           <button onClick={() => handleButtonClick("A")} className="que1">
-            아.. 걷는 건 힘들어 버스나 택시타야지
+            온김에 이것저것 다 해봐야지 ! <br />
+            안에만 있으면 뭐해~
           </button>
           <button onClick={() => handleButtonClick("W")} className="que2">
-            음.. 뭐 이정도 거리면 걸어가도 되겠다
+            움직이는건 힘들어,,
+            <br /> 쉬어가는 힐링여행이 최고!
           </button>
         </div>
       </div>
