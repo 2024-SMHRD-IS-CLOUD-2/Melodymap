@@ -1,5 +1,6 @@
 # MelodyMap
-![android-chrome-512x512](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/158264712/1cc1e1f3-f803-42e0-96aa-b8bfc6accee2)
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/7b93b883-198a-4150-a4b3-6e6ada031f46)
+
 # 📃 Introduction
 - 서비스 명 : OpenAI기반 개인취향분석을 통한 전남 여행지, 음악 추천 서비스
 - 설명
@@ -28,6 +29,7 @@
 ![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/158264712/64f97b2e-53b2-4bb6-ae8c-f723de0ce150)
 
 # 📌 유스케이스
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/96399008-6ea4-4b78-be54-c15889bd6254)
 
 # 📌 서비스흐름도
 ![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/bd2ac515-0a30-4c1a-88ea-0c1c40bfc04d)
@@ -36,6 +38,11 @@
 ![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/4df65c3d-3dd3-4151-a08e-39cd0a489a22)
 
 # 💻 화면 구성
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/a8d308cd-4480-4623-8fcd-330f75e03ac0)
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/c47c3af9-4f89-4234-83ca-7c9897bfe899)
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/a808a5e0-b69d-4bf5-86c9-529a5713045f)
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/70f277bf-4ce8-4532-8976-7677807da2b4)
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/01b903c5-1127-40c4-8fcc-19cbabcc5187)
 
 # 🎈 팀원 소개
 ![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/e6968cc9-80d3-4b8f-aa1e-b7130ee70d3f)
