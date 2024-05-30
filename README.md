@@ -50,3 +50,5 @@
 # 💣 Trouble Shooting
 ![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/9b0a104f-bfaa-42f7-ac71-46bbd8b0d858)
 ![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/18079884-c96c-4a0b-b495-c96639113f08)
+- https://velog.io/@pa3757/API-Gateway-CORS
+- https://velog.io/@pa3757/Lambda-Cold-Start-%ED%95%B4%EA%B2%B0
