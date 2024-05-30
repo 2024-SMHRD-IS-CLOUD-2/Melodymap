@@ -30,11 +30,16 @@
 # 📌 유스케이스
 
 # 📌 서비스흐름도
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/bd2ac515-0a30-4c1a-88ea-0c1c40bfc04d)
 
 # 📌 ER다이어그램
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/4df65c3d-3dd3-4151-a08e-39cd0a489a22)
 
 # 💻 화면 구성
 
 # 🎈 팀원 소개
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/e6968cc9-80d3-4b8f-aa1e-b7130ee70d3f)
 
 # 💣 Trouble Shooting
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/9b0a104f-bfaa-42f7-ac71-46bbd8b0d858)
+![image](https://github.com/2024-SMHRD-IS-CLOUD-2/Melodymap/assets/153692372/18079884-c96c-4a0b-b495-c96639113f08)
